@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bra3v5oiy0hmh"]
+
+[ext_resource type="Script" uid="uid://b6gjgt51r066b" path="res://stargrabber.gd" id="1_sgyoo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aeua0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sgyoo"]
+radius = 0.50164986
+height = 2.0235279
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sgyoo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aeua0"]
+radius = 35.0
+height = 70.0
+
+[node name="Node2D" type="Node2D" unique_id=282899513]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=267285208 groups=["star"]]
+position = Vector2(373, 134)
+scale = Vector2(113.625, 42.5)
+freeze = true
+
+[node name="star" type="MeshInstance2D" parent="RigidBody2D" unique_id=1302585546 groups=["star"]]
+mesh = SubResource("CapsuleMesh_aeua0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=631700782]
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CapsuleShape2D_sgyoo")
+
+[node name="player" type="RigidBody2D" parent="." unique_id=1028103975]
+position = Vector2(612, 389)
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_sgyoo")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="player" unique_id=1956001874]
+scale = Vector2(61.750004, 22.75)
+mesh = SubResource("CapsuleMesh_sgyoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=67593391]
+shape = SubResource("CapsuleShape2D_aeua0")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=648954429 groups=["star"]]
+position = Vector2(829, 142)
+scale = Vector2(113.625, 42.5)
+freeze = true
+
+[node name="star" type="MeshInstance2D" parent="RigidBody2D2" unique_id=435305965 groups=["star"]]
+mesh = SubResource("CapsuleMesh_aeua0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2" unique_id=165451853]
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CapsuleShape2D_sgyoo")
