@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bra3v5oiy0hmh"]
+
+[ext_resource type="Script" uid="uid://b6gjgt51r066b" path="res://stargrabber.gd" id="1_sgyoo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aeua0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_34fsi"]
+
+[node name="Node2D" type="Node2D" unique_id=282899513]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1302585546 groups=["star"]]
+position = Vector2(476, 68.00002)
+scale = Vector2(113.62501, 42.500004)
+mesh = SubResource("CapsuleMesh_aeua0")
+script = ExtResource("1_sgyoo")
+
+[node name="player" type="MeshInstance2D" parent="." unique_id=1003429029]
+position = Vector2(478.99997, 481.99997)
+scale = Vector2(98.750015, 49.250023)
+mesh = SubResource("CapsuleMesh_34fsi")
