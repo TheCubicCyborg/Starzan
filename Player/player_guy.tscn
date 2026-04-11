@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bfvw8gcq1ue51"]
+
+[ext_resource type="Script" uid="uid://cgivetbihuyuv" path="res://Player/Scripts/player_guy.gd" id="1_rjl5x"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y32ns"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
+size = Vector2(64, 64)
+
+[node name="PlayerGuy" type="RigidBody2D" unique_id=448250733]
+lock_rotation = true
+custom_integrator = true
+script = ExtResource("1_rjl5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=801462721]
+texture = SubResource("PlaceholderTexture2D_y32ns")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1854291909]
+shape = SubResource("RectangleShape2D_wtcfe")
