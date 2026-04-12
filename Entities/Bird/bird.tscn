@@ -46,6 +46,8 @@ animations = [{
 script = ExtResource("1_nsahm")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1518694689]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1882585621]
 shape = SubResource("RectangleShape2D_ldtqw")
@@ -55,3 +57,5 @@ scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_p120d")
 autoplay = "default"
 frame_progress = 0.04599149
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

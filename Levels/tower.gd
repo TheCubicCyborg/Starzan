@@ -4,7 +4,7 @@ signal zone_changed(from_index: int, to_index: int)
 
 @export var zone_boundaries_y: PackedFloat32Array = PackedFloat32Array([-4000.0, -8000.0])
 @export var transition_duration_sec: float = 0.5
-@export var camera_fixed_x: float = 576.0
+@export var camera_fixed_x: float = 960.0
 @export var camera_y_offset: float = -140.0
 @export var camera_follow_smoothing: float = 16.0
 

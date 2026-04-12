@@ -8,6 +8,7 @@ extends Node2D
 @export var bird_speed: float = 100.
 @export var bird_lifetime: float = 5.
 @export var bird_move_dir: Vector2 = Vector2.RIGHT
+@export var bird_bonk_strength: float = 10000.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,4 +24,4 @@ func spawn_routine():
 func spawn_bird():
 	var bird = bird_tscn.instantiate()
 	add_child(bird)
-	bird.init(bird_move_dir, bird_speed, bird_lifetime)
+	bird.init(bird_move_dir, bird_speed, bird_lifetime, bird_bonk_strength)
