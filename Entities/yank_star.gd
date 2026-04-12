@@ -14,13 +14,15 @@ var wait_timer: float = 0
 func _ready():
 	source = position
 
-func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.is_pressed() and not moving and not away:
-			print("yanked!")
-			moving = true
-			away = true
-			destination = TEMP_PULL_LOCATION
+#func _input_event(viewport, event, shape_idx):
+	#if event is InputEventMouseButton:
+		#if event.is_pressed() and not moving and not away:
+			#moving = true
+			#away = true
+			#destination = TEMP_PULL_LOCATION
+
+func activate():
+	pass
 
 func _physics_process(delta):
 	var start_position = position
