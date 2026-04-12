@@ -5,11 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_s12av"]
 [ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_h8f7x"]
 [ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_mo5hb"]
-[ext_resource type="Texture2D" uid="uid://i157f460pdcq" path="res://Assets/bg-1.png" id="6_vw0fv"]
-[ext_resource type="Texture2D" uid="uid://c4i4s6s3lvw2h" path="res://Assets/bg-2.png" id="7_6j6eb"]
-[ext_resource type="Texture2D" uid="uid://dbnjo8qkkbkq3" path="res://Assets/bg-3.png" id="8_11m8c"]
-[ext_resource type="Texture2D" uid="uid://cyucivrqsk6k" path="res://Assets/bg-4.png" id="9_mf0gq"]
-[ext_resource type="Texture2D" uid="uid://cjkij3g7h0efc" path="res://Assets/bg-5.png" id="10_9xvha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xg1e"]
 size = Vector2(420, 24)
@@ -24,36 +19,6 @@ script = ExtResource("1_8t4rq")
 position = Vector2(576, 520)
 
 [node name="Background" type="Node2D" parent="." unique_id=462558242]
-
-[node name="Layer1" type="Sprite2D" parent="Background" unique_id=1770074116]
-z_index = -50
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_vw0fv")
-
-[node name="Layer2" type="Sprite2D" parent="Background" unique_id=977707340]
-z_index = -40
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("7_6j6eb")
-
-[node name="Layer3" type="Sprite2D" parent="Background" unique_id=934708896]
-z_index = -30
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("8_11m8c")
-
-[node name="Layer4" type="Sprite2D" parent="Background" unique_id=1580912087]
-z_index = -20
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("9_mf0gq")
-
-[node name="Layer5" type="Sprite2D" parent="Background" unique_id=1676472373]
-z_index = -10
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("10_9xvha")
 
 [node name="Clouds" type="Node2D" parent="." unique_id=1062249994]
 

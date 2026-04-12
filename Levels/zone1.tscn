@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_73uu8"]
 [ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="2_32g1p"]
-[ext_resource type="Texture2D" uid="uid://b2b7eruvmchg2" path="res://Assets/bg-1(2).png" id="2_ehs05"]
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_h65oe"]
 [ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_tcy8j"]
 [ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_uib0s"]
@@ -18,12 +17,6 @@ script = ExtResource("1_73uu8")
 position = Vector2(576, 520)
 
 [node name="Background" type="Node2D" parent="." unique_id=1430794869]
-
-[node name="Layer1" type="Sprite2D" parent="Background" unique_id=427633681]
-z_index = -50
-position = Vector2(960, -540)
-scale = Vector2(2, 2)
-texture = ExtResource("2_ehs05")
 
 [node name="Clouds" type="Node2D" parent="." unique_id=1036393753]
 
@@ -61,6 +54,24 @@ position = Vector2(819, -1941)
 
 [node name="BouncyCloud8" parent="Clouds" unique_id=643817808 instance=ExtResource("7_ekl4t")]
 position = Vector2(801, -2172)
+
+[node name="BouncyCloud9" parent="Clouds" unique_id=2099948527 instance=ExtResource("7_ekl4t")]
+position = Vector2(801, -2426)
+
+[node name="BouncyCloud10" parent="Clouds" unique_id=702271235 instance=ExtResource("7_ekl4t")]
+position = Vector2(797, -2683)
+
+[node name="BouncyCloud11" parent="Clouds" unique_id=69992286 instance=ExtResource("7_ekl4t")]
+position = Vector2(797, -2933)
+
+[node name="BouncyCloud12" parent="Clouds" unique_id=1383167473 instance=ExtResource("7_ekl4t")]
+position = Vector2(790, -3158)
+
+[node name="BouncyCloud13" parent="Clouds" unique_id=1386887262 instance=ExtResource("7_ekl4t")]
+position = Vector2(780, -3374)
+
+[node name="BouncyCloud14" parent="Clouds" unique_id=332836344 instance=ExtResource("7_ekl4t")]
+position = Vector2(772, -3625)
 
 [node name="Stars" type="Node2D" parent="." unique_id=644239280]
 

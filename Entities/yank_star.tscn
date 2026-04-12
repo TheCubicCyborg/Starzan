@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c460f08yco645"]
 
-[ext_resource type="Script" uid="uid://d15ynqgsfaojm" path="res://Entities/yank_star.gd" id="1_h3tkt"]
+[ext_resource type="Script" uid="uid://bvy750tmymojv" path="res://Entities/yank_star.gd" id="1_h3tkt"]
 [ext_resource type="Texture2D" uid="uid://de0agmroqp50n" path="res://Assets/yankstar/away-1.png" id="2_ourxn"]
 [ext_resource type="Texture2D" uid="uid://b03evgtnkuqfx" path="res://Assets/flattening/flat-1.png" id="2_xddfw"]
 [ext_resource type="Texture2D" uid="uid://dncu4aiw3v2bg" path="res://Assets/yankstar/away-2.png" id="3_vw0vo"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dcuchr5onw7kk" path="res://Assets/flattening/flat-7.png" id="8_gltrl"]
 [ext_resource type="Texture2D" uid="uid://bsypa3w5360f" path="res://Assets/yankstar/away-7.png" id="8_uj4pk"]
 [ext_resource type="Texture2D" uid="uid://bptf022agmky4" path="res://Assets/yankstar/away-8.png" id="9_xddfw"]
+[ext_resource type="Texture2D" uid="uid://ylg27r7oa6i4" path="res://Assets/dot1.png" id="17_xpiol"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8taa3"]
 size = Vector2(64, 64)
@@ -104,10 +105,37 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="YankStar" type="Area2D" unique_id=1041927568]
+[sub_resource type="Curve" id="Curve_xpiol"]
+_data = [Vector2(0, 0.3646533), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_j6q0h"]
+curve = SubResource("Curve_xpiol")
+
+[sub_resource type="Curve" id="Curve_j6q0h"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.46774194, 0.42729312), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tgfgr"]
+curve = SubResource("Curve_j6q0h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iykr0"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 40.24
+spread = 180.0
+initial_velocity_min = 104.939995
+initial_velocity_max = 104.939995
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_tgfgr")
+color = Color(0.9974151, 0.7915041, 1, 1)
+emission_curve = SubResource("CurveTexture_j6q0h")
+
+[node name="YankStar" type="Area2D" unique_id=1041927568 node_paths=PackedStringArray("attach_particles")]
 script = ExtResource("1_h3tkt")
 wait_time = 0.5
 away_weight = 0.1
+attach_particles = NodePath("GPUParticles2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1206161143]
 
@@ -117,8 +145,17 @@ shape = SubResource("RectangleShape2D_8taa3")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1217751483]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_xpiol")
-animation = &"unflatten"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=507038971]
 shape = SubResource("RectangleShape2D_8taa3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=840948976]
+emitting = false
+texture = ExtResource("17_xpiol")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_iykr0")
