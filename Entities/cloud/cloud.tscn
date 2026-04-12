@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4d8b5xjylc7o" path="res://Entities/cloud/art/cloud1.png" id="2_hohfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hohfr"]
-size = Vector2(445, 99)
+size = Vector2(220, 24)
 
 [node name="Cloud" type="Node2D" unique_id=1885921908]
 script = ExtResource("1_tl4cn")
@@ -16,5 +16,7 @@ texture = ExtResource("2_hohfr")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=193710792]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1440448823]
-position = Vector2(-6.5, 42.5)
+position = Vector2(0, 34)
+one_way_collision = true
+one_way_collision_margin = 8.0
 shape = SubResource("RectangleShape2D_hohfr")

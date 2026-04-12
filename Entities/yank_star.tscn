@@ -2,11 +2,18 @@
 
 [ext_resource type="Script" uid="uid://d15ynqgsfaojm" path="res://Entities/yank_star.gd" id="1_h3tkt"]
 [ext_resource type="Texture2D" uid="uid://de0agmroqp50n" path="res://Assets/yankstar/away-1.png" id="2_ourxn"]
+[ext_resource type="Texture2D" uid="uid://b03evgtnkuqfx" path="res://Assets/flattening/flat-1.png" id="2_xddfw"]
 [ext_resource type="Texture2D" uid="uid://dncu4aiw3v2bg" path="res://Assets/yankstar/away-2.png" id="3_vw0vo"]
+[ext_resource type="Texture2D" uid="uid://bj6ykl8fqumv2" path="res://Assets/flattening/flat-2.png" id="3_xpiol"]
 [ext_resource type="Texture2D" uid="uid://ckdb4etg4tvs0" path="res://Assets/yankstar/away-3.png" id="4_fu822"]
+[ext_resource type="Texture2D" uid="uid://dragws2pjop5" path="res://Assets/flattening/flat-3.png" id="4_j6q0h"]
 [ext_resource type="Texture2D" uid="uid://8mvs3hpcxeeo" path="res://Assets/yankstar/away-4.png" id="5_nuyay"]
+[ext_resource type="Texture2D" uid="uid://bcn0bpphld5it" path="res://Assets/flattening/flat-4.png" id="5_tgfgr"]
 [ext_resource type="Texture2D" uid="uid://bux4du07fdlin" path="res://Assets/yankstar/away-5.png" id="6_bmlsf"]
+[ext_resource type="Texture2D" uid="uid://cvtx2wxsepkym" path="res://Assets/flattening/flat-5.png" id="6_iykr0"]
 [ext_resource type="Texture2D" uid="uid://qujvas6utqbn" path="res://Assets/yankstar/away-6.png" id="7_rbc4j"]
+[ext_resource type="Texture2D" uid="uid://dxo82tptip5tl" path="res://Assets/flattening/flat-6.png" id="7_uymvt"]
+[ext_resource type="Texture2D" uid="uid://dcuchr5onw7kk" path="res://Assets/flattening/flat-7.png" id="8_gltrl"]
 [ext_resource type="Texture2D" uid="uid://bsypa3w5360f" path="res://Assets/yankstar/away-7.png" id="8_uj4pk"]
 [ext_resource type="Texture2D" uid="uid://bptf022agmky4" path="res://Assets/yankstar/away-8.png" id="9_xddfw"]
 
@@ -15,6 +22,32 @@ size = Vector2(64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xpiol"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xddfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xpiol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j6q0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tgfgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iykr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uymvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gltrl")
+}],
+"loop": false,
+"name": &"become_flat",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_ourxn")
@@ -43,6 +76,32 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gltrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uymvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iykr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tgfgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j6q0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xpiol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xddfw")
+}],
+"loop": true,
+"name": &"unflatten",
+"speed": 5.0
 }]
 
 [node name="YankStar" type="Area2D" unique_id=1041927568]
@@ -58,6 +117,7 @@ shape = SubResource("RectangleShape2D_8taa3")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1217751483]
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_xpiol")
+animation = &"unflatten"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=507038971]

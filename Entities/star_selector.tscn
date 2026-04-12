@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cg6kh4ruip5rl"]
 
-[ext_resource type="Script" uid="uid://dlrcqfridkjys" path="res://Entities/star_selector_area.gd" id="1_5h36o"]
+[ext_resource type="Script" uid="uid://baakoncar6g41" path="res://Entities/star_selector_area.gd" id="1_5h36o"]
 [ext_resource type="Script" uid="uid://doace7f5epumv" path="res://Entities/star_selector_sprite.gd" id="3_6qoe8"]
+[ext_resource type="Script" path="res://Entities/fishing_cast_line.gd" id="4_qh0wc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1630o"]
 radius = 20.0
@@ -26,12 +27,13 @@ texture = SubResource("CompressedTexture2D_vwp2k")
 script = ExtResource("3_6qoe8")
 
 [node name="CastLine" type="Line2D" parent="." unique_id=2115302130]
-top_level = true
 visible = false
+top_level = true
 z_index = 200
 width = 5.0
 default_color = Color(1, 0.94902, 0.529412, 1)
 joint_mode = 1
+script = ExtResource("4_qh0wc")
 
 [connection signal="area_entered" from="StarSelectorArea" to="StarSelectorArea" method="_on_area_entered"]
 [connection signal="area_exited" from="StarSelectorArea" to="StarSelectorArea" method="_on_area_exited"]

@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="8_11m8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xg1e"]
-size = Vector2(1800, 120)
+size = Vector2(420, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u3xq1"]
-size = Vector2(280, 48)
+size = Vector2(280, 24)
 
 [node name="Zone2" type="Node2D"]
 script = ExtResource("1_8t4rq")
@@ -103,10 +103,14 @@ bird_move_dir = Vector2(1, 0.03)
 position = Vector2(576, 650)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor"]
+one_way_collision = true
+one_way_collision_margin = 8.0
 shape = SubResource("RectangleShape2D_3xg1e")
 
 [node name="MidPlatform" type="StaticBody2D" parent="Geometry"]
 position = Vector2(840, 370)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/MidPlatform"]
+one_way_collision = true
+one_way_collision_margin = 8.0
 shape = SubResource("RectangleShape2D_u3xq1")

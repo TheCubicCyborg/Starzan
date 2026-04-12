@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="8_xj4p5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swe3w"]
-size = Vector2(1800, 120)
+size = Vector2(420, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhflo"]
-size = Vector2(300, 52)
+size = Vector2(300, 24)
 
 [node name="Zone3" type="Node2D"]
 script = ExtResource("1_2qhqi")
@@ -105,10 +105,14 @@ bird_speed = 340.0
 position = Vector2(576, 650)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor"]
+one_way_collision = true
+one_way_collision_margin = 8.0
 shape = SubResource("RectangleShape2D_swe3w")
 
 [node name="MidPlatform" type="StaticBody2D" parent="Geometry"]
 position = Vector2(260, 320)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/MidPlatform"]
+one_way_collision = true
+one_way_collision_margin = 8.0
 shape = SubResource("RectangleShape2D_qhflo")

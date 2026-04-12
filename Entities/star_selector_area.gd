@@ -1,12 +1,8 @@
 extends Area2D
 
 @export var star_selector_sprite: Sprite2D
-@export var cast_line: Line2D
+@export var cast_line: FishingCastLine
 @export var activation_range: float = 500.0
-@export var cast_speed: float = 1600.0
-@export var min_cast_time: float = 0.08
-@export var cast_arc_height: float = 120.0
-@export_range(6, 64, 1) var cast_curve_segments: int = 24
 
 var base_selector_sprite_scale: Vector2
 var star_in_range: Star
@@ -15,10 +11,6 @@ var lerp_factor: float = 0.0
 var in_activation_range: bool = false
 
 var _cast_target: Star
-var _cast_elapsed: float = 0.0
-var _cast_duration: float = 0.0
-var _cast_in_progress: bool = false
-
 var _mouse_position_tween: Tween
 
 func _ready() -> void:
@@ -29,11 +21,7 @@ func _ready() -> void:
 		base_selector_sprite_scale = star_selector_sprite.scale
 
 	if cast_line == null:
-		cast_line = get_node_or_null("../CastLine")
-	if cast_line != null:
-		cast_line.top_level = true
-		cast_line.visible = false
-		cast_line.clear_points()
+		cast_line = get_node_or_null("../CastLine") as FishingCastLine
 
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
@@ -53,11 +41,11 @@ func _process(delta: float) -> void:
 		else:
 			star_selector_sprite.global_position = global_position
 
-	if _cast_in_progress:
+	if cast_line != null and cast_line.is_casting():
 		_update_cast(delta)
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if _cast_in_progress:
+	if cast_line != null and cast_line.is_casting():
 		return
 	if not (event is InputEventMouseButton):
 		return
@@ -134,26 +122,24 @@ func _begin_cast(target: Star) -> void:
 		player.untether()
 
 	_cast_target = target
-	_cast_elapsed = 0.0
-	_cast_in_progress = true
 	var start := _get_cast_origin()
-	var end := _cast_target.global_position
-	var cast_distance := start.distance_to(end)
-	_cast_duration = max(cast_distance / max(cast_speed, 1.0), min_cast_time)
-	_update_cast_line(start, end, 0.0)
+	var finish := _cast_target.global_position
+	if cast_line != null:
+		cast_line.begin_cast(start, finish)
+	else:
+		_cast_target.activate()
+		_cast_target = null
 
 func _update_cast(delta: float) -> void:
 	if _cast_target == null or not is_instance_valid(_cast_target):
 		_cancel_cast()
 		return
 
-	_cast_elapsed += delta
-	var progress = clamp(_cast_elapsed / _cast_duration, 0.0, 1.0)
-	var start = _get_cast_origin()
-	var end = _cast_target.global_position
-	_update_cast_line(start, end, progress)
+	var start := _get_cast_origin()
+	var finish := _cast_target.global_position
+	var reached_target := cast_line.update_cast(delta, start, finish)
 
-	if progress >= 1.0:
+	if reached_target:
 		var target := _cast_target
 		_cancel_cast()
 		if target != null and is_instance_valid(target):
@@ -161,12 +147,8 @@ func _update_cast(delta: float) -> void:
 
 func _cancel_cast() -> void:
 	_cast_target = null
-	_cast_in_progress = false
-	_cast_elapsed = 0.0
-	_cast_duration = 0.0
 	if cast_line != null:
-		cast_line.visible = false
-		cast_line.clear_points()
+		cast_line.cancel_cast()
 
 func _get_cast_origin() -> Vector2:
 	var player := GameManager.player
@@ -175,30 +157,3 @@ func _get_cast_origin() -> Vector2:
 	if player.has_method("get_cast_origin"):
 		return player.get_cast_origin()
 	return player.global_position
-
-func _update_cast_line(start: Vector2, end: Vector2, progress: float) -> void:
-	if cast_line == null:
-		return
-
-	var control := _compute_cast_control(start, end)
-	var point_count = max(cast_curve_segments, 6)
-	var visible_points = max(2, int(ceil(float(point_count) * progress)) + 1)
-	var points := PackedVector2Array()
-	points.resize(visible_points)
-
-	for index in visible_points:
-		var denominator = max(visible_points - 1, 1)
-		var t := progress * (float(index) / float(denominator))
-		points[index] = _quadratic_bezier(start, control, end, t)
-
-	cast_line.points = points
-	cast_line.visible = true
-
-func _compute_cast_control(start: Vector2, end: Vector2) -> Vector2:
-	var midpoint := (start + end) * 0.5
-	var arc := Vector2(0.0, -abs(cast_arc_height))
-	return midpoint + arc
-
-func _quadratic_bezier(start: Vector2, control: Vector2, finish: Vector2, t: float) -> Vector2:
-	var inv_t := 1.0 - t
-	return (inv_t * inv_t * start) + (2.0 * inv_t * t * control) + (t * t * finish)
