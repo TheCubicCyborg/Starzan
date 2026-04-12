@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @export var animation_player: AnimationPlayer
 @export var fishing_cast_origin_left: Marker2D
 @export var fishing_cast_origin_right: Marker2D
+@export_range(1, 32, 1) var one_way_platform_layer: int = 3
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000.0
@@ -13,9 +14,12 @@ var tethered: GrabStar2 = null
 var tether_length: float = 0
 var rigid: RigidBody2D = null
 var _jump_visual_timer: float = 0.0
+var _default_collision_mask: int = 1
 
 func _ready():
 	GameManager.player = self
+	_default_collision_mask = collision_mask
+	_set_one_way_collision_enabled(true)
 	if animation_player == null:
 		animation_player = get_node_or_null("AnimationPlayer")
 	if fishing_cast_origin_left == null:
@@ -86,8 +90,11 @@ func tether_process(delta):
 func tether_to(star: GrabStar2):
 	tethered = star
 	tether_length = position.distance_to(star.position)
+	_set_one_way_collision_enabled(false)
 	rigid = RigidBody2D.new()
 	rigid.lock_rotation = true
+	rigid.collision_mask = collision_mask
+	rigid.collision_layer = collision_layer
 	get_parent().add_child(rigid)
 	rigid.position = position
 	var shape = CollisionShape2D.new()
@@ -99,6 +106,7 @@ func tether_to(star: GrabStar2):
 func untether():
 	tethered = null
 	rigid.queue_free()
+	_set_one_way_collision_enabled(true)
 
 func _update_animation() -> void:
 	if animation_player == null:
@@ -124,3 +132,12 @@ func get_cast_origin() -> Vector2:
 		if fishing_cast_origin_right != null:
 			return fishing_cast_origin_right.global_position
 	return global_position
+
+func _set_one_way_collision_enabled(enabled: bool) -> void:
+	var one_way_bit := 1 << (one_way_platform_layer - 1)
+	if enabled:
+		collision_mask = _default_collision_mask | one_way_bit
+	else:
+		collision_mask = _default_collision_mask & ~one_way_bit
+	if rigid != null:
+		rigid.collision_mask = collision_mask

@@ -91,10 +91,12 @@ _data = {
 &"pull": SubResource("Animation_14os4")
 }
 
-[node name="PlayerDude" type="CharacterBody2D" unique_id=2027622154 node_paths=PackedStringArray("player_sprite")]
+[node name="PlayerDude" type="CharacterBody2D" unique_id=2027622154 node_paths=PackedStringArray("player_sprite", "animation_player")]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_b2f5l")
 player_sprite = NodePath("Sprite2D")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1085275590]
 shape = SubResource("CapsuleShape2D_w4ftx")
