@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://drtwteinvfo8m" path="res://Player/Art/Pull/pull-2.png" id="9_ihgoc"]
 [ext_resource type="Texture2D" uid="uid://by2773wjl5oej" path="res://Player/Art/Pull/pull-3.png" id="10_t6sje"]
 [ext_resource type="Texture2D" uid="uid://duaj1agx51xlm" path="res://Player/Art/Pull/pull-4.png" id="11_nhe1x"]
-[ext_resource type="PackedScene" uid="uid://cg6kh4ruip5rl" path="res://Entities/star_selector.tscn" id="12_1g621"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4ftx"]
 radius = 32.0
@@ -115,5 +114,3 @@ position = Vector2(-36, -28)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1569858359]
 libraries/ = SubResource("AnimationLibrary_1gf2g")
 autoplay = &"idle"
-
-[node name="StarSelector" parent="." unique_id=695560097 instance=ExtResource("12_1g621")]
