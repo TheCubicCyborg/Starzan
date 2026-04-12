@@ -55,6 +55,24 @@ position = Vector2(819, -1941)
 [node name="BouncyCloud8" parent="Clouds" unique_id=643817808 instance=ExtResource("7_ekl4t")]
 position = Vector2(801, -2172)
 
+[node name="BouncyCloud9" parent="Clouds" unique_id=2099948527 instance=ExtResource("7_ekl4t")]
+position = Vector2(801, -2426)
+
+[node name="BouncyCloud10" parent="Clouds" unique_id=702271235 instance=ExtResource("7_ekl4t")]
+position = Vector2(797, -2683)
+
+[node name="BouncyCloud11" parent="Clouds" unique_id=69992286 instance=ExtResource("7_ekl4t")]
+position = Vector2(797, -2933)
+
+[node name="BouncyCloud12" parent="Clouds" unique_id=1383167473 instance=ExtResource("7_ekl4t")]
+position = Vector2(790, -3158)
+
+[node name="BouncyCloud13" parent="Clouds" unique_id=1386887262 instance=ExtResource("7_ekl4t")]
+position = Vector2(780, -3374)
+
+[node name="BouncyCloud14" parent="Clouds" unique_id=332836344 instance=ExtResource("7_ekl4t")]
+position = Vector2(772, -3625)
+
 [node name="Stars" type="Node2D" parent="." unique_id=644239280]
 
 [node name="GrabStar2" parent="Stars" unique_id=840944662 instance=ExtResource("3_h65oe")]
