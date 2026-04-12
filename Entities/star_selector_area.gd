@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var star_selector_sprite: Sprite2D
+var base_selector_sprite_scale: Vector2
 @export var lerp_speed: float = 100.
 
 var star_in_range: Node2D
@@ -9,8 +10,11 @@ var star_position: Vector2
 var lerp_factor: float = 0.
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if not star_selector_sprite:
 		push_warning("continuing without custom cursor")
+	else:
+		base_selector_sprite_scale = star_selector_sprite.scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,6 +25,10 @@ func _process(delta: float) -> void:
 	else:
 		star_selector_sprite.global_position = global_position
 
+func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if star_in_range and event is InputEventMouseButton:
+		if event.is_pressed():
+			print("im totally activating this star: %s" % star_in_range)
 
 func _notification(what: int) -> void:
 	match what:
@@ -68,6 +76,8 @@ func star_entered():
 	_mouse_position_tween.set_trans(Tween.TRANS_QUART)
 	_mouse_position_tween.set_ease(Tween.EASE_OUT)
 	_mouse_position_tween.tween_property(self, "lerp_factor", 1., .5)
+	_mouse_position_tween.set_parallel()
+	_mouse_position_tween.tween_property(star_selector_sprite, "scale", 2 * base_selector_sprite_scale, .5)
 
 func star_exited():
 	if _mouse_position_tween:
@@ -76,3 +86,5 @@ func star_exited():
 	_mouse_position_tween.set_trans(Tween.TRANS_QUART)
 	_mouse_position_tween.set_ease(Tween.EASE_OUT)
 	_mouse_position_tween.tween_property(self, "lerp_factor", 0., .5)
+	_mouse_position_tween.set_parallel()
+	_mouse_position_tween.tween_property(star_selector_sprite, "scale", base_selector_sprite_scale, .5)

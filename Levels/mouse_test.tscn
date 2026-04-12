@@ -31,7 +31,7 @@ radius = 32.0
 height = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilwa7"]
-radius = 67.74
+radius = 20.0
 
 [node name="YankTestScene" type="Node2D" unique_id=161238367]
 
