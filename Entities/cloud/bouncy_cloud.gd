@@ -8,6 +8,8 @@ extends Node2D
 @onready var cloud_sprite: Sprite2D = $Sprite2D
 @onready var bounce_area: Area2D = $BounceArea
 
+@export var launch_delay_frames: int = 10
+
 var _base_scale: Vector2
 var _squash_tween: Tween
 
@@ -24,8 +26,13 @@ func _on_bounce_area_body_entered(body: Node2D) -> void:
 	if player.tethered:
 		player.untether()
 
-	player.velocity.y = min(player.velocity.y, bounce_velocity)
+	_launch_player(player)
 	_play_squash()
+
+func _launch_player(player: Player):
+	for _i in range(launch_delay_frames):
+		await get_tree().process_frame
+	player.velocity.y = min(player.velocity.y, bounce_velocity)
 
 func _play_squash() -> void:
 	if cloud_sprite == null:

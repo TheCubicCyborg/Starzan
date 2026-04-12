@@ -53,7 +53,7 @@ func normal_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		_set_sprite_direction(direction)
-		velocity.x = direction * SPEED
+		velocity.x = move_toward(velocity.x, direction * SPEED, delta * 2000.)
 	else:
 		if not is_on_floor():
 			velocity.x *= 0.9
@@ -124,3 +124,6 @@ func get_cast_origin() -> Vector2:
 		if fishing_cast_origin_right != null:
 			return fishing_cast_origin_right.global_position
 	return global_position
+
+func launch_by_vec(launch_vector: Vector2):
+	velocity += launch_vector

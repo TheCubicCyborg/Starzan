@@ -24,10 +24,6 @@ GameManager="*uid://63dfs27uxxtt"
 
 project/assembly_name="Starzan"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot-neovim/plugin.cfg")
-
 [global_group]
 
 star=""
