@@ -43,6 +43,8 @@ func _process(delta: float) -> void:
 
 	if cast_line != null and cast_line.is_casting():
 		_update_cast(delta)
+	elif cast_line != null:
+		_update_tether_line(player)
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if cast_line != null and cast_line.is_casting():
@@ -125,7 +127,8 @@ func _begin_cast(target: Star) -> void:
 	var start := _get_cast_origin()
 	var finish := _cast_target.global_position
 	if cast_line != null:
-		cast_line.begin_cast(start, finish)
+		var use_arc := not (_cast_target is GrabStar2)
+		cast_line.begin_cast(start, finish, use_arc)
 	else:
 		_cast_target.activate()
 		_cast_target = null
@@ -157,3 +160,9 @@ func _get_cast_origin() -> Vector2:
 	if player.has_method("get_cast_origin"):
 		return player.get_cast_origin()
 	return player.global_position
+
+func _update_tether_line(player: Player) -> void:
+	if player != null and player.tethered != null:
+		cast_line.show_straight_line(_get_cast_origin(), player.tethered.global_position)
+	else:
+		cast_line.hide_line()

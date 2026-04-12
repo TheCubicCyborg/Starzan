@@ -7,10 +7,17 @@
 [ext_resource type="PackedScene" path="res://Levels/zone2.tscn" id="5_gsmrw"]
 [ext_resource type="PackedScene" path="res://Levels/zone3.tscn" id="6_oy6og"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(80, 14000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(80, 14000)
+
 [node name="Tower" type="Node2D" unique_id=2118308458]
 script = ExtResource("1_n8n34")
 
 [node name="Zone1" parent="." unique_id=1713146309 instance=ExtResource("4_07gk0")]
+rotation = 0.0039469562
 script = null
 
 [node name="Zone2" parent="." unique_id=1284026243 instance=ExtResource("5_gsmrw")]
@@ -26,3 +33,17 @@ position = Vector2(576, 520)
 
 [node name="TowerCamera" type="Camera2D" parent="." unique_id=1752281228]
 position = Vector2(576, 380)
+
+[node name="TowerBounds" type="Node2D" parent="." unique_id=796198808]
+
+[node name="LeftWall" type="StaticBody2D" parent="TowerBounds" unique_id=924804666]
+position = Vector2(-64, -3500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerBounds/LeftWall" unique_id=2143650155]
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="StaticBody2D" parent="TowerBounds" unique_id=345778518]
+position = Vector2(1216, -3500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerBounds/RightWall" unique_id=242095141]
+shape = SubResource("RectangleShape2D_right_wall")

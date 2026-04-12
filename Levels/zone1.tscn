@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_tcy8j"]
 [ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_uib0s"]
 [ext_resource type="Texture2D" uid="uid://c4d8b5xjylc7o" path="res://Entities/cloud/art/cloud1.png" id="6_1n33f"]
+[ext_resource type="PackedScene" uid="uid://bc5geg2hclkqp" path="res://Entities/cloud/bouncy_cloud.tscn" id="7_ekl4t"]
 [ext_resource type="Texture2D" uid="uid://dj5f1fvrdqevc" path="res://Entities/cloud/art/cloud2.png" id="7_l6m6o"]
 [ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="8_v3m1i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4st8f"]
-size = Vector2(1157, 509)
+size = Vector2(1264, 509)
 
 [node name="Zone1" type="Node2D" unique_id=22221764]
 script = ExtResource("1_73uu8")
@@ -74,10 +75,17 @@ position = Vector2(214, 8)
 position = Vector2(900, 300)
 scale = Vector2(0.85, 0.85)
 
+[node name="Cloud3" parent="Clouds" unique_id=1885921908 instance=ExtResource("2_32g1p")]
+position = Vector2(973, -327.00006)
+scale = Vector2(0.85, 0.85)
+
+[node name="BouncyCloud" parent="Clouds" unique_id=548882941 instance=ExtResource("7_ekl4t")]
+position = Vector2(334, 471)
+
 [node name="Stars" type="Node2D" parent="." unique_id=644239280]
 
 [node name="GrabStar2" parent="Stars" unique_id=840944662 instance=ExtResource("3_h65oe")]
-position = Vector2(780, 360)
+position = Vector2(551, -366)
 
 [node name="YankStar" parent="Stars" unique_id=2085651689 instance=ExtResource("4_tcy8j")]
 position = Vector2(430, 210)
@@ -95,7 +103,7 @@ bird_move_dir = Vector2(-1, 0.05)
 position = Vector2(576, 650)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor" unique_id=750434635]
-position = Vector2(2.5, 242.5)
+position = Vector2(3, 242.5)
 shape = SubResource("RectangleShape2D_4st8f")
 one_way_collision = true
 one_way_collision_margin = 8.0

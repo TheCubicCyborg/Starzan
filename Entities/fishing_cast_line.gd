@@ -9,15 +9,17 @@ class_name FishingCastLine
 var _cast_elapsed: float = 0.0
 var _cast_duration: float = 0.0
 var _is_casting: bool = false
+var _use_arc: bool = true
 
 func _ready() -> void:
 	top_level = true
 	visible = false
 	clear_points()
 
-func begin_cast(start: Vector2, target: Vector2) -> void:
+func begin_cast(start: Vector2, target: Vector2, use_arc: bool = true) -> void:
 	_cast_elapsed = 0.0
 	_is_casting = true
+	_use_arc = use_arc
 	var cast_distance := start.distance_to(target)
 	_cast_duration = max(cast_distance / max(cast_speed, 1.0), min_cast_time)
 	_update_points(start, target, 0.0)
@@ -41,7 +43,25 @@ func cancel_cast() -> void:
 func is_casting() -> bool:
 	return _is_casting
 
+func show_straight_line(start: Vector2, target: Vector2) -> void:
+	if _is_casting:
+		return
+	points = PackedVector2Array([start, target])
+	visible = true
+
+func hide_line() -> void:
+	if _is_casting:
+		return
+	visible = false
+	clear_points()
+
 func _update_points(start: Vector2, target: Vector2, progress: float) -> void:
+	if not _use_arc:
+		var tip := start.lerp(target, progress)
+		points = PackedVector2Array([start, tip])
+		visible = true
+		return
+
 	var control = _compute_cast_control(start, target)
 	var point_count = max(cast_curve_segments, 6)
 	var visible_points = max(2, int(ceil(float(point_count) * progress)) + 1)
