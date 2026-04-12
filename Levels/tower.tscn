@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://li1w53agusyk" path="res://Levels/zone2.tscn" id="5_gsmrw"]
 [ext_resource type="PackedScene" uid="uid://bgfbfsqv4th08" path="res://Levels/zone3.tscn" id="6_oy6og"]
 [ext_resource type="Texture2D" uid="uid://6g718wfv30dv" path="res://Assets/final.png" id="10_phnse"]
+[ext_resource type="Texture2D" uid="uid://dkw5qm8c5k0a4" path="res://Assets/yankstar/mooonn.png" id="13_8rjue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(80, 14000)
@@ -25,7 +26,7 @@ glow_enabled = true
 glow_intensity = 0.75
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_win_trigger"]
-size = Vector2(1800, 220)
+size = Vector2(2096, 220)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7kmo"]
 size = Vector2(2042, 20)
@@ -103,12 +104,18 @@ shape = SubResource("RectangleShape2D_right_wall")
 environment = SubResource("Environment_ff86o")
 
 [node name="WinTrigger" type="Area2D" parent="." unique_id=1375458878]
-position = Vector2(960, -11750)
+position = Vector2(960, -10366)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinTrigger" unique_id=470638796]
+position = Vector2(-10, 0)
 shape = SubResource("RectangleShape2D_win_trigger")
+
+[node name="Sprite2D" type="Sprite2D" parent="WinTrigger" unique_id=1089559583]
+position = Vector2(-12, 150)
+texture = ExtResource("13_8rjue")
+flip_v = true
 
 [node name="WinScreen" type="CanvasLayer" parent="." unique_id=983470583]
 process_mode = 3
