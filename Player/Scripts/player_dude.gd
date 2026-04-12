@@ -1,11 +1,11 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
 
 func _ready():
-	pass
+	GameManager.player = self
 
 func _physics_process(delta):
 	# Add the gravity.

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dc3whaxx3jqvn"]
+
+[ext_resource type="Script" uid="uid://c8o7l5hj5ojbo" path="res://Player/Scripts/player_dude.gd" id="1_b2f5l"]
+[ext_resource type="Texture2D" uid="uid://kei3lixd7xjs" path="res://Assets/placeholder_dude.png" id="2_d5bhx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4ftx"]
+radius = 32.0
+height = 128.0
+
+[node name="PlayerDude" type="CharacterBody2D" unique_id=2027622154]
+collision_layer = 2
+script = ExtResource("1_b2f5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1085275590]
+shape = SubResource("CapsuleShape2D_w4ftx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=187147318]
+texture = ExtResource("2_d5bhx")

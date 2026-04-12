@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dqly0i0uqy536"]
+
+[ext_resource type="Script" uid="uid://dla6g8uek7bv2" path="res://Entities/grab_star2.gd" id="1_gul6d"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0e48y"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gul6d"]
+size = Vector2(64, 64)
+
+[node name="GrabStar2" type="Area2D" unique_id=1483779697]
+script = ExtResource("1_gul6d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504645497]
+texture = SubResource("PlaceholderTexture2D_0e48y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039221457]
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="Label" type="Label" parent="." unique_id=1903412412]
+offset_left = -38.0
+offset_top = -63.0
+offset_right = 36.0
+offset_bottom = -14.0
+text = "Grab Star"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=591622817]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=252053649]
+shape = SubResource("RectangleShape2D_gul6d")

@@ -1,1 +1,5 @@
-class_name Star extends CollisionObject2D
+@abstract
+class_name Star extends Area2D
+
+@abstract
+func activate()

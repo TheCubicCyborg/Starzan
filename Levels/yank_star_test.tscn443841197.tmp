@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://7vfukyfkg2s4"]
+
+[ext_resource type="Script" uid="uid://d15ynqgsfaojm" path="res://Entities/yank_star.gd" id="1_w4ftx"]
+[ext_resource type="Script" uid="uid://c8o7l5hj5ojbo" path="res://Player/Scripts/player_dude.gd" id="2_p5nd5"]
+[ext_resource type="Texture2D" uid="uid://kei3lixd7xjs" path="res://Assets/placeholder_dude.png" id="3_5ygy6"]
+[ext_resource type="PackedScene" uid="uid://cm34nyquqmqxj" path="res://Entities/grab_star.tscn" id="4_1b0sh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y32ns"]
+size = Vector2(1154.5, 125)
+
+[sub_resource type="Gradient" id="Gradient_y32ns"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.012048192, 0.12349398, 0.18072289, 1)
+colors = PackedColorArray(0.26666668, 0.7882353, 0.09411765, 1, 0.30723685, 0.58958125, 0.12909195, 1, 0.38039216, 0.23137255, 0.19215687, 1, 0.38039216, 0.23137255, 0.19215687, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wtcfe"]
+gradient = SubResource("Gradient_y32ns")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w4ftx"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8taa3"]
+size = Vector2(64, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4ftx"]
+radius = 32.0
+height = 128.0
+
+[node name="YankTestScene" type="Node2D" unique_id=161238367]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1217467274]
+position = Vector2(576.75, 585.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=830023668]
+shape = SubResource("RectangleShape2D_y32ns")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D" unique_id=14804192]
+scale = Vector2(18.04, 2)
+texture = SubResource("GradientTexture2D_wtcfe")
+
+[node name="YankStar" type="Area2D" parent="." unique_id=1903628203]
+position = Vector2(153, 117)
+script = ExtResource("1_w4ftx")
+wait_time = 1.0
+away_weight = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="YankStar" unique_id=217011775]
+texture = SubResource("PlaceholderTexture2D_w4ftx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YankStar" unique_id=1334883827]
+shape = SubResource("RectangleShape2D_8taa3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YankStar" unique_id=900205224]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YankStar/StaticBody2D" unique_id=1509084578]
+shape = SubResource("RectangleShape2D_8taa3")
+
+[node name="PlayerDude" type="CharacterBody2D" parent="." unique_id=1328772738]
+position = Vector2(859, 449)
+collision_layer = 2
+script = ExtResource("2_p5nd5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDude" unique_id=397189114]
+shape = SubResource("CapsuleShape2D_w4ftx")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDude" unique_id=60240562]
+texture = ExtResource("3_5ygy6")
+
+[node name="GrabStar" parent="." unique_id=1483779697 instance=ExtResource("4_1b0sh")]
+position = Vector2(825, 220)

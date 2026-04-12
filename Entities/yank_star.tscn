@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c460f08yco645"]
+
+[ext_resource type="Script" uid="uid://d15ynqgsfaojm" path="res://Entities/yank_star.gd" id="1_h3tkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8taa3"]
+size = Vector2(64, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w4ftx"]
+size = Vector2(64, 64)
+
+[node name="YankStar" type="Area2D" unique_id=1041927568]
+script = ExtResource("1_h3tkt")
+wait_time = 1.0
+away_weight = 0.1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1206161143]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=852779084]
+shape = SubResource("RectangleShape2D_8taa3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1478956272]
+texture = SubResource("PlaceholderTexture2D_w4ftx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=507038971]
+shape = SubResource("RectangleShape2D_8taa3")
