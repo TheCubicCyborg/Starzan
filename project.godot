@@ -20,10 +20,6 @@ config/icon="res://icon.svg"
 SignalBus="*uid://c3awphvyytwsc"
 GameManager="*uid://63dfs27uxxtt"
 
-[global_group]
-
-star=""
-
 [dotnet]
 
 project/assembly_name="Starzan"
@@ -31,6 +27,10 @@ project/assembly_name="Starzan"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-neovim/plugin.cfg")
+
+[global_group]
+
+star=""
 
 [input]
 

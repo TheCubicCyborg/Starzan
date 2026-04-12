@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody2D
 
+@export var player_sprite : Sprite2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
@@ -30,6 +31,10 @@ func normal_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
+		if direction < -0.01:
+			player_sprite.flip_h = true	
+		elif direction > 0.01:
+			player_sprite.flip_h = false	
 		velocity.x = direction * SPEED
 	else:
 		if not is_on_floor():
