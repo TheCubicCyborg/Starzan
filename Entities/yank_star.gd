@@ -1,0 +1,43 @@
+class_name YankStar extends StaticBody2D
+
+var TEMP_PULL_LOCATION: Vector2 = Vector2(576.5,400)
+
+var moving: bool = false
+var away: bool = false #if moving, true -> moving away from home position, false -> moving to home position
+var source: Vector2
+var destination: Vector2
+var wait_timer: float = 0
+@export var wait_time: float = 2
+@export_range(0,1.0) var away_weight: float = 0.5
+@export_range(0,1.0) var return_weight: float = 0.5
+
+func _ready():
+	source = position
+
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.is_pressed() and not moving and not away:
+			print("yanked!")
+			moving = true
+			away = true
+			destination = TEMP_PULL_LOCATION
+
+func _physics_process(delta):
+	if moving:
+		if away:
+			position = lerp(position,destination,away_weight)
+			if position.is_equal_approx(destination):
+				position = destination
+				moving = false
+				wait_timer = wait_time
+		else:
+			position = lerp(position,source, return_weight)
+			if position.is_equal_approx(source):
+				position = source
+				moving = false 
+	elif wait_timer > 0:
+		wait_timer -= delta
+		if wait_timer <= 0:
+			wait_timer = 0
+			moving = true
+			away = false
