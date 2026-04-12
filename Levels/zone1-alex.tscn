@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://dtamnm2x362xl"]
 
 [ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_y3has"]
-[ext_resource type="Texture2D" uid="uid://i157f460pdcq" path="res://Assets/bg-1.png" id="2_5s0vp"]
-[ext_resource type="Texture2D" uid="uid://c4i4s6s3lvw2h" path="res://Assets/bg-2.png" id="3_7mh3n"]
-[ext_resource type="Texture2D" uid="uid://dbnjo8qkkbkq3" path="res://Assets/bg-3.png" id="4_8o0ty"]
-[ext_resource type="Texture2D" uid="uid://cyucivrqsk6k" path="res://Assets/bg-4.png" id="5_foose"]
-[ext_resource type="Texture2D" uid="uid://cjkij3g7h0efc" path="res://Assets/bg-5.png" id="6_ttxnn"]
 [ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="6_v847n"]
 [ext_resource type="PackedScene" uid="uid://bc5geg2hclkqp" path="res://Entities/cloud/bouncy_cloud.tscn" id="7_ttxnn"]
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="8_o5xq2"]
@@ -27,45 +22,6 @@ script = ExtResource("1_y3has")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=2116616934]
 position = Vector2(576, 520)
-
-[node name="Background" type="Node2D" parent="." unique_id=1480914505]
-position = Vector2(0, -1500)
-
-[node name="Layer1" type="Sprite2D" parent="Background" unique_id=478519300]
-z_index = -50
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_5s0vp")
-
-[node name="Layer2" type="Sprite2D" parent="Background" unique_id=1581075549]
-z_index = -40
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_7mh3n")
-
-[node name="Layer3" type="Sprite2D" parent="Background" unique_id=284685787]
-z_index = -30
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("4_8o0ty")
-
-[node name="Layer4" type="Sprite2D" parent="Background" unique_id=1561605860]
-z_index = -20
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("5_foose")
-
-[node name="Layer5" type="Sprite2D" parent="Background" unique_id=456714621]
-z_index = -10
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_ttxnn")
-
-[node name="Layer6" type="Sprite2D" parent="Background" unique_id=1081865646]
-z_index = -50
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_5s0vp")
 
 [node name="Text" type="Node2D" parent="." unique_id=828293633]
 
@@ -159,23 +115,23 @@ position = Vector2(959.0001, -1456.0005)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud13" parent="Clouds" unique_id=715877119 instance=ExtResource("6_v847n")]
-position = Vector2(1296, -8231)
+position = Vector2(1269, -8431)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud18" parent="Clouds" unique_id=1252484901 instance=ExtResource("6_v847n")]
-position = Vector2(1600, -8231)
+position = Vector2(1573, -8431)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud19" parent="Clouds" unique_id=252517581 instance=ExtResource("6_v847n")]
-position = Vector2(695.0001, -8231)
+position = Vector2(668.0001, -8431)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud20" parent="Clouds" unique_id=607240276 instance=ExtResource("6_v847n")]
-position = Vector2(388, -8231)
+position = Vector2(361, -8431)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud21" parent="Clouds" unique_id=1488399267 instance=ExtResource("6_v847n")]
-position = Vector2(988.0001, -8231)
+position = Vector2(961.0001, -8431)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud7" parent="Clouds" unique_id=1784840132 instance=ExtResource("6_v847n")]
@@ -211,7 +167,7 @@ position = Vector2(1469, -6237.9995)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud22" parent="Clouds" unique_id=495365388 instance=ExtResource("6_v847n")]
-position = Vector2(711, -7186.9995)
+position = Vector2(629, -7395.9995)
 scale = Vector2(0.85, 0.85)
 
 [node name="BouncyCloud" parent="Clouds" unique_id=548882941 instance=ExtResource("7_ttxnn")]
@@ -230,7 +186,7 @@ position = Vector2(1431, -4967)
 position = Vector2(636, -5542)
 
 [node name="BouncyCloud6" parent="Clouds" unique_id=1044914235 instance=ExtResource("7_ttxnn")]
-position = Vector2(750, -7754)
+position = Vector2(668, -7963)
 
 [node name="Stars" type="Node2D" parent="." unique_id=644239280]
 
@@ -244,10 +200,10 @@ position = Vector2(982, -4427.0005)
 position = Vector2(1321, -5681)
 
 [node name="GrabStar6" parent="Stars" unique_id=1112592222 instance=ExtResource("8_o5xq2")]
-position = Vector2(1485, -7050)
+position = Vector2(1393, -7148)
 
 [node name="GrabStar7" parent="Stars" unique_id=491926410 instance=ExtResource("8_o5xq2")]
-position = Vector2(1177, -7210)
+position = Vector2(1095, -7419)
 
 [node name="GrabStar5" parent="Stars" unique_id=1860217021 instance=ExtResource("8_o5xq2")]
 position = Vector2(830, -6287)
@@ -268,7 +224,7 @@ position = Vector2(903, -4839)
 position = Vector2(1125, -6637)
 
 [node name="YankStar6" parent="Stars" unique_id=1389426556 instance=ExtResource("9_8y5rj")]
-position = Vector2(1179, -7577)
+position = Vector2(1097, -7786)
 
 [node name="Obstacles" type="Node2D" parent="." unique_id=2119752208]
 
