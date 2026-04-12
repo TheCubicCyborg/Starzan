@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bc5geg2hclkqp"]
+
+[ext_resource type="Script" uid="uid://s8mkaqbmdd8w" path="res://Entities/cloud/bouncy_cloud.gd" id="1_6k5v7"]
+[ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="2_7dt8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plate"]
+size = Vector2(360, 52)
+
+[node name="BouncyCloud" type="Node2D" unique_id=548882941]
+script = ExtResource("1_6k5v7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1562493942]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_7dt8u")
+
+[node name="BounceArea" type="Area2D" parent="." unique_id=141620693]
+collision_layer = 0
+collision_mask = 2
+monitoring = true
+monitorable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea" unique_id=978480517]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_plate")

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cupxhq7l5277r"]
+
+[ext_resource type="PackedScene" uid="uid://bfvw8gcq1ue51" path="res://Player/player_guy.tscn" id="1_t21ke"]
+
+[sub_resource type="Environment" id="Environment_fg03p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t21ke"]
+size = Vector2(1171, 616)
+
+[node name="Level1" type="Node2D" unique_id=33398720]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=722418024]
+environment = SubResource("Environment_fg03p")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=2009903504]
+energy = 1.1
+height = 1.0
+
+[node name="PlayerGuy" parent="." unique_id=448250733 instance=ExtResource("1_t21ke")]
+position = Vector2(88, -61)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerGuy" unique_id=347084541]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=168261895]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=125387950]
+position = Vector2(584, 307)
+shape = SubResource("RectangleShape2D_t21ke")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=2083115942]

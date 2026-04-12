@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Starzan"
-run/main_scene="uid://bra3v5oiy0hmh"
+run/main_scene="res://Levels/tower.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,14 @@ config/icon="res://icon.svg"
 
 SignalBus="*uid://c3awphvyytwsc"
 GameManager="*uid://63dfs27uxxtt"
+
+[dotnet]
+
+project/assembly_name="Starzan"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-neovim/plugin.cfg")
 
 [global_group]
 

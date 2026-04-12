@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dvipuyy8kn6wh"]
+
+[ext_resource type="Script" uid="uid://f0omoarteebh" path="res://Entities/Bird/bird.gd" id="1_nsahm"]
+[ext_resource type="Texture2D" uid="uid://c68frclxpy2q3" path="res://Entities/Bird/Art/bird-1.png" id="2_e262b"]
+[ext_resource type="Texture2D" uid="uid://cl2v5usmgkhcx" path="res://Entities/Bird/Art/bird-2.png" id="3_mfn8g"]
+[ext_resource type="Texture2D" uid="uid://b6g57celcwy8g" path="res://Entities/Bird/Art/bird-3.png" id="4_lkvee"]
+[ext_resource type="Texture2D" uid="uid://bx7fi0c1c8qtn" path="res://Entities/Bird/Art/bird-4.png" id="5_7htjh"]
+[ext_resource type="Texture2D" uid="uid://vv17mnd8smvm" path="res://Entities/Bird/Art/bird-5.png" id="6_rlln2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldtqw"]
+size = Vector2(64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p120d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e262b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mfn8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lkvee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7htjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rlln2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7htjh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lkvee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mfn8g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Bird" type="Node2D" unique_id=857231268]
+script = ExtResource("1_nsahm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1518694689]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1882585621]
+shape = SubResource("RectangleShape2D_ldtqw")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=2065605848]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_p120d")
+autoplay = "default"
+frame_progress = 0.04599149

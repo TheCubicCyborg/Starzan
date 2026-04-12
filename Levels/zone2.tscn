@@ -1,0 +1,116 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_8t4rq"]
+[ext_resource type="Script" uid="uid://dlhwf170wonh4" path="res://Levels/vertical_parallax_layer.gd" id="1_rw8u8"]
+[ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="2_sxva0"]
+[ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_s12av"]
+[ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_h8f7x"]
+[ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_mo5hb"]
+[ext_resource type="Texture2D" uid="uid://c4d8b5xjylc7o" path="res://Entities/cloud/art/cloud1.png" id="6_vw0fv"]
+[ext_resource type="Texture2D" uid="uid://dj5f1fvrdqevc" path="res://Entities/cloud/art/cloud2.png" id="7_6j6eb"]
+[ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="8_11m8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xg1e"]
+size = Vector2(420, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3xq1"]
+size = Vector2(280, 24)
+
+[node name="Zone2" type="Node2D"]
+script = ExtResource("1_8t4rq")
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(576, 520)
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="LayerFar" type="Node2D" parent="Background"]
+script = ExtResource("1_rw8u8")
+parallax_factor = 0.15
+z_index = -40
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerFar"]
+position = Vector2(576, -900)
+scale = Vector2(0.9, 0.9)
+modulate = Color(0.7, 0.78, 0.92, 0.9)
+texture = ExtResource("7_6j6eb")
+
+[node name="LayerMidFar" type="Node2D" parent="Background"]
+script = ExtResource("1_rw8u8")
+parallax_factor = 0.35
+z_index = -30
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidFar"]
+position = Vector2(560, -320)
+scale = Vector2(0.82, 0.82)
+modulate = Color(0.76, 0.82, 0.95, 0.85)
+texture = ExtResource("8_11m8c")
+
+[node name="LayerMidNear" type="Node2D" parent="Background"]
+script = ExtResource("1_rw8u8")
+parallax_factor = 0.6
+z_index = -20
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidNear"]
+position = Vector2(520, 120)
+scale = Vector2(0.74, 0.74)
+modulate = Color(0.82, 0.86, 1, 0.82)
+texture = ExtResource("6_vw0fv")
+
+[node name="LayerNear" type="Node2D" parent="Background"]
+script = ExtResource("1_rw8u8")
+parallax_factor = 0.85
+z_index = -10
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerNear"]
+position = Vector2(620, 430)
+scale = Vector2(0.82, 0.82)
+modulate = Color(0.9, 0.93, 1, 0.78)
+texture = ExtResource("7_6j6eb")
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Cloud" parent="Clouds" instance=ExtResource("2_sxva0")]
+position = Vector2(360, 460)
+scale = Vector2(0.9, 0.9)
+
+[node name="Cloud2" parent="Clouds" instance=ExtResource("2_sxva0")]
+position = Vector2(930, 250)
+scale = Vector2(0.8, 0.8)
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="GrabStar2" parent="Stars" instance=ExtResource("3_s12av")]
+position = Vector2(830, 250)
+
+[node name="GrabStar22" parent="Stars" instance=ExtResource("3_s12av")]
+position = Vector2(550, 60)
+
+[node name="YankStar" parent="Stars" instance=ExtResource("4_h8f7x")]
+position = Vector2(260, 160)
+wait_time = 1.2
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="BirdSpawner" parent="Obstacles" instance=ExtResource("5_mo5hb")]
+position = Vector2(-120, 110)
+bird_spawn_period_sec = 3.5
+bird_move_dir = Vector2(1, 0.03)
+
+[node name="Geometry" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Geometry"]
+position = Vector2(576, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor"]
+one_way_collision = true
+one_way_collision_margin = 8.0
+shape = SubResource("RectangleShape2D_3xg1e")
+
+[node name="MidPlatform" type="StaticBody2D" parent="Geometry"]
+position = Vector2(840, 370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/MidPlatform"]
+one_way_collision = true
+one_way_collision_margin = 8.0
+shape = SubResource("RectangleShape2D_u3xq1")

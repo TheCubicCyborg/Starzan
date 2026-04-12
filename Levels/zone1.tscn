@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dytks8x1enjd8"]
+
+[ext_resource type="Script" uid="uid://dlhwf170wonh4" path="res://Levels/vertical_parallax_layer.gd" id="1_2grmb"]
+[ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_73uu8"]
+[ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="2_32g1p"]
+[ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_h65oe"]
+[ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_tcy8j"]
+[ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_uib0s"]
+[ext_resource type="Texture2D" uid="uid://c4d8b5xjylc7o" path="res://Entities/cloud/art/cloud1.png" id="6_1n33f"]
+[ext_resource type="PackedScene" uid="uid://bc5geg2hclkqp" path="res://Entities/cloud/bouncy_cloud.tscn" id="7_ekl4t"]
+[ext_resource type="Texture2D" uid="uid://dj5f1fvrdqevc" path="res://Entities/cloud/art/cloud2.png" id="7_l6m6o"]
+[ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="8_v3m1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4st8f"]
+size = Vector2(1264, 509)
+
+[node name="Zone1" type="Node2D" unique_id=22221764]
+script = ExtResource("1_73uu8")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=2116616934]
+position = Vector2(576, 520)
+
+[node name="Background" type="Node2D" parent="." unique_id=1430794869]
+
+[node name="LayerFar" type="Node2D" parent="Background" unique_id=1199957053]
+z_index = -40
+script = ExtResource("1_2grmb")
+parallax_factor = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerFar" unique_id=499861811]
+modulate = Color(0.85, 0.92, 1, 0.9)
+position = Vector2(576, -900)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_1n33f")
+
+[node name="LayerMidFar" type="Node2D" parent="Background" unique_id=1344629493]
+z_index = -30
+script = ExtResource("1_2grmb")
+parallax_factor = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidFar" unique_id=29387588]
+modulate = Color(0.95, 0.95, 1, 0.85)
+position = Vector2(600, -400)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_l6m6o")
+
+[node name="LayerMidNear" type="Node2D" parent="Background" unique_id=742697466]
+z_index = -20
+script = ExtResource("1_2grmb")
+parallax_factor = 0.7
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidNear" unique_id=318134109]
+modulate = Color(1, 1, 1, 0.8)
+position = Vector2(520, 100)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_v3m1i")
+
+[node name="LayerNear" type="Node2D" parent="Background" unique_id=1656205754]
+z_index = -10
+script = ExtResource("1_2grmb")
+parallax_factor = 0.85
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerNear" unique_id=927920880]
+modulate = Color(1, 1, 1, 0.75)
+position = Vector2(576, 420)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_1n33f")
+
+[node name="Clouds" type="Node2D" parent="." unique_id=1036393753]
+
+[node name="Cloud" parent="Clouds" unique_id=1002869318 instance=ExtResource("2_32g1p")]
+position = Vector2(214, 8)
+
+[node name="Cloud2" parent="Clouds" unique_id=971493480 instance=ExtResource("2_32g1p")]
+position = Vector2(900, 300)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud3" parent="Clouds" unique_id=1885921908 instance=ExtResource("2_32g1p")]
+position = Vector2(973, -327.00006)
+scale = Vector2(0.85, 0.85)
+
+[node name="BouncyCloud" parent="Clouds" unique_id=548882941 instance=ExtResource("7_ekl4t")]
+position = Vector2(334, 471)
+
+[node name="Stars" type="Node2D" parent="." unique_id=644239280]
+
+[node name="GrabStar2" parent="Stars" unique_id=840944662 instance=ExtResource("3_h65oe")]
+position = Vector2(551, -366)
+
+[node name="YankStar" parent="Stars" unique_id=2085651689 instance=ExtResource("4_tcy8j")]
+position = Vector2(430, 210)
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=2119752208]
+
+[node name="BirdSpawner" parent="Obstacles" unique_id=2056048054 instance=ExtResource("5_uib0s")]
+position = Vector2(1372, 288)
+bird_spawn_period_sec = 4.0
+bird_move_dir = Vector2(-1, 0.05)
+
+[node name="Geometry" type="Node2D" parent="." unique_id=283967627]
+
+[node name="Floor" type="StaticBody2D" parent="Geometry" unique_id=1875571000]
+position = Vector2(576, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor" unique_id=750434635]
+position = Vector2(3, 242.5)
+shape = SubResource("RectangleShape2D_4st8f")
+one_way_collision = true
+one_way_collision_margin = 8.0

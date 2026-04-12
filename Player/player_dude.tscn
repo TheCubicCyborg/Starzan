@@ -1,20 +1,116 @@
 [gd_scene format=3 uid="uid://dc3whaxx3jqvn"]
 
 [ext_resource type="Script" uid="uid://c8o7l5hj5ojbo" path="res://Player/Scripts/player_dude.gd" id="1_b2f5l"]
-[ext_resource type="Texture2D" uid="uid://kei3lixd7xjs" path="res://Assets/placeholder_dude.png" id="2_d5bhx"]
+[ext_resource type="Texture2D" uid="uid://bs5ntsp5gk502" path="res://Player/Art/Idle/idle-1.png" id="2_lyc74"]
+[ext_resource type="Texture2D" uid="uid://n53m1nhpo58t" path="res://Player/Art/Idle/idle-2.png" id="3_1g621"]
+[ext_resource type="Texture2D" uid="uid://ccg72ic6j1hug" path="res://Player/Art/Idle/idle-3.png" id="4_twe7d"]
+[ext_resource type="Texture2D" uid="uid://b6xe2hhca53e3" path="res://Player/Art/Jump/jump-1.png" id="5_mejnj"]
+[ext_resource type="Texture2D" uid="uid://cpijei7p62s6a" path="res://Player/Art/Jump/jump-2.png" id="6_goomt"]
+[ext_resource type="Texture2D" uid="uid://cb1asu3edy4n7" path="res://Player/Art/Jump/jump-3.png" id="7_v1p5n"]
+[ext_resource type="Texture2D" uid="uid://btfyd8a8qvq4p" path="res://Player/Art/Pull/pull-1.png" id="8_i4hwt"]
+[ext_resource type="Texture2D" uid="uid://drtwteinvfo8m" path="res://Player/Art/Pull/pull-2.png" id="9_ihgoc"]
+[ext_resource type="Texture2D" uid="uid://by2773wjl5oej" path="res://Player/Art/Pull/pull-3.png" id="10_t6sje"]
+[ext_resource type="Texture2D" uid="uid://duaj1agx51xlm" path="res://Player/Art/Pull/pull-4.png" id="11_nhe1x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4ftx"]
 radius = 32.0
 height = 128.0
 
-[node name="PlayerDude" type="CharacterBody2D" unique_id=2027622154]
+[sub_resource type="Animation" id="Animation_eilv1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_lyc74")]
+}
+
+[sub_resource type="Animation" id="Animation_ls152"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_lyc74"), ExtResource("3_1g621"), ExtResource("4_twe7d")]
+}
+
+[sub_resource type="Animation" id="Animation_ytlsx"]
+resource_name = "jump"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_mejnj"), ExtResource("6_goomt"), ExtResource("7_v1p5n")]
+}
+
+[sub_resource type="Animation" id="Animation_14os4"]
+resource_name = "pull"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_i4hwt"), ExtResource("9_ihgoc"), ExtResource("10_t6sje"), ExtResource("11_nhe1x")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gf2g"]
+_data = {
+&"RESET": SubResource("Animation_eilv1"),
+&"idle": SubResource("Animation_ls152"),
+&"jump": SubResource("Animation_ytlsx"),
+&"pull": SubResource("Animation_14os4")
+}
+
+[node name="PlayerDude" type="CharacterBody2D" unique_id=2027622154 node_paths=PackedStringArray("player_sprite")]
 collision_layer = 2
 script = ExtResource("1_b2f5l")
+player_sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1085275590]
 shape = SubResource("CapsuleShape2D_w4ftx")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=187147318]
-texture = ExtResource("2_d5bhx")
-
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1044629707]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720542365]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_lyc74")
+
+[node name="FishingCastOriginRight" type="Marker2D" parent="." unique_id=1324123774]
+position = Vector2(36, -28)
+
+[node name="FishingCastOriginLeft" type="Marker2D" parent="." unique_id=1881936100]
+position = Vector2(-36, -28)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1569858359]
+libraries/ = SubResource("AnimationLibrary_1gf2g")
+autoplay = &"idle"

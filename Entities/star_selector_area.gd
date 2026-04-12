@@ -1,16 +1,17 @@
 extends Area2D
 
 @export var star_selector_sprite: Sprite2D
-var base_selector_sprite_scale: Vector2
-@export var lerp_speed: float = 100.
+@export var cast_line: FishingCastLine
+@export var activation_range: float = 500.0
 
+var base_selector_sprite_scale: Vector2
 var star_in_range: Star
 var star_position: Vector2
-
-var lerp_factor: float = 0.
-
-@export var activation_range:float = 500
+var lerp_factor: float = 0.0
 var in_activation_range: bool = false
+
+var _cast_target: Star
+var _mouse_position_tween: Tween
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -19,29 +20,43 @@ func _ready() -> void:
 	else:
 		base_selector_sprite_scale = star_selector_sprite.scale
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	if cast_line == null:
+		cast_line = get_node_or_null("../CastLine") as FishingCastLine
+
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
-	
-	if position.distance_to(GameManager.player.position) <= activation_range:
-		star_selector_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		in_activation_range = true
-	else:
-		star_selector_sprite.modulate = Color(0.453, 0.453, 0.453, 1.0)
-		in_activation_range = false
-	
-	if star_position:
-		star_selector_sprite.global_position = lerp(global_position, star_position, lerp_factor)
-	else:
-		star_selector_sprite.global_position = global_position
 
-func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
-	if star_in_range and event is InputEventMouseButton:
-		if event.is_pressed() and in_activation_range:
-			#print("im totally activating this star: %s" % star_in_range)
-			if GameManager.player.tethered:
-				GameManager.player.untether()
-			star_in_range.activate()
+	var player := GameManager.player
+	if player != null:
+		var distance_to_player := global_position.distance_to(player.global_position)
+		in_activation_range = distance_to_player <= activation_range
+	else:
+		in_activation_range = false
+
+	if star_selector_sprite != null:
+		star_selector_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0) if in_activation_range else Color(0.453, 0.453, 0.453, 1.0)
+		if star_in_range != null:
+			star_position = star_in_range.global_position
+			star_selector_sprite.global_position = global_position.lerp(star_position, lerp_factor)
+		else:
+			star_selector_sprite.global_position = global_position
+
+	if cast_line != null and cast_line.is_casting():
+		_update_cast(delta)
+	elif cast_line != null:
+		_update_tether_line(player)
+
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if cast_line != null and cast_line.is_casting():
+		return
+	if not (event is InputEventMouseButton):
+		return
+	if not event.is_pressed():
+		return
+	if star_in_range == null or not in_activation_range:
+		return
+
+	_begin_cast(star_in_range)
 
 func _notification(what: int) -> void:
 	match what:
@@ -53,18 +68,14 @@ func _notification(what: int) -> void:
 			monitoring = true
 			visible = true
 
-
 func _on_area_entered(area: Area2D) -> void:
 	if area is Star:
-		print("this area just entered: %s" % area.name)
 		star_in_range = area
-		star_position = star_in_range.global_position	
+		star_position = star_in_range.global_position
 		star_entered()
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is YankStar:
-		print("this body just entered: %s" % body.name)
 		star_in_range = body
 		star_position = star_in_range.global_position
 		star_entered()
@@ -72,32 +83,86 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_area_exited(area: Area2D) -> void:
 	if area == star_in_range:
 		star_in_range = null
-		print("this body just exited: %s" % area.name)
 		star_exited()
 
 func _on_body_exited(body: Node2D) -> void:
 	if body == star_in_range:
 		star_in_range = null
-		print("this body just exited: %s" % body.name)
 		star_exited()
 
-var _mouse_position_tween: Tween
-func star_entered():
+func star_entered() -> void:
 	if _mouse_position_tween:
 		_mouse_position_tween.kill()
 	_mouse_position_tween = create_tween()
 	_mouse_position_tween.set_trans(Tween.TRANS_QUART)
 	_mouse_position_tween.set_ease(Tween.EASE_OUT)
-	_mouse_position_tween.tween_property(self, "lerp_factor", 1., .5)
+	_mouse_position_tween.tween_property(self, "lerp_factor", 1.0, 0.5)
 	_mouse_position_tween.set_parallel()
-	_mouse_position_tween.tween_property(star_selector_sprite, "scale", 2 * base_selector_sprite_scale, .5)
+	if star_selector_sprite != null:
+		_mouse_position_tween.tween_property(star_selector_sprite, "scale", 2.0 * base_selector_sprite_scale, 0.5)
 
-func star_exited():
+func star_exited() -> void:
 	if _mouse_position_tween:
 		_mouse_position_tween.kill()
 	_mouse_position_tween = create_tween()
 	_mouse_position_tween.set_trans(Tween.TRANS_QUART)
 	_mouse_position_tween.set_ease(Tween.EASE_OUT)
-	_mouse_position_tween.tween_property(self, "lerp_factor", 0., .5)
+	_mouse_position_tween.tween_property(self, "lerp_factor", 0.0, 0.5)
 	_mouse_position_tween.set_parallel()
-	_mouse_position_tween.tween_property(star_selector_sprite, "scale", base_selector_sprite_scale, .5)
+	if star_selector_sprite != null:
+		_mouse_position_tween.tween_property(star_selector_sprite, "scale", base_selector_sprite_scale, 0.5)
+
+func _begin_cast(target: Star) -> void:
+	if target == null:
+		return
+
+	var player := GameManager.player
+	if player == null:
+		return
+
+	if player.tethered:
+		player.untether()
+
+	_cast_target = target
+	var start := _get_cast_origin()
+	var finish := _cast_target.global_position
+	if cast_line != null:
+		var use_arc := not (_cast_target is GrabStar2)
+		cast_line.begin_cast(start, finish, use_arc)
+	else:
+		_cast_target.activate()
+		_cast_target = null
+
+func _update_cast(delta: float) -> void:
+	if _cast_target == null or not is_instance_valid(_cast_target):
+		_cancel_cast()
+		return
+
+	var start := _get_cast_origin()
+	var finish := _cast_target.global_position
+	var reached_target := cast_line.update_cast(delta, start, finish)
+
+	if reached_target:
+		var target := _cast_target
+		_cancel_cast()
+		if target != null and is_instance_valid(target):
+			target.activate()
+
+func _cancel_cast() -> void:
+	_cast_target = null
+	if cast_line != null:
+		cast_line.cancel_cast()
+
+func _get_cast_origin() -> Vector2:
+	var player := GameManager.player
+	if player == null:
+		return global_position
+	if player.has_method("get_cast_origin"):
+		return player.get_cast_origin()
+	return player.global_position
+
+func _update_tether_line(player: Player) -> void:
+	if player != null and player.tethered != null:
+		cast_line.show_straight_line(_get_cast_origin(), player.tethered.global_position)
+	else:
+		cast_line.hide_line()
