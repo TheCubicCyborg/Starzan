@@ -45,7 +45,7 @@ position = Vector2(960, -998)
 texture = ExtResource("2_ssgiv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Sprite2D" unique_id=350025674]
-position = Vector2(0, 1420)
+position = Vector2(0, 980)
 texture = ExtResource("3_5gqi5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background" unique_id=478699561]
