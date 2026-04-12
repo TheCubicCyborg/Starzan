@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	_update_parallax(camera.global_position.y)
 
 func _update_camera(delta: float) -> void:
-	var target := Vector2(camera_fixed_x, player.global_position.y + camera_y_offset)
+	var target := Vector2(camera_fixed_x, clamp(player.global_position.y + camera_y_offset,-INF,124))
 	if camera_follow_smoothing <= 0.0:
 		camera.global_position = target
 		return

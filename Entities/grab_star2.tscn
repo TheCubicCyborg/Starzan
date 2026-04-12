@@ -61,6 +61,7 @@ frame_progress = 0.8808988
 shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Label" type="Label" parent="." unique_id=1903412412]
+visible = false
 offset_left = -38.0
 offset_top = -63.0
 offset_right = 36.0
@@ -68,6 +69,7 @@ offset_bottom = -14.0
 text = "Grab Star"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=591622817]
+process_mode = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=252053649]
 shape = SubResource("RectangleShape2D_gul6d")

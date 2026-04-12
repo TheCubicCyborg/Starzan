@@ -101,8 +101,6 @@ animation_player = NodePath("AnimationPlayer")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1085275590]
 shape = SubResource("CapsuleShape2D_w4ftx")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1044629707]
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720542365]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_lyc74")
@@ -116,3 +114,10 @@ position = Vector2(-36, -28)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1569858359]
 libraries/ = SubResource("AnimationLibrary_1gf2g")
 autoplay = &"idle"
+
+[node name="BirdDetector" type="Area2D" parent="." unique_id=1507102964]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BirdDetector" unique_id=776455319]
+shape = SubResource("CapsuleShape2D_w4ftx")
+
+[connection signal="area_entered" from="BirdDetector" to="." method="_on_bird_detector_area_entered"]
