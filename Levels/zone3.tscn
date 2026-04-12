@@ -1,0 +1,114 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Levels/zone_runtime.gd" id="1_2qhqi"]
+[ext_resource type="Script" path="res://Levels/vertical_parallax_layer.gd" id="1_illr4"]
+[ext_resource type="PackedScene" path="res://Entities/cloud/cloud.tscn" id="2_3g84a"]
+[ext_resource type="PackedScene" path="res://Entities/grab_star2.tscn" id="3_x65m2"]
+[ext_resource type="PackedScene" path="res://Entities/yank_star.tscn" id="4_0blra"]
+[ext_resource type="PackedScene" path="res://Entities/bird_spawner.tscn" id="5_15a83"]
+[ext_resource type="Texture2D" path="res://Entities/cloud/art/cloud1.png" id="6_56okg"]
+[ext_resource type="Texture2D" path="res://Entities/cloud/art/cloud2.png" id="7_j0vov"]
+[ext_resource type="Texture2D" path="res://Entities/cloud/art/cloud3.png" id="8_xj4p5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swe3w"]
+size = Vector2(1800, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhflo"]
+size = Vector2(300, 52)
+
+[node name="Zone3" type="Node2D"]
+script = ExtResource("1_2qhqi")
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(576, 520)
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="LayerFar" type="Node2D" parent="Background"]
+script = ExtResource("1_illr4")
+parallax_factor = 0.15
+z_index = -40
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerFar"]
+position = Vector2(576, -980)
+scale = Vector2(0.95, 0.95)
+modulate = Color(0.5, 0.59, 0.85, 0.92)
+texture = ExtResource("8_xj4p5")
+
+[node name="LayerMidFar" type="Node2D" parent="Background"]
+script = ExtResource("1_illr4")
+parallax_factor = 0.35
+z_index = -30
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidFar"]
+position = Vector2(560, -360)
+scale = Vector2(0.85, 0.85)
+modulate = Color(0.58, 0.66, 0.92, 0.88)
+texture = ExtResource("7_j0vov")
+
+[node name="LayerMidNear" type="Node2D" parent="Background"]
+script = ExtResource("1_illr4")
+parallax_factor = 0.6
+z_index = -20
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidNear"]
+position = Vector2(500, 120)
+scale = Vector2(0.8, 0.8)
+modulate = Color(0.65, 0.74, 0.96, 0.86)
+texture = ExtResource("6_56okg")
+
+[node name="LayerNear" type="Node2D" parent="Background"]
+script = ExtResource("1_illr4")
+parallax_factor = 0.85
+z_index = -10
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/LayerNear"]
+position = Vector2(650, 420)
+scale = Vector2(0.86, 0.86)
+modulate = Color(0.72, 0.81, 0.98, 0.82)
+texture = ExtResource("8_xj4p5")
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Cloud" parent="Clouds" instance=ExtResource("2_3g84a")]
+position = Vector2(250, 510)
+scale = Vector2(0.92, 0.92)
+
+[node name="Cloud2" parent="Clouds" instance=ExtResource("2_3g84a")]
+position = Vector2(870, 270)
+scale = Vector2(0.78, 0.78)
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="GrabStar2" parent="Stars" instance=ExtResource("3_x65m2")]
+position = Vector2(730, 300)
+
+[node name="GrabStar22" parent="Stars" instance=ExtResource("3_x65m2")]
+position = Vector2(520, 40)
+
+[node name="YankStar" parent="Stars" instance=ExtResource("4_0blra")]
+position = Vector2(300, 190)
+wait_time = 0.9
+away_weight = 0.15
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="BirdSpawner" parent="Obstacles" instance=ExtResource("5_15a83")]
+position = Vector2(1300, 50)
+bird_spawn_period_sec = 2.8
+bird_move_dir = Vector2(-1, 0.08)
+bird_speed = 340.0
+
+[node name="Geometry" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Geometry"]
+position = Vector2(576, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor"]
+shape = SubResource("RectangleShape2D_swe3w")
+
+[node name="MidPlatform" type="StaticBody2D" parent="Geometry"]
+position = Vector2(260, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/MidPlatform"]
+shape = SubResource("RectangleShape2D_qhflo")

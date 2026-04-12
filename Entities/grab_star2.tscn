@@ -1,9 +1,46 @@
 [gd_scene format=3 uid="uid://dqly0i0uqy536"]
 
 [ext_resource type="Script" uid="uid://dla6g8uek7bv2" path="res://Entities/grab_star2.gd" id="1_gul6d"]
+[ext_resource type="Texture2D" uid="uid://dxdlwwxp8pe1w" path="res://Assets/grabstar/pull-1.png" id="2_4klun"]
+[ext_resource type="Texture2D" uid="uid://bjnwdtech22rj" path="res://Assets/grabstar/pull-2.png" id="3_8skgs"]
+[ext_resource type="Texture2D" uid="uid://bc2t1kfwb5pt1" path="res://Assets/grabstar/pull-3.png" id="4_dr0p5"]
+[ext_resource type="Texture2D" uid="uid://cgy8e8cp05ief" path="res://Assets/grabstar/pull-4.png" id="5_bwhtb"]
+[ext_resource type="Texture2D" uid="uid://dp6hofag0il4q" path="res://Assets/grabstar/pull-5.png" id="6_vd3qw"]
+[ext_resource type="Texture2D" uid="uid://xbmjxfatawlh" path="res://Assets/grabstar/pull-6.png" id="7_nnbhq"]
+[ext_resource type="Texture2D" uid="uid://daksiw7ogr5y4" path="res://Assets/grabstar/pull-7.png" id="8_8tkcq"]
+[ext_resource type="Texture2D" uid="uid://blcgs5c4fids3" path="res://Assets/grabstar/pull-8.png" id="9_74wvu"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0e48y"]
-size = Vector2(64, 64)
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3ddw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4klun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8skgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dr0p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bwhtb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vd3qw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nnbhq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8tkcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_74wvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
 size = Vector2(64, 64)
@@ -14,8 +51,11 @@ size = Vector2(64, 64)
 [node name="GrabStar2" type="Area2D" unique_id=1483779697]
 script = ExtResource("1_gul6d")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1504645497]
-texture = SubResource("PlaceholderTexture2D_0e48y")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=87902625]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_n3ddw")
+autoplay = "default"
+frame_progress = 0.8808988
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039221457]
 shape = SubResource("RectangleShape2D_epypp")
