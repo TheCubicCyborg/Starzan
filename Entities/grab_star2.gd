@@ -1,6 +1,6 @@
 class_name GrabStar2 extends Star
 
-var length: float
+@export var stretch_constant = 30
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -8,5 +8,4 @@ func _input_event(viewport, event, shape_idx):
 			activate()
 
 func activate():
-	length = position.distance_to(GameManager.player.position)
-	
+	GameManager.player.tether_to(self)
