@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @export var fishing_cast_origin_left: Marker2D
 @export var fishing_cast_origin_right: Marker2D
 @export_range(1, 32, 1) var one_way_platform_layer: int = 3
+@export var swinging_sfx_audio:AudioStream
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000.0
@@ -111,6 +112,8 @@ func tether_to(star: GrabStar2):
 	var tangent_dir = Vector2(-tether_dir.y, tether_dir.x).normalized()
 	var speed = velocity.dot(tangent_dir)
 	rigid.linear_velocity = speed * tangent_dir
+	if not swinging_sfx_audio.playing:
+		swinging_sfx_audio.instantiate_playback()
 
 func untether():
 	tethered = null
