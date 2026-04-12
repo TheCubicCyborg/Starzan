@@ -77,11 +77,11 @@ func tether_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		_set_sprite_direction(direction)
-		rigid.apply_central_force(direction * Vector2.RIGHT * 100)
+		rigid.apply_central_force(direction * Vector2.RIGHT * 200)
 	
 	var diff = tethered.position.distance_to(position) - tether_length
 	if diff > 0:
-		rigid.apply_central_force(to_local(tethered.position)*diff*diff)
+		rigid.apply_central_force(to_local(tethered.position)*diff)
 
 func tether_to(star: GrabStar2):
 	tethered = star
@@ -94,6 +94,9 @@ func tether_to(star: GrabStar2):
 	shape.shape = CapsuleShape2D.new()
 	shape.shape.radius = 32
 	shape.shape.height = 128
+	var phys_mat = PhysicsMaterial.new()
+	phys_mat.friction = 0
+	rigid.physics_material_override = phys_mat
 	rigid.add_child(shape)
 
 func untether():
@@ -124,3 +127,9 @@ func get_cast_origin() -> Vector2:
 		if fishing_cast_origin_right != null:
 			return fishing_cast_origin_right.global_position
 	return global_position
+
+
+func _on_bird_detector_area_entered(area):
+	if area.get_parent() is Bird:
+		velocity += (Vector2.RIGHT * sign(area.get_parent()._move_dir.x) + Vector2.UP * 0.25).normalized() * 3000
+		move_and_slide()

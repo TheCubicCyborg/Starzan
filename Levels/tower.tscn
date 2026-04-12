@@ -21,10 +21,10 @@ rotation = 0.0039469562
 script = null
 
 [node name="Zone2" parent="." unique_id=1284026243 instance=ExtResource("5_gsmrw")]
-position = Vector2(0, -4000)
+position = Vector2(0, -8000)
 
 [node name="Zone3" parent="." unique_id=732793463 instance=ExtResource("6_oy6og")]
-position = Vector2(0, -8000)
+position = Vector2(0, -16000)
 
 [node name="PlayerDude" parent="." unique_id=659196782 instance=ExtResource("2_jfpf2")]
 position = Vector2(576, 520)

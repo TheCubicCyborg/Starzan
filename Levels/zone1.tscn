@@ -14,6 +14,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4st8f"]
 size = Vector2(1264, 509)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ekl4t"]
+size = Vector2(80, 14000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f8uw"]
+size = Vector2(80, 14000)
+
 [node name="Zone1" type="Node2D" unique_id=22221764]
 script = ExtResource("1_73uu8")
 
@@ -21,6 +27,7 @@ script = ExtResource("1_73uu8")
 position = Vector2(576, 520)
 
 [node name="Background" type="Node2D" parent="." unique_id=1430794869]
+visible = false
 
 [node name="LayerFar" type="Node2D" parent="Background" unique_id=1199957053]
 z_index = -40
@@ -66,36 +73,160 @@ position = Vector2(576, 420)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("6_1n33f")
 
+[node name="Text" type="Node2D" parent="." unique_id=828293633]
+
+[node name="Controls" type="Label" parent="Text" unique_id=1737751332]
+offset_left = 111.0
+offset_top = 420.0
+offset_right = 497.0
+offset_bottom = 538.0
+theme_override_font_sizes/font_size = 23
+text = "Use A and D to move left and right,
+Press Space to jump!"
+horizontal_alignment = 1
+
+[node name="Bouncy Clouds" type="Label" parent="Text" unique_id=543670089]
+offset_left = 637.0
+offset_top = -146.0
+offset_right = 1023.0
+offset_bottom = -28.0
+theme_override_font_sizes/font_size = 23
+text = "<- These glowy clouds are bouncy!"
+horizontal_alignment = 1
+
+[node name="BIRDS!" type="Label" parent="Text" unique_id=1961169867]
+offset_left = 386.0
+offset_top = -1687.0
+offset_right = 772.0
+offset_bottom = -1569.0
+theme_override_font_sizes/font_size = 23
+text = "Beware of birds! 
+They'll hit anything in their path..."
+horizontal_alignment = 1
+
+[node name="Yanks" type="Label" parent="Text" unique_id=455437964]
+offset_left = 238.0
+offset_top = -2451.0
+offset_right = 624.0
+offset_bottom = -2333.0
+theme_override_font_sizes/font_size = 23
+text = "Click on Pink Stars to pull them closer!
+You can stand on these <3"
+horizontal_alignment = 1
+
+[node name="Pulls" type="Label" parent="Text" unique_id=1586394201]
+offset_left = 38.0
+offset_top = -3824.0
+offset_right = 462.0
+offset_bottom = -3706.0
+theme_override_font_sizes/font_size = 23
+text = "Click on Blue Stars to swing on them!
+We recommend, jumping first"
+horizontal_alignment = 1
+
+[node name="Pull Momentum" type="Label" parent="Text" unique_id=182566789]
+offset_left = 334.0
+offset_top = -4369.0
+offset_right = 889.0
+offset_bottom = -4251.0
+theme_override_font_sizes/font_size = 23
+text = "Press A and D while swinging to build momentum!"
+horizontal_alignment = 1
+
 [node name="Clouds" type="Node2D" parent="." unique_id=1036393753]
 
 [node name="Cloud" parent="Clouds" unique_id=1002869318 instance=ExtResource("2_32g1p")]
-position = Vector2(214, 8)
+position = Vector2(834, 438)
 
 [node name="Cloud2" parent="Clouds" unique_id=971493480 instance=ExtResource("2_32g1p")]
-position = Vector2(900, 300)
+position = Vector2(326, 270)
 scale = Vector2(0.85, 0.85)
 
 [node name="Cloud3" parent="Clouds" unique_id=1885921908 instance=ExtResource("2_32g1p")]
-position = Vector2(973, -327.00006)
+position = Vector2(822.99994, 92)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud4" parent="Clouds" unique_id=112951673 instance=ExtResource("2_32g1p")]
+position = Vector2(872, -1509)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud5" parent="Clouds" unique_id=1348817022 instance=ExtResource("2_32g1p")]
+position = Vector2(271, -1509)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud6" parent="Clouds" unique_id=1052576681 instance=ExtResource("2_32g1p")]
+position = Vector2(564.00006, -1509)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud7" parent="Clouds" unique_id=1784840132 instance=ExtResource("2_32g1p")]
+position = Vector2(363, -1772.9998)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud8" parent="Clouds" unique_id=1998712376 instance=ExtResource("2_32g1p")]
+position = Vector2(828.99994, -1976.9999)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud9" parent="Clouds" unique_id=1003478009 instance=ExtResource("2_32g1p")]
+position = Vector2(391.99997, -2156)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud10" parent="Clouds" unique_id=1425075334 instance=ExtResource("2_32g1p")]
+position = Vector2(500.99994, -2660)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud11" parent="Clouds" unique_id=378932433 instance=ExtResource("2_32g1p")]
+position = Vector2(223.99998, -3587.9998)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud12" parent="Clouds" unique_id=948924947 instance=ExtResource("2_32g1p")]
+position = Vector2(918.99994, -3880)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud13" parent="Clouds" unique_id=1084945924 instance=ExtResource("2_32g1p")]
+position = Vector2(945, -4513.9995)
+scale = Vector2(0.85, 0.85)
+
+[node name="Cloud14" parent="Clouds" unique_id=1548607693 instance=ExtResource("2_32g1p")]
+position = Vector2(945, -4513.9995)
 scale = Vector2(0.85, 0.85)
 
 [node name="BouncyCloud" parent="Clouds" unique_id=548882941 instance=ExtResource("7_ekl4t")]
-position = Vector2(334, 471)
+position = Vector2(343, -144)
+
+[node name="BouncyCloud2" parent="Clouds" unique_id=995447327 instance=ExtResource("7_ekl4t")]
+position = Vector2(844, -552)
+
+[node name="BouncyCloud3" parent="Clouds" unique_id=1342406139 instance=ExtResource("7_ekl4t")]
+position = Vector2(318, -994)
 
 [node name="Stars" type="Node2D" parent="." unique_id=644239280]
 
 [node name="GrabStar2" parent="Stars" unique_id=840944662 instance=ExtResource("3_h65oe")]
-position = Vector2(551, -366)
+position = Vector2(584, -3977)
+
+[node name="GrabStar3" parent="Stars" unique_id=1483779697 instance=ExtResource("3_h65oe")]
+position = Vector2(587, -4480)
 
 [node name="YankStar" parent="Stars" unique_id=2085651689 instance=ExtResource("4_tcy8j")]
-position = Vector2(430, 210)
+position = Vector2(856, -2531)
+
+[node name="YankStar2" parent="Stars" unique_id=1041927568 instance=ExtResource("4_tcy8j")]
+position = Vector2(975, -3063)
+
+[node name="YankStar3" parent="Stars" unique_id=1805105610 instance=ExtResource("4_tcy8j")]
+position = Vector2(567, -3335)
 
 [node name="Obstacles" type="Node2D" parent="." unique_id=2119752208]
 
 [node name="BirdSpawner" parent="Obstacles" unique_id=2056048054 instance=ExtResource("5_uib0s")]
-position = Vector2(1372, 288)
+position = Vector2(1179, -1823)
 bird_spawn_period_sec = 4.0
-bird_move_dir = Vector2(-1, 0.05)
+bird_move_dir = Vector2(-1, -0.05)
+
+[node name="BirdSpawner2" parent="Obstacles" unique_id=396003907 instance=ExtResource("5_uib0s")]
+position = Vector2(-29, -2041)
+bird_spawn_period_sec = 4.0
+bird_move_dir = Vector2(1, -0.05)
 
 [node name="Geometry" type="Node2D" parent="." unique_id=283967627]
 
@@ -107,3 +238,17 @@ position = Vector2(3, 242.5)
 shape = SubResource("RectangleShape2D_4st8f")
 one_way_collision = true
 one_way_collision_margin = 8.0
+
+[node name="TowerBounds" type="Node2D" parent="." unique_id=296913917]
+
+[node name="LeftWall" type="StaticBody2D" parent="TowerBounds" unique_id=583752787]
+position = Vector2(-64, -3500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerBounds/LeftWall" unique_id=177097675]
+shape = SubResource("RectangleShape2D_ekl4t")
+
+[node name="RightWall" type="StaticBody2D" parent="TowerBounds" unique_id=983679807]
+position = Vector2(1216, -3500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerBounds/RightWall" unique_id=1642037547]
+shape = SubResource("RectangleShape2D_7f8uw")
