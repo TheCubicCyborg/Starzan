@@ -16,6 +16,9 @@ colors = PackedColorArray(0.26666668, 0.7882353, 0.09411765, 1, 0.30723685, 0.58
 gradient = SubResource("Gradient_y32ns")
 fill_to = Vector2(0, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60d4r"]
+friction = 0.8
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y32ns"]
 size = Vector2(64, 64)
 
@@ -24,11 +27,9 @@ size = Vector2(64, 64)
 
 [node name="TestScene" type="Node2D" unique_id=161238367]
 
-[node name="GravityControl" parent="." unique_id=1449078475 instance=ExtResource("1_60d4r")]
-offset_left = 1154.0
-offset_right = 1154.0
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1217467274]
+position = Vector2(-1099, 0)
+scale = Vector2(3.2400007, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=830023668]
 position = Vector2(576.75, 585.5)
@@ -39,15 +40,25 @@ scale = Vector2(18.04, 2)
 texture = SubResource("GradientTexture2D_wtcfe")
 
 [node name="PlayerGuy" type="RigidBody2D" parent="." unique_id=448250733]
-position = Vector2(761, 371)
+position = Vector2(761, 488)
+physics_material_override = SubResource("PhysicsMaterial_60d4r")
 lock_rotation = true
 script = ExtResource("2_s4wei")
+
+[node name="GravityControl" parent="PlayerGuy" unique_id=1449078475 instance=ExtResource("1_60d4r")]
+offset_left = 567.0
+offset_top = -488.0
+offset_right = 567.0
+offset_bottom = -488.0
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerGuy" unique_id=801462721]
 texture = SubResource("PlaceholderTexture2D_y32ns")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGuy" unique_id=1854291909]
 shape = SubResource("RectangleShape2D_wtcfe")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerGuy" unique_id=247056588]
+position = Vector2(0, -163)
 
 [node name="GrabStar" parent="." unique_id=1293662515 instance=ExtResource("3_xv58b")]
 position = Vector2(245, 186)

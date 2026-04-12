@@ -2,14 +2,12 @@ extends RigidBody2D
 
 var _input_vec: Vector2
 var _current_star: GrabStar
-
 var _pressed_jump_this_frame: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.grab_star_grabbed.connect(_on_grab_star_grabbed)
 	SignalBus.grab_star_released.connect(_on_grab_star_released)
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,8 +23,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	var move_force_amt: float = 2000.
-	var pull_force_amt: float = 3000.
+	var move_force_amt: float = 1000.
+	var pull_force_amt: float = 500.
 	var jump_force_amt: float = 30000.
 	
 	if _pressed_jump_this_frame:
@@ -48,3 +46,8 @@ func _on_grab_star_released(_s: GrabStar):
 	if _current_star:
 		print("released star %s" % _current_star.name)
 		_current_star = null
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_released():
+			_on_grab_star_released(_current_star)
