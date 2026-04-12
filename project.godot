@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 SignalBus="*uid://c3awphvyytwsc"
 GameManager="*uid://63dfs27uxxtt"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="Starzan"

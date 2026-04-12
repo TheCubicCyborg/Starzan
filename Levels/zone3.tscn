@@ -1,14 +1,15 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bgfbfsqv4th08"]
 
 [ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_2qhqi"]
-[ext_resource type="Script" uid="uid://dlhwf170wonh4" path="res://Levels/vertical_parallax_layer.gd" id="1_illr4"]
 [ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="2_3g84a"]
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_x65m2"]
 [ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_0blra"]
 [ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_15a83"]
-[ext_resource type="Texture2D" uid="uid://c4d8b5xjylc7o" path="res://Entities/cloud/art/cloud1.png" id="6_56okg"]
-[ext_resource type="Texture2D" uid="uid://dj5f1fvrdqevc" path="res://Entities/cloud/art/cloud2.png" id="7_j0vov"]
-[ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="8_xj4p5"]
+[ext_resource type="Texture2D" uid="uid://i157f460pdcq" path="res://Assets/bg-1.png" id="6_56okg"]
+[ext_resource type="Texture2D" uid="uid://c4i4s6s3lvw2h" path="res://Assets/bg-2.png" id="7_j0vov"]
+[ext_resource type="Texture2D" uid="uid://dbnjo8qkkbkq3" path="res://Assets/bg-3.png" id="8_xj4p5"]
+[ext_resource type="Texture2D" uid="uid://cyucivrqsk6k" path="res://Assets/bg-4.png" id="9_bx1w8"]
+[ext_resource type="Texture2D" uid="uid://cjkij3g7h0efc" path="res://Assets/bg-5.png" id="10_dgyt0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swe3w"]
 size = Vector2(420, 24)
@@ -16,103 +17,89 @@ size = Vector2(420, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhflo"]
 size = Vector2(300, 24)
 
-[node name="Zone3" type="Node2D"]
+[node name="Zone3" type="Node2D" unique_id=1271183444]
 script = ExtResource("1_2qhqi")
 
-[node name="PlayerSpawn" type="Marker2D" parent="."]
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=145674063]
 position = Vector2(576, 520)
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="." unique_id=442272528]
 
-[node name="LayerFar" type="Node2D" parent="Background"]
-script = ExtResource("1_illr4")
-parallax_factor = 0.15
-z_index = -40
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/LayerFar"]
-position = Vector2(576, -980)
-scale = Vector2(0.95, 0.95)
-modulate = Color(0.5, 0.59, 0.85, 0.92)
-texture = ExtResource("8_xj4p5")
-
-[node name="LayerMidFar" type="Node2D" parent="Background"]
-script = ExtResource("1_illr4")
-parallax_factor = 0.35
-z_index = -30
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidFar"]
-position = Vector2(560, -360)
-scale = Vector2(0.85, 0.85)
-modulate = Color(0.58, 0.66, 0.92, 0.88)
-texture = ExtResource("7_j0vov")
-
-[node name="LayerMidNear" type="Node2D" parent="Background"]
-script = ExtResource("1_illr4")
-parallax_factor = 0.6
-z_index = -20
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/LayerMidNear"]
-position = Vector2(500, 120)
-scale = Vector2(0.8, 0.8)
-modulate = Color(0.65, 0.74, 0.96, 0.86)
+[node name="Layer1" type="Sprite2D" parent="Background" unique_id=586548121]
+z_index = -50
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("6_56okg")
 
-[node name="LayerNear" type="Node2D" parent="Background"]
-script = ExtResource("1_illr4")
-parallax_factor = 0.85
-z_index = -10
+[node name="Layer2" type="Sprite2D" parent="Background" unique_id=1451073695]
+z_index = -40
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_j0vov")
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/LayerNear"]
-position = Vector2(650, 420)
-scale = Vector2(0.86, 0.86)
-modulate = Color(0.72, 0.81, 0.98, 0.82)
+[node name="Layer3" type="Sprite2D" parent="Background" unique_id=1365206495]
+z_index = -30
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_xj4p5")
 
-[node name="Clouds" type="Node2D" parent="."]
+[node name="Layer4" type="Sprite2D" parent="Background" unique_id=1944373719]
+z_index = -20
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_bx1w8")
 
-[node name="Cloud" parent="Clouds" instance=ExtResource("2_3g84a")]
+[node name="Layer5" type="Sprite2D" parent="Background" unique_id=1595138797]
+z_index = -10
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("10_dgyt0")
+
+[node name="Clouds" type="Node2D" parent="." unique_id=1819724580]
+
+[node name="Cloud" parent="Clouds" unique_id=1137800287 instance=ExtResource("2_3g84a")]
 position = Vector2(250, 510)
 scale = Vector2(0.92, 0.92)
 
-[node name="Cloud2" parent="Clouds" instance=ExtResource("2_3g84a")]
+[node name="Cloud2" parent="Clouds" unique_id=1772939688 instance=ExtResource("2_3g84a")]
 position = Vector2(870, 270)
 scale = Vector2(0.78, 0.78)
 
-[node name="Stars" type="Node2D" parent="."]
+[node name="Stars" type="Node2D" parent="." unique_id=510376752]
 
-[node name="GrabStar2" parent="Stars" instance=ExtResource("3_x65m2")]
+[node name="GrabStar2" parent="Stars" unique_id=410867866 instance=ExtResource("3_x65m2")]
 position = Vector2(730, 300)
 
-[node name="GrabStar22" parent="Stars" instance=ExtResource("3_x65m2")]
+[node name="GrabStar22" parent="Stars" unique_id=319262446 instance=ExtResource("3_x65m2")]
 position = Vector2(520, 40)
 
-[node name="YankStar" parent="Stars" instance=ExtResource("4_0blra")]
+[node name="YankStar" parent="Stars" unique_id=1560088464 instance=ExtResource("4_0blra")]
 position = Vector2(300, 190)
 wait_time = 0.9
 away_weight = 0.15
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Obstacles" type="Node2D" parent="." unique_id=1009962960]
 
-[node name="BirdSpawner" parent="Obstacles" instance=ExtResource("5_15a83")]
+[node name="BirdSpawner" parent="Obstacles" unique_id=1720170919 instance=ExtResource("5_15a83")]
 position = Vector2(1300, 50)
 bird_spawn_period_sec = 2.8
-bird_move_dir = Vector2(-1, 0.08)
 bird_speed = 340.0
+bird_move_dir = Vector2(-1, 0.08)
 
-[node name="Geometry" type="Node2D" parent="."]
+[node name="Geometry" type="Node2D" parent="." unique_id=1681674229]
 
-[node name="Floor" type="StaticBody2D" parent="Geometry"]
+[node name="Floor" type="StaticBody2D" parent="Geometry" unique_id=1865770894]
 position = Vector2(576, 650)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor"]
-one_way_collision = true
-one_way_collision_margin = 8.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor" unique_id=873363353]
 shape = SubResource("RectangleShape2D_swe3w")
+one_way_collision_margin = 8.0
 
-[node name="MidPlatform" type="StaticBody2D" parent="Geometry"]
+[node name="MidPlatform" type="StaticBody2D" parent="Geometry" unique_id=612763727]
 position = Vector2(260, 320)
+collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/MidPlatform"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/MidPlatform" unique_id=294785737]
+shape = SubResource("RectangleShape2D_qhflo")
 one_way_collision = true
 one_way_collision_margin = 8.0
-shape = SubResource("RectangleShape2D_qhflo")
