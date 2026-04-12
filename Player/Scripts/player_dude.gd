@@ -48,8 +48,7 @@ func tether_process(delta):
 	
 	if Input.is_action_just_pressed("jump"):
 		velocity.y = JUMP_VELOCITY
-		tethered = null
-		rigid.queue_free()
+		untether()
 		return
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
@@ -71,3 +70,7 @@ func tether_to(star: GrabStar2):
 	shape.shape.radius = 32
 	shape.shape.height = 128
 	rigid.add_child(shape)
+
+func untether():
+	tethered = null
+	rigid.queue_free()

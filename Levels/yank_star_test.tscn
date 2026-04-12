@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="1_5ygy6"]
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="2_1b0sh"]
 [ext_resource type="PackedScene" uid="uid://dc3whaxx3jqvn" path="res://Player/player_dude.tscn" id="3_5ygy6"]
+[ext_resource type="PackedScene" uid="uid://cg6kh4ruip5rl" path="res://Entities/star_selector.tscn" id="4_1b0sh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y32ns"]
 size = Vector2(1154.5, 125)
@@ -36,3 +37,5 @@ position = Vector2(153, 117)
 
 [node name="PlayerDude" parent="." unique_id=2027622154 instance=ExtResource("3_5ygy6")]
 position = Vector2(859, 449)
+
+[node name="StarSelector" parent="." unique_id=695560097 instance=ExtResource("4_1b0sh")]
