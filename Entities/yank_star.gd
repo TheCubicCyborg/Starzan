@@ -9,7 +9,7 @@ var destination: Vector2
 var wait_timer: float = 0
 @export var wait_time: float = 2
 @export_range(0,1.0) var away_weight: float = 0.5
-@export_range(0,1.0) var return_weight: float = 0.5
+@export_range(0,1.0) var return_speed: float = 5
 
 func _ready():
 	source = position
@@ -23,6 +23,7 @@ func _input_event(viewport, event, shape_idx):
 			destination = TEMP_PULL_LOCATION
 
 func _physics_process(delta):
+	var start_position = position
 	if moving:
 		if away:
 			position = lerp(position,destination,away_weight)
@@ -31,7 +32,7 @@ func _physics_process(delta):
 				moving = false
 				wait_timer = wait_time
 		else:
-			position = lerp(position,source, return_weight)
+			position = position.move_toward(source,return_speed)
 			if position.is_equal_approx(source):
 				position = source
 				moving = false 
@@ -41,3 +42,8 @@ func _physics_process(delta):
 			wait_timer = 0
 			moving = true
 			away = false
+	constant_linear_velocity = (position - start_position)/delta
+	if constant_linear_velocity.y < 0:
+		constant_linear_velocity.y = 0
+	elif constant_linear_velocity.y > 0:
+		constant_linear_velocity.y += get_gravity().y
