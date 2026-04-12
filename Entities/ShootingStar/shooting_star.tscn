@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bhvelqm8xpeq2"]
+
+[ext_resource type="Script" uid="uid://f0omoarteebh" path="res://Entities/Bird/bird.gd" id="1_4isur"]
+[ext_resource type="Texture2D" uid="uid://duhgmwpn6a4do" path="res://Entities/ShootingStar/Art/shooting-1.png" id="2_16qs8"]
+[ext_resource type="Texture2D" uid="uid://dkbq5dqvynxv3" path="res://Entities/ShootingStar/Art/shooting-2.png" id="3_qxjwe"]
+[ext_resource type="Texture2D" uid="uid://bgwy1b583lad1" path="res://Entities/ShootingStar/Art/shooting-3.png" id="4_mjpun"]
+[ext_resource type="Texture2D" uid="uid://dt36qkbdcsonw" path="res://Entities/ShootingStar/Art/shooting-4.png" id="5_owskp"]
+[ext_resource type="Texture2D" uid="uid://b86nrbtdc58p8" path="res://Entities/ShootingStar/Art/shooting-5.png" id="6_ygusx"]
+[ext_resource type="Texture2D" uid="uid://g0latgc7haqg" path="res://Entities/ShootingStar/Art/shooting-6.png" id="7_6t0jm"]
+[ext_resource type="Texture2D" uid="uid://btka53nom3xm1" path="res://Entities/ShootingStar/Art/shooting-7.png" id="8_ux5ee"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_16qs8"]
+radius = 35.014282
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y54pf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_16qs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qxjwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mjpun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_owskp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ygusx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6t0jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ux5ee")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Bird" type="Node2D" unique_id=857231268]
+script = ExtResource("1_4isur")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1518694689]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1882585621]
+position = Vector2(-4, 0)
+shape = SubResource("CircleShape2D_16qs8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=2065605848]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_y54pf")
+autoplay = "default"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

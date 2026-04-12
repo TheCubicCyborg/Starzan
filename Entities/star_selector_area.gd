@@ -1,4 +1,5 @@
 extends Area2D
+class_name StarSelector
 
 @export var star_selector_sprite: Sprite2D
 @export var cast_line: FishingCastLine
@@ -14,6 +15,7 @@ var _cast_target: Star
 var _mouse_position_tween: Tween
 
 func _ready() -> void:
+	GameManager.tether = self
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if not star_selector_sprite:
 		push_warning("continuing without custom cursor")
@@ -26,7 +28,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
 
-	var player := GameManager.player
+	var player: Player = GameManager.player
 	if player != null:
 		var distance_to_player := global_position.distance_to(player.global_position)
 		in_activation_range = distance_to_player <= activation_range

@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bnyr3y4h7bqak"]
+
+[ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_oq0bf"]
+[ext_resource type="Texture2D" uid="uid://i157f460pdcq" path="res://Assets/bg-1.png" id="2_11ydr"]
+[ext_resource type="Texture2D" uid="uid://c4i4s6s3lvw2h" path="res://Assets/bg-2.png" id="3_l4d6m"]
+[ext_resource type="Texture2D" uid="uid://dbnjo8qkkbkq3" path="res://Assets/bg-3.png" id="4_ypubw"]
+[ext_resource type="Texture2D" uid="uid://cyucivrqsk6k" path="res://Assets/bg-4.png" id="5_ahxac"]
+[ext_resource type="Texture2D" uid="uid://cjkij3g7h0efc" path="res://Assets/bg-5.png" id="6_2kxkg"]
+[ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="7_tqdw0"]
+[ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="8_0js0t"]
+[ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="9_vg6x4"]
+[ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="10_5hxim"]
+[ext_resource type="PackedScene" uid="uid://cg6kh4ruip5rl" path="res://Entities/star_selector.tscn" id="11_11ydr"]
+
+[node name="Zone2" type="Node2D" unique_id=852462518]
+script = ExtResource("1_oq0bf")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=376460658]
+position = Vector2(176, 936)
+
+[node name="Background" type="Node2D" parent="." unique_id=462558242]
+
+[node name="Layer1" type="Sprite2D" parent="Background" unique_id=1770074116]
+z_index = -50
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_11ydr")
+
+[node name="Layer2" type="Sprite2D" parent="Background" unique_id=977707340]
+z_index = -40
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_l4d6m")
+
+[node name="Layer3" type="Sprite2D" parent="Background" unique_id=934708896]
+z_index = -30
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_ypubw")
+
+[node name="Layer4" type="Sprite2D" parent="Background" unique_id=1580912087]
+z_index = -20
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_ahxac")
+
+[node name="Layer5" type="Sprite2D" parent="Background" unique_id=1676472373]
+z_index = -10
+position = Vector2(960, 540)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_2kxkg")
+
+[node name="Clouds" type="Node2D" parent="." unique_id=1062249994]
+
+[node name="Cloud" parent="Clouds" unique_id=1395255798 instance=ExtResource("7_tqdw0")]
+position = Vector2(1533, 999)
+scale = Vector2(0.9, 0.9)
+
+[node name="Cloud3" parent="Clouds" unique_id=1885921908 instance=ExtResource("7_tqdw0")]
+position = Vector2(198, 1040)
+scale = Vector2(-1, 1)
+
+[node name="Cloud2" parent="Clouds" unique_id=1062291173 instance=ExtResource("7_tqdw0")]
+position = Vector2(162, 402)
+scale = Vector2(0.8, 0.8)
+
+[node name="Stars" type="Node2D" parent="." unique_id=75045220]
+
+[node name="GrabStar2" parent="Stars" unique_id=2089855297 instance=ExtResource("8_0js0t")]
+position = Vector2(552, 757)
+
+[node name="GrabStar22" parent="Stars" unique_id=621056504 instance=ExtResource("8_0js0t")]
+position = Vector2(903, 759)
+
+[node name="GrabStar23" parent="Stars" unique_id=1483779697 instance=ExtResource("8_0js0t")]
+position = Vector2(303, 143)
+
+[node name="YankStar2" parent="Stars" unique_id=1041927568 instance=ExtResource("9_vg6x4")]
+position = Vector2(1520, 508)
+wait_time = 1.2
+
+[node name="YankStar3" parent="Stars" unique_id=274514853 instance=ExtResource("9_vg6x4")]
+position = Vector2(977, 499)
+wait_time = 1.2
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=1036402899]
+
+[node name="BirdSpawner" parent="Obstacles" unique_id=1144366796 instance=ExtResource("10_5hxim")]
+position = Vector2(-125, 832)
+bird_type = 0
+bird_spawn_period_sec = 2.0
+inverted = false
+bird_lifetime = 10.0
+bird_move_dir = Vector2(1, 0.03)
+
+[node name="BirdSpawner2" parent="Obstacles" unique_id=396003907 instance=ExtResource("10_5hxim")]
+position = Vector2(2032, 647)
+bird_type = 0
+bird_spawn_period_sec = 2.0
+inverted = true
+bird_lifetime = 10.0
+bird_move_dir = Vector2(1, 0.03)
+
+[node name="StarSpawner" parent="Obstacles" unique_id=1218702318 instance=ExtResource("10_5hxim")]
+position = Vector2(-139, 326)
+rotation = 0.6448306
+bird_type = 1
+bird_spawn_period_sec = 3.5
+inverted = false
+bird_speed = 1000.0
+
+[node name="StarSpawner3" parent="Obstacles" unique_id=1073132823 instance=ExtResource("10_5hxim")]
+position = Vector2(-145, -170)
+rotation = 0.6448306
+bird_type = 1
+bird_spawn_period_sec = 3.5
+inverted = false
+bird_speed = 1000.0
+
+[node name="StarSpawner2" parent="Obstacles" unique_id=1645862084 instance=ExtResource("10_5hxim")]
+position = Vector2(-134.00002, 84.000015)
+rotation = 0.6448306
+bird_type = 1
+bird_spawn_period_sec = 3.5
+inverted = false
+bird_speed = 1000.0
+
+[node name="Geometry" type="Node2D" parent="." unique_id=1917234492]
+
+[node name="StarSelector" parent="." unique_id=695560097 instance=ExtResource("11_11ydr")]

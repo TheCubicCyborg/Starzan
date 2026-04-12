@@ -114,7 +114,7 @@ func tether_to(star: GrabStar2):
 
 func untether():
 	tethered = null
-	rigid.queue_free()
+	if is_instance_valid(rigid): rigid.queue_free()
 	_set_one_way_collision_enabled(true)
 
 func _update_animation() -> void:

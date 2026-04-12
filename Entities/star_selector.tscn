@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cg6kh4ruip5rl"]
 
-[ext_resource type="Script" uid="uid://baakoncar6g41" path="res://Entities/star_selector_area.gd" id="1_5h36o"]
+[ext_resource type="Script" uid="uid://cphuj8nmp3rsp" path="res://Entities/star_selector_area.gd" id="1_5h36o"]
 [ext_resource type="Script" uid="uid://doace7f5epumv" path="res://Entities/star_selector_sprite.gd" id="3_6qoe8"]
-[ext_resource type="Script" path="res://Entities/fishing_cast_line.gd" id="4_qh0wc"]
+[ext_resource type="Script" uid="uid://dr2wvlo5dj7fi" path="res://Entities/fishing_cast_line.gd" id="4_qh0wc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1630o"]
 radius = 20.0
@@ -16,6 +16,7 @@ load_path = "res://.godot/imported/star_hover_cursor.png-ae9d59ba8265ebaab0545ca
 script = ExtResource("1_5h36o")
 star_selector_sprite = NodePath("../StarSelectorSprite")
 cast_line = NodePath("../CastLine")
+activation_range = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StarSelectorArea" unique_id=874008882]
 shape = SubResource("CircleShape2D_1630o")
