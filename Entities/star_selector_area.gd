@@ -42,7 +42,7 @@ func _notification(what: int) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is GrabStar:
+	if area is Star:
 		print("this area just entered: %s" % area.name)
 		star_in_range = area
 		star_position = star_in_range.global_position	

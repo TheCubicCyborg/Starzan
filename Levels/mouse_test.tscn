@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://yaql7hcdnxc5"]
 
-[ext_resource type="Script" path="res://Entities/yank_star.gd" id="1_ilwa7"]
-[ext_resource type="Script" path="res://Player/Scripts/player_dude.gd" id="2_srr1d"]
+[ext_resource type="Script" uid="uid://d15ynqgsfaojm" path="res://Entities/yank_star.gd" id="1_ilwa7"]
+[ext_resource type="Script" uid="uid://c8o7l5hj5ojbo" path="res://Player/Scripts/player_dude.gd" id="2_srr1d"]
 [ext_resource type="Texture2D" uid="uid://kei3lixd7xjs" path="res://Assets/placeholder_dude.png" id="3_ewl5m"]
 [ext_resource type="PackedScene" uid="uid://cm34nyquqmqxj" path="res://Entities/grab_star.tscn" id="4_l4t1b"]
 [ext_resource type="Script" uid="uid://dlrcqfridkjys" path="res://Entities/star_selector_area.gd" id="5_srr1d"]
 [ext_resource type="Texture2D" uid="uid://tv3iswscc7xp" path="res://Assets/star_hover_cursor.png" id="6_ewl5m"]
-[ext_resource type="Script" uid="uid://doace7f5epumv" path="res://Levels/star_selector_sprite.gd" id="7_l4t1b"]
+[ext_resource type="Script" uid="uid://doace7f5epumv" path="res://Entities/star_selector_sprite.gd" id="7_l4t1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y32ns"]
 size = Vector2(1154.5, 125)
