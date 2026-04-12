@@ -17,6 +17,12 @@ func _physics_process(delta):
 		tether_process(delta)
 	else:
 		normal_process(delta)
+	
+func _set_sprite_direction(direction: float):
+	if direction < -0.01:
+		player_sprite.flip_h = true	
+	elif direction > 0.01:
+		player_sprite.flip_h = false	
 
 func normal_process(delta):
 	# Add the gravity.
@@ -31,10 +37,7 @@ func normal_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
-		if direction < -0.01:
-			player_sprite.flip_h = true	
-		elif direction > 0.01:
-			player_sprite.flip_h = false	
+		_set_sprite_direction(direction)
 		velocity.x = direction * SPEED
 	else:
 		if not is_on_floor():
@@ -57,6 +60,7 @@ func tether_process(delta):
 		return
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
+		_set_sprite_direction(direction)
 		rigid.apply_central_force(direction * Vector2.RIGHT * 100)
 	
 	var diff = tethered.position.distance_to(position) - tether_length
