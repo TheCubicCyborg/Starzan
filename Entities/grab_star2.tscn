@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://xbmjxfatawlh" path="res://Assets/grabstar/pull-6.png" id="7_nnbhq"]
 [ext_resource type="Texture2D" uid="uid://daksiw7ogr5y4" path="res://Assets/grabstar/pull-7.png" id="8_8tkcq"]
 [ext_resource type="Texture2D" uid="uid://blcgs5c4fids3" path="res://Assets/grabstar/pull-8.png" id="9_74wvu"]
+[ext_resource type="Texture2D" uid="uid://ylg27r7oa6i4" path="res://Assets/dot1.png" id="10_8skgs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n3ddw"]
 animations = [{
@@ -48,8 +49,35 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gul6d"]
 size = Vector2(64, 64)
 
-[node name="GrabStar2" type="Area2D" unique_id=1483779697]
+[sub_resource type="Curve" id="Curve_dr0p5"]
+_data = [Vector2(0, 0.3646533), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_j6q0h"]
+curve = SubResource("Curve_dr0p5")
+
+[sub_resource type="Curve" id="Curve_bwhtb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.46774194, 0.42729312), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tgfgr"]
+curve = SubResource("Curve_bwhtb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8skgs"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 40.24
+spread = 180.0
+initial_velocity_min = 104.939995
+initial_velocity_max = 104.939995
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_tgfgr")
+color = Color(0.41857877, 0.80595344, 0.9236738, 1)
+emission_curve = SubResource("CurveTexture_j6q0h")
+
+[node name="GrabStar2" type="Area2D" unique_id=1483779697 node_paths=PackedStringArray("attach_particles")]
 script = ExtResource("1_gul6d")
+attach_particles = NodePath("GPUParticles2D")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=87902625]
 scale = Vector2(0.3, 0.3)
@@ -73,3 +101,13 @@ process_mode = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=252053649]
 shape = SubResource("RectangleShape2D_gul6d")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1046515337]
+emitting = false
+texture = ExtResource("10_8skgs")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_8skgs")

@@ -148,6 +148,7 @@ func _update_cast(delta: float) -> void:
 		var target := _cast_target
 		_cancel_cast()
 		if target != null and is_instance_valid(target):
+			_play_attach_particles(target)
 			target.activate()
 
 func _cancel_cast() -> void:
@@ -168,3 +169,14 @@ func _update_tether_line(player: Player) -> void:
 		cast_line.show_straight_line(_get_cast_origin(), player.tethered.global_position)
 	else:
 		cast_line.hide_line()
+
+func _play_attach_particles(target: Star) -> void:
+	if target == null:
+		return
+
+	var particles := target.attach_particles
+	if particles == null:
+		return
+
+	particles.restart()
+	particles.emitting = true
