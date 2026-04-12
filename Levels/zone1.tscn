@@ -2,15 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_73uu8"]
 [ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="2_32g1p"]
-[ext_resource type="Texture2D" uid="uid://i157f460pdcq" path="res://Assets/bg-1.png" id="3_7f8uw"]
+[ext_resource type="Texture2D" uid="uid://b2b7eruvmchg2" path="res://Assets/bg-1(2).png" id="2_ehs05"]
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_h65oe"]
-[ext_resource type="Texture2D" uid="uid://c4i4s6s3lvw2h" path="res://Assets/bg-2.png" id="4_7f8uw"]
 [ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_tcy8j"]
-[ext_resource type="Texture2D" uid="uid://dbnjo8qkkbkq3" path="res://Assets/bg-3.png" id="5_oo0xf"]
 [ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_uib0s"]
-[ext_resource type="Texture2D" uid="uid://cyucivrqsk6k" path="res://Assets/bg-4.png" id="6_qtjmo"]
 [ext_resource type="PackedScene" uid="uid://bc5geg2hclkqp" path="res://Entities/cloud/bouncy_cloud.tscn" id="7_ekl4t"]
-[ext_resource type="Texture2D" uid="uid://cjkij3g7h0efc" path="res://Assets/bg-5.png" id="9_mfkdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4st8f"]
 size = Vector2(2014, 509)
@@ -26,44 +22,8 @@ position = Vector2(576, 520)
 [node name="Layer1" type="Sprite2D" parent="Background" unique_id=427633681]
 z_index = -50
 position = Vector2(960, -540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_7f8uw")
-
-[node name="Layer1_RepeatTop" type="Sprite2D" parent="Background" unique_id=479275255]
-z_index = -50
-position = Vector2(960, -1620)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_7f8uw")
-
-[node name="Layer1_RepeatBottom" type="Sprite2D" parent="Background" unique_id=1718258423]
-z_index = -50
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_7f8uw")
-
-[node name="Layer2" type="Sprite2D" parent="Background" unique_id=652947592]
-z_index = -40
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("4_7f8uw")
-
-[node name="Layer3" type="Sprite2D" parent="Background" unique_id=625462986]
-z_index = -30
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("5_oo0xf")
-
-[node name="Layer4" type="Sprite2D" parent="Background" unique_id=1213369440]
-z_index = -20
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_qtjmo")
-
-[node name="Layer5" type="Sprite2D" parent="Background" unique_id=734794790]
-z_index = -10
-position = Vector2(960, 540)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("9_mfkdy")
+scale = Vector2(2, 2)
+texture = ExtResource("2_ehs05")
 
 [node name="Clouds" type="Node2D" parent="." unique_id=1036393753]
 
