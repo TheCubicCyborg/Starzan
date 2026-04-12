@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bhsi4l11kjr1"]
+
+[ext_resource type="PackedScene" uid="uid://bgo354h5al4h0" path="res://UI/gravity_control.tscn" id="1_tqaoc"]
+[ext_resource type="Script" uid="uid://b07p1rmmvvf3h" path="res://Player/Scripts/kinematic_player.gd" id="2_tqaoc"]
+[ext_resource type="Script" uid="uid://6joui1cs14de" path="res://Levels/velocity_label.gd" id="3_1vn4s"]
+[ext_resource type="PackedScene" uid="uid://cm34nyquqmqxj" path="res://Entities/grab_star.tscn" id="3_7dnfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y32ns"]
+size = Vector2(1154.5, 125)
+
+[sub_resource type="Gradient" id="Gradient_y32ns"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.012048192, 0.12349398, 0.18072289, 1)
+colors = PackedColorArray(0.26666668, 0.7882353, 0.09411765, 1, 0.30723685, 0.58958125, 0.12909195, 1, 0.38039216, 0.23137255, 0.19215687, 1, 0.38039216, 0.23137255, 0.19215687, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wtcfe"]
+gradient = SubResource("Gradient_y32ns")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y32ns"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
+size = Vector2(64, 64)
+
+[node name="TestScene" type="Node2D" unique_id=161238367]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1217467274]
+position = Vector2(-1697, 0)
+scale = Vector2(4.11, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=830023668]
+position = Vector2(576.75, 585.5)
+shape = SubResource("RectangleShape2D_y32ns")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor/CollisionShape2D" unique_id=14804192]
+scale = Vector2(18.04, 2)
+texture = SubResource("GradientTexture2D_wtcfe")
+
+[node name="PlayerGuy" type="CharacterBody2D" parent="." unique_id=1321108870]
+position = Vector2(761, 488)
+script = ExtResource("2_tqaoc")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerGuy" unique_id=801462721]
+texture = SubResource("PlaceholderTexture2D_y32ns")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerGuy" unique_id=1854291909]
+shape = SubResource("RectangleShape2D_wtcfe")
+
+[node name="Label" type="Label" parent="PlayerGuy" unique_id=2134042734]
+offset_left = -26.0
+offset_top = -67.0
+offset_right = 23.0
+offset_bottom = -44.0
+text = "Player"
+
+[node name="Camera2D" type="Camera2D" parent="PlayerGuy" unique_id=181363711]
+position = Vector2(0, -159)
+
+[node name="GravityControl" parent="PlayerGuy/Camera2D" unique_id=1449078475 instance=ExtResource("1_tqaoc")]
+offset_left = 572.0
+offset_top = -317.0
+offset_right = 572.0
+offset_bottom = -317.0
+
+[node name="Label" type="Label" parent="PlayerGuy/Camera2D" unique_id=1481496128]
+offset_left = 335.0
+offset_top = -259.0
+offset_right = 469.0
+offset_bottom = -210.0
+text = "Kinematic Speed:
+"
+script = ExtResource("3_1vn4s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerGuy" unique_id=943793695]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GrabStar" parent="." unique_id=1293662515 instance=ExtResource("3_7dnfv")]
+position = Vector2(245, 186)

@@ -16,3 +16,10 @@ texture = SubResource("PlaceholderTexture2D_0e48y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039221457]
 shape = SubResource("RectangleShape2D_epypp")
+
+[node name="Label" type="Label" parent="." unique_id=1903412412]
+offset_left = -38.0
+offset_top = -63.0
+offset_right = 36.0
+offset_bottom = -14.0
+text = "Grab Star"
