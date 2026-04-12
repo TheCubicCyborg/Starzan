@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dfi5dtmvrn6mw"]
 
 [ext_resource type="Script" uid="uid://cmfbolhr5a0nw" path="res://Levels/tower.gd" id="1_n8n34"]
+[ext_resource type="PackedScene" uid="uid://dtamnm2x362xl" path="res://Levels/zone1-alex.tscn" id="2_ff86o"]
 [ext_resource type="PackedScene" uid="uid://dc3whaxx3jqvn" path="res://Player/player_dude.tscn" id="2_jfpf2"]
 [ext_resource type="PackedScene" uid="uid://cg6kh4ruip5rl" path="res://Entities/star_selector.tscn" id="3_3m24x"]
-[ext_resource type="PackedScene" uid="uid://dytks8x1enjd8" path="res://Levels/zone1.tscn" id="4_07gk0"]
 [ext_resource type="PackedScene" uid="uid://li1w53agusyk" path="res://Levels/zone2.tscn" id="5_gsmrw"]
 [ext_resource type="PackedScene" uid="uid://bgfbfsqv4th08" path="res://Levels/zone3.tscn" id="6_oy6og"]
 
@@ -15,12 +15,12 @@ size = Vector2(80, 14000)
 
 [node name="Tower" type="Node2D" unique_id=2118308458]
 script = ExtResource("1_n8n34")
+zone_boundaries_y = PackedFloat32Array()
 
-[node name="Zone1" parent="." unique_id=1713146309 instance=ExtResource("4_07gk0")]
-script = null
+[node name="Zone1" parent="." unique_id=22221764 instance=ExtResource("2_ff86o")]
 
 [node name="Zone2" parent="." unique_id=1284026243 instance=ExtResource("5_gsmrw")]
-position = Vector2(0, -8000)
+position = Vector2(0, -12000)
 
 [node name="Zone3" parent="." unique_id=732793463 instance=ExtResource("6_oy6og")]
 position = Vector2(0, -16000)
@@ -32,7 +32,7 @@ collision_mask = 1
 [node name="StarSelector" parent="." unique_id=2133816736 instance=ExtResource("3_3m24x")]
 
 [node name="TowerCamera" type="Camera2D" parent="." unique_id=1752281228]
-position = Vector2(960, 541)
+position = Vector2(960, 124)
 
 [node name="TowerBounds" type="Node2D" parent="." unique_id=796198808]
 

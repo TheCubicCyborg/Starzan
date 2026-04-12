@@ -42,6 +42,7 @@ animations = [{
 [node name="BirdSpawner" type="Node2D" unique_id=396003907]
 script = ExtResource("1_usm0p")
 bird_speed = 300.0
+bird_lifetime = 10.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=81677352]
 sprite_frames = SubResource("SpriteFrames_1qtqw")

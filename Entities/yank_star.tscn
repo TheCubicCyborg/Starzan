@@ -106,7 +106,7 @@ animations = [{
 
 [node name="YankStar" type="Area2D" unique_id=1041927568]
 script = ExtResource("1_h3tkt")
-wait_time = 1.0
+wait_time = 0.5
 away_weight = 0.1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1206161143]

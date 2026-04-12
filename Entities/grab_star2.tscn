@@ -61,6 +61,7 @@ frame_progress = 0.8808988
 shape = SubResource("RectangleShape2D_epypp")
 
 [node name="Label" type="Label" parent="." unique_id=1903412412]
+visible = false
 offset_left = -38.0
 offset_top = -63.0
 offset_right = 36.0
