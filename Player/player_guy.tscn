@@ -1,12 +1,94 @@
 [gd_scene format=3 uid="uid://bfvw8gcq1ue51"]
 
 [ext_resource type="Script" uid="uid://cgivetbihuyuv" path="res://Player/Scripts/player_guy.gd" id="1_rjl5x"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y32ns"]
-size = Vector2(64, 64)
+[ext_resource type="Texture2D" uid="uid://bs5ntsp5gk502" path="res://Player/Art/Idle/idle-1.png" id="2_ls152"]
+[ext_resource type="Texture2D" uid="uid://n53m1nhpo58t" path="res://Player/Art/Idle/idle-2.png" id="3_eilv1"]
+[ext_resource type="Texture2D" uid="uid://ccg72ic6j1hug" path="res://Player/Art/Idle/idle-3.png" id="4_ytlsx"]
+[ext_resource type="Texture2D" uid="uid://b6xe2hhca53e3" path="res://Player/Art/Jump/jump-1.png" id="5_gotyd"]
+[ext_resource type="Texture2D" uid="uid://cpijei7p62s6a" path="res://Player/Art/Jump/jump-2.png" id="6_14os4"]
+[ext_resource type="Texture2D" uid="uid://cb1asu3edy4n7" path="res://Player/Art/Jump/jump-3.png" id="7_14os4"]
+[ext_resource type="Texture2D" uid="uid://drtwteinvfo8m" path="res://Player/Art/Pull/pull-2.png" id="8_8kjne"]
+[ext_resource type="Texture2D" uid="uid://btfyd8a8qvq4p" path="res://Player/Art/Pull/pull-1.png" id="8_iriru"]
+[ext_resource type="Texture2D" uid="uid://by2773wjl5oej" path="res://Player/Art/Pull/pull-3.png" id="10_n6vo6"]
+[ext_resource type="Texture2D" uid="uid://duaj1agx51xlm" path="res://Player/Art/Pull/pull-4.png" id="11_owejd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
 size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_eilv1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ls152")]
+}
+
+[sub_resource type="Animation" id="Animation_ls152"]
+resource_name = "idle"
+length = 0.75
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ls152"), ExtResource("3_eilv1"), ExtResource("4_ytlsx")]
+}
+
+[sub_resource type="Animation" id="Animation_ytlsx"]
+resource_name = "jump"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_gotyd"), ExtResource("6_14os4"), ExtResource("7_14os4")]
+}
+
+[sub_resource type="Animation" id="Animation_14os4"]
+resource_name = "pull"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_iriru"), ExtResource("8_8kjne"), ExtResource("10_n6vo6"), ExtResource("11_owejd")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eilv1"]
+_data = {
+&"RESET": SubResource("Animation_eilv1"),
+&"idle": SubResource("Animation_ls152"),
+&"jump": SubResource("Animation_ytlsx"),
+&"pull": SubResource("Animation_14os4")
+}
 
 [node name="PlayerGuy" type="RigidBody2D" unique_id=448250733]
 lock_rotation = true
@@ -14,7 +96,12 @@ custom_integrator = true
 script = ExtResource("1_rjl5x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=801462721]
-texture = SubResource("PlaceholderTexture2D_y32ns")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ls152")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1854291909]
 shape = SubResource("RectangleShape2D_wtcfe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=473975656]
+libraries/ = SubResource("AnimationLibrary_eilv1")
+autoplay = &"idle"
