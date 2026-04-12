@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dc3whaxx3jqvn" path="res://Player/player_dude.tscn" id="2_jfpf2"]
 [ext_resource type="PackedScene" uid="uid://cg6kh4ruip5rl" path="res://Entities/star_selector.tscn" id="3_3m24x"]
 [ext_resource type="PackedScene" uid="uid://dytks8x1enjd8" path="res://Levels/zone1.tscn" id="4_07gk0"]
-[ext_resource type="PackedScene" path="res://Levels/zone2.tscn" id="5_gsmrw"]
-[ext_resource type="PackedScene" path="res://Levels/zone3.tscn" id="6_oy6og"]
+[ext_resource type="PackedScene" uid="uid://li1w53agusyk" path="res://Levels/zone2.tscn" id="5_gsmrw"]
+[ext_resource type="PackedScene" uid="uid://bgfbfsqv4th08" path="res://Levels/zone3.tscn" id="6_oy6og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(80, 14000)
@@ -17,7 +17,6 @@ size = Vector2(80, 14000)
 script = ExtResource("1_n8n34")
 
 [node name="Zone1" parent="." unique_id=1713146309 instance=ExtResource("4_07gk0")]
-rotation = 0.0039469562
 script = null
 
 [node name="Zone2" parent="." unique_id=1284026243 instance=ExtResource("5_gsmrw")]
@@ -28,22 +27,23 @@ position = Vector2(0, -8000)
 
 [node name="PlayerDude" parent="." unique_id=659196782 instance=ExtResource("2_jfpf2")]
 position = Vector2(576, 520)
+collision_mask = 1
 
 [node name="StarSelector" parent="." unique_id=2133816736 instance=ExtResource("3_3m24x")]
 
 [node name="TowerCamera" type="Camera2D" parent="." unique_id=1752281228]
-position = Vector2(576, 380)
+position = Vector2(960, 541)
 
 [node name="TowerBounds" type="Node2D" parent="." unique_id=796198808]
 
 [node name="LeftWall" type="StaticBody2D" parent="TowerBounds" unique_id=924804666]
-position = Vector2(-64, -3500)
+position = Vector2(-44, -3488)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerBounds/LeftWall" unique_id=2143650155]
 shape = SubResource("RectangleShape2D_left_wall")
 
 [node name="RightWall" type="StaticBody2D" parent="TowerBounds" unique_id=345778518]
-position = Vector2(1216, -3500)
+position = Vector2(1960, -3498)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerBounds/RightWall" unique_id=242095141]
 shape = SubResource("RectangleShape2D_right_wall")
