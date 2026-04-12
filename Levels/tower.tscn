@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://li1w53agusyk" path="res://Levels/zone2.tscn" id="5_gsmrw"]
 [ext_resource type="PackedScene" uid="uid://bgfbfsqv4th08" path="res://Levels/zone3.tscn" id="6_oy6og"]
 [ext_resource type="AudioStream" uid="uid://c8rosnalq53oj" path="res://Audio/sfxes_005.wav" id="6_ssgiv"]
-[ext_resource type="AudioStream" uid="uid://bxo43ascrpvd1" path="res://Audio/part3.wav" id="8_5gqi5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(80, 14000)
@@ -50,7 +49,3 @@ position = Vector2(1960, -3498)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerBounds/RightWall" unique_id=242095141]
 shape = SubResource("RectangleShape2D_right_wall")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1843240465]
-stream = ExtResource("8_5gqi5")
-autoplay = true
