@@ -95,6 +95,12 @@ func tether_to(star: GrabStar2):
 	shape.shape.radius = 32
 	shape.shape.height = 128
 	rigid.add_child(shape)
+	
+	# get the players velocity that is tangent to the swinging arc
+	var tether_dir = position.direction_to(star.position)
+	var tangent_dir = Vector2(-tether_dir.y, tether_dir.x).normalized()
+	var speed = velocity.dot(tangent_dir)
+	rigid.linear_velocity = speed * tangent_dir
 
 func untether():
 	tethered = null
