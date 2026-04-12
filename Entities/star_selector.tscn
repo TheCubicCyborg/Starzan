@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cg6kh4ruip5rl"]
+
+[ext_resource type="Script" uid="uid://dlrcqfridkjys" path="res://Entities/star_selector_area.gd" id="1_5h36o"]
+[ext_resource type="Script" uid="uid://doace7f5epumv" path="res://Entities/star_selector_sprite.gd" id="3_6qoe8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1630o"]
+radius = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vwp2k"]
+load_path = "res://.godot/imported/star_hover_cursor.png-ae9d59ba8265ebaab0545ca8f3ce99b6.ctex"
+
+[node name="StarSelector" type="Node2D" unique_id=695560097]
+
+[node name="StarSelectorArea" type="Area2D" parent="." unique_id=1337415989 node_paths=PackedStringArray("star_selector_sprite")]
+script = ExtResource("1_5h36o")
+star_selector_sprite = NodePath("../StarSelectorSprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StarSelectorArea" unique_id=874008882]
+shape = SubResource("CircleShape2D_1630o")
+
+[node name="StarSelectorSprite" type="Sprite2D" parent="." unique_id=207075474]
+position = Vector2(-67.19999, -0.1999998)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("CompressedTexture2D_vwp2k")
+script = ExtResource("3_6qoe8")
+
+[connection signal="area_entered" from="StarSelectorArea" to="StarSelectorArea" method="_on_area_entered"]
+[connection signal="area_exited" from="StarSelectorArea" to="StarSelectorArea" method="_on_area_exited"]
+[connection signal="body_entered" from="StarSelectorArea" to="StarSelectorArea" method="_on_body_entered"]
+[connection signal="body_exited" from="StarSelectorArea" to="StarSelectorArea" method="_on_body_exited"]

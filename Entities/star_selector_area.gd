@@ -4,10 +4,13 @@ extends Area2D
 var base_selector_sprite_scale: Vector2
 @export var lerp_speed: float = 100.
 
-var star_in_range: Node2D
+var star_in_range: Star
 var star_position: Vector2
 
 var lerp_factor: float = 0.
+
+@export var activation_range:float = 500
+var in_activation_range: bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -20,6 +23,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
 	
+	if position.distance_to(GameManager.player.position) <= activation_range:
+		star_selector_sprite.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		in_activation_range = true
+	else:
+		star_selector_sprite.modulate = Color(0.453, 0.453, 0.453, 1.0)
+		in_activation_range = false
+	
 	if star_position:
 		star_selector_sprite.global_position = lerp(global_position, star_position, lerp_factor)
 	else:
@@ -27,8 +37,11 @@ func _process(delta: float) -> void:
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 	if star_in_range and event is InputEventMouseButton:
-		if event.is_pressed():
-			print("im totally activating this star: %s" % star_in_range)
+		if event.is_pressed() and in_activation_range:
+			#print("im totally activating this star: %s" % star_in_range)
+			if GameManager.player.tethered:
+				GameManager.player.untether()
+			star_in_range.activate()
 
 func _notification(what: int) -> void:
 	match what:

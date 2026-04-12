@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://dll63wthyx06h"]
 
-[ext_resource type="PackedScene" path="res://Entities/grab_star2.tscn" id="1_4nnyw"]
-[ext_resource type="PackedScene" path="res://Entities/yank_star.tscn" id="2_a2plc"]
-[ext_resource type="PackedScene" path="res://Player/player_dude.tscn" id="3_svlqu"]
-[ext_resource type="Script" uid="uid://dlrcqfridkjys" path="res://Entities/star_selector_area.gd" id="4_46gkg"]
-[ext_resource type="Texture2D" uid="uid://tv3iswscc7xp" path="res://Assets/star_hover_cursor.png" id="5_0kqko"]
-[ext_resource type="Script" uid="uid://doace7f5epumv" path="res://Entities/star_selector_sprite.gd" id="6_qan1y"]
+[ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="1_4nnyw"]
+[ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="2_a2plc"]
+[ext_resource type="PackedScene" uid="uid://dc3whaxx3jqvn" path="res://Player/player_dude.tscn" id="3_svlqu"]
+[ext_resource type="PackedScene" uid="uid://cg6kh4ruip5rl" path="res://Entities/star_selector.tscn" id="4_46gkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y32ns"]
 size = Vector2(1154.5, 125)
@@ -18,9 +16,6 @@ colors = PackedColorArray(0.26666668, 0.7882353, 0.09411765, 1, 0.30723685, 0.58
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wtcfe"]
 gradient = SubResource("Gradient_y32ns")
 fill_to = Vector2(0, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1630o"]
-radius = 20.0
 
 [node name="YankTestScene" type="Node2D" unique_id=161238367]
 
@@ -43,21 +38,5 @@ position = Vector2(153, 117)
 [node name="PlayerDude" parent="." unique_id=2027622154 instance=ExtResource("3_svlqu")]
 position = Vector2(859, 449)
 
-[node name="StarSelectorArea" type="Area2D" parent="." unique_id=1469104893 node_paths=PackedStringArray("star_selector_sprite")]
+[node name="StarSelectorArea" parent="." unique_id=1337415989 instance=ExtResource("4_46gkg")]
 position = Vector2(-67.2, -0.19999981)
-script = ExtResource("4_46gkg")
-star_selector_sprite = NodePath("../StarSelectorSprite")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StarSelectorArea" unique_id=1989043771]
-shape = SubResource("CircleShape2D_1630o")
-
-[node name="StarSelectorSprite" type="Sprite2D" parent="." unique_id=1416999604]
-position = Vector2(-67.19999, -0.1999998)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_0kqko")
-script = ExtResource("6_qan1y")
-
-[connection signal="area_entered" from="StarSelectorArea" to="StarSelectorArea" method="_on_area_entered"]
-[connection signal="area_exited" from="StarSelectorArea" to="StarSelectorArea" method="_on_area_exited"]
-[connection signal="body_entered" from="StarSelectorArea" to="StarSelectorArea" method="_on_body_entered"]
-[connection signal="body_exited" from="StarSelectorArea" to="StarSelectorArea" method="_on_body_exited"]
