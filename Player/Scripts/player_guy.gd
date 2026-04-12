@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+@onready var player_sprite : Sprite2D = $Sprite2D
 var _input_vec: Vector2
 var _current_star: GrabStar
 var _pressed_jump_this_frame: bool = false
@@ -18,6 +19,10 @@ func _process(delta: float) -> void:
 	).normalized()
 	
 	_input_vec.y = 0
+	if _input_vec.x < -0.01:
+		player_sprite.flip_h = true
+	elif _input_vec.x > 0.01:
+		player_sprite.flip_h = false
 	
 	_pressed_jump_this_frame = Input.is_action_just_pressed("jump")
 
