@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 @export var player_sprite : Sprite2D
 @export var animation_player: AnimationPlayer
+@export var fishing_cast_origin_left: Marker2D
+@export var fishing_cast_origin_right: Marker2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000.0
@@ -16,6 +18,10 @@ func _ready():
 	GameManager.player = self
 	if animation_player == null:
 		animation_player = get_node_or_null("AnimationPlayer")
+	if fishing_cast_origin_left == null:
+		fishing_cast_origin_left = get_node_or_null("FishingCastOriginLeft")
+	if fishing_cast_origin_right == null:
+		fishing_cast_origin_right = get_node_or_null("FishingCastOriginRight")
 
 func _physics_process(delta):
 	if tethered:
@@ -109,3 +115,12 @@ func _play_animation(animation_name: StringName) -> void:
 	if animation_player.current_animation == animation_name and animation_player.is_playing():
 		return
 	animation_player.play(animation_name)
+
+func get_cast_origin() -> Vector2:
+	if player_sprite != null and player_sprite.flip_h:
+		if fishing_cast_origin_left != null:
+			return fishing_cast_origin_left.global_position
+	else:
+		if fishing_cast_origin_right != null:
+			return fishing_cast_origin_right.global_position
+	return global_position

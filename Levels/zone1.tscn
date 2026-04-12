@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="2_32g1p"]
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_h65oe"]
 [ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_tcy8j"]
-[ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/bird_spawner.tscn" id="5_uib0s"]
+[ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_uib0s"]
 [ext_resource type="Texture2D" uid="uid://c4d8b5xjylc7o" path="res://Entities/cloud/art/cloud1.png" id="6_1n33f"]
 [ext_resource type="Texture2D" uid="uid://dj5f1fvrdqevc" path="res://Entities/cloud/art/cloud2.png" id="7_l6m6o"]
 [ext_resource type="Texture2D" uid="uid://dn66ok1fu5hyw" path="res://Entities/cloud/art/cloud3.png" id="8_v3m1i"]
@@ -85,7 +85,7 @@ position = Vector2(430, 210)
 [node name="Obstacles" type="Node2D" parent="." unique_id=2119752208]
 
 [node name="BirdSpawner" parent="Obstacles" unique_id=2056048054 instance=ExtResource("5_uib0s")]
-position = Vector2(1320, 200)
+position = Vector2(1372, 288)
 bird_spawn_period_sec = 4.0
 bird_move_dir = Vector2(-1, 0.05)
 

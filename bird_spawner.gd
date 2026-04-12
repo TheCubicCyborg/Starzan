@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-@onready var bird_tscn := preload("res://Entities/bird.tscn")
+@onready var bird_tscn := preload("res://Entities/Bird/bird.tscn")
 @export_group("Bird Emitter")
 @export var bird_spawn_period_sec: float = 3.
 @export_group("Bird Properties")
@@ -13,7 +13,7 @@ extends Node2D
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		$Sprite2D.queue_free()
-	spawn_routine()
+		spawn_routine()
 
 func spawn_routine():
 	while true:

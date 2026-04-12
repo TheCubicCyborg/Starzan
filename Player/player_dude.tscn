@@ -105,6 +105,12 @@ shape = SubResource("CapsuleShape2D_w4ftx")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_lyc74")
 
+[node name="FishingCastOriginRight" type="Marker2D" parent="." unique_id=1324123774]
+position = Vector2(36, -28)
+
+[node name="FishingCastOriginLeft" type="Marker2D" parent="." unique_id=1881936100]
+position = Vector2(-36, -28)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1569858359]
 libraries/ = SubResource("AnimationLibrary_1gf2g")
 autoplay = &"idle"

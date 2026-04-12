@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bm3ey1urk3lj0"]
+
+[ext_resource type="Script" uid="uid://dhpmrk3ol2ffg" path="res://bird_spawner.gd" id="1_usm0p"]
+[ext_resource type="Texture2D" uid="uid://c68frclxpy2q3" path="res://Entities/Bird/Art/bird-1.png" id="2_yuiml"]
+[ext_resource type="Texture2D" uid="uid://cl2v5usmgkhcx" path="res://Entities/Bird/Art/bird-2.png" id="3_w2rk0"]
+[ext_resource type="Texture2D" uid="uid://b6g57celcwy8g" path="res://Entities/Bird/Art/bird-3.png" id="4_qn78u"]
+[ext_resource type="Texture2D" uid="uid://bx7fi0c1c8qtn" path="res://Entities/Bird/Art/bird-4.png" id="5_wtbnt"]
+[ext_resource type="Texture2D" uid="uid://vv17mnd8smvm" path="res://Entities/Bird/Art/bird-5.png" id="6_axo13"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qtqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yuiml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w2rk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qn78u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wtbnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_axo13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wtbnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qn78u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w2rk0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="BirdSpawner" type="Node2D" unique_id=396003907]
+script = ExtResource("1_usm0p")
+bird_speed = 300.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=81677352]
+sprite_frames = SubResource("SpriteFrames_1qtqw")
+autoplay = "default"
+frame_progress = 0.5751003
