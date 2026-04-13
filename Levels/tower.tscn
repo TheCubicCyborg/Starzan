@@ -60,6 +60,17 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_eqkut"]
+resource_name = "portal_to_hell"
+script/source = "extends AnimatedSprite2D
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	get_tree().change_scene_to_file(\"res://Levels/zone_of_doom.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqkut"]
+size = Vector2(400, 400)
+
 [node name="Tower" type="Node2D" unique_id=2118308458 node_paths=PackedStringArray("zone_areas", "music_player")]
 script = ExtResource("1_n8n34")
 zone_boundaries_y = PackedFloat32Array()
@@ -237,6 +248,30 @@ offset_bottom = -221.49951
 theme_override_font_sizes/font_size = 77
 text = "Joe-Star"
 
+[node name="PortalToHell2" type="AnimatedSprite2D" parent="." unique_id=1876370336]
+position = Vector2(1826, -8271)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_pkhag")
+autoplay = "default"
+frame_progress = 0.16631442
+script = SubResource("GDScript_eqkut")
+
+[node name="Label" type="Label" parent="PortalToHell2" unique_id=1908794173]
+offset_left = -182.50003
+offset_top = -339.9995
+offset_right = 185.49997
+offset_bottom = -124.99951
+theme_override_font_sizes/font_size = 77
+text = "Portal to
+hell"
+
+[node name="Area2D" type="Area2D" parent="PortalToHell2" unique_id=1488898940]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalToHell2/Area2D" unique_id=2079257024]
+shape = SubResource("RectangleShape2D_eqkut")
+
 [node name="BirdSpawner" parent="." unique_id=396003907 instance=ExtResource("15_6li0d")]
 position = Vector2(2146, -5660)
 rotation = -0.3095602
@@ -244,3 +279,5 @@ bird_type = 1
 bird_spawn_period_sec = 5.0
 inverted = true
 bird_speed = 1000.0
+
+[connection signal="area_entered" from="PortalToHell2/Area2D" to="PortalToHell2" method="_on_area_2d_area_entered"]
