@@ -11,9 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://csv5l12gy0hm" path="res://Assets/bg-2(2).png" id="4_v1uhv"]
 [ext_resource type="PackedScene" uid="uid://cty8hijs5akmo" path="res://Levels/zone2.tscn" id="5_gsmrw"]
 [ext_resource type="PackedScene" uid="uid://bgfbfsqv4th08" path="res://Levels/zone3.tscn" id="6_oy6og"]
-[ext_resource type="PackedScene" path="res://Levels/zone1-alex.tscn" id="8_8rjue"]
+[ext_resource type="PackedScene" uid="uid://bxet6rnjwfwgc" path="res://Levels/zone1-alex.tscn" id="8_8rjue"]
 [ext_resource type="Texture2D" uid="uid://6g718wfv30dv" path="res://Assets/final.png" id="10_phnse"]
 [ext_resource type="Texture2D" uid="uid://dkw5qm8c5k0a4" path="res://Assets/yankstar/mooonn.png" id="13_8rjue"]
+[ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="15_6li0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(80, 14000)
@@ -174,3 +175,21 @@ position = Vector2(0, -6732)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneAreas/Area2D3" unique_id=21903188]
 position = Vector2(974, 482)
 shape = SubResource("RectangleShape2D_d7kmo")
+
+[node name="BirdSpawner3" parent="." unique_id=638415319 instance=ExtResource("15_6li0d")]
+position = Vector2(196, -8020)
+bird_type = 1
+bird_spawn_period_sec = 10000.0
+inverted = false
+bird_speed = 0.0
+bird_lifetime = 100000.0
+bird_move_dir = Vector2(0, 0)
+bird_bonk_strength = 999900.0
+
+[node name="Label" type="Label" parent="BirdSpawner3" unique_id=2145117906]
+offset_left = -17.0
+offset_top = -98.0
+offset_right = 23.0
+offset_bottom = -49.0
+text = "Gang
+Star"
