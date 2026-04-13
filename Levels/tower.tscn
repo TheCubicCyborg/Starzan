@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://csv5l12gy0hm" path="res://Assets/bg-2(2).png" id="4_v1uhv"]
 [ext_resource type="PackedScene" uid="uid://cty8hijs5akmo" path="res://Levels/zone2.tscn" id="5_gsmrw"]
 [ext_resource type="PackedScene" uid="uid://bgfbfsqv4th08" path="res://Levels/zone3.tscn" id="6_oy6og"]
-[ext_resource type="PackedScene" uid="uid://dtamnm2x362xl" path="res://Levels/zone1-alex.tscn" id="8_8rjue"]
+[ext_resource type="PackedScene" path="res://Levels/zone1-alex.tscn" id="8_8rjue"]
 [ext_resource type="Texture2D" uid="uid://6g718wfv30dv" path="res://Assets/final.png" id="10_phnse"]
 [ext_resource type="Texture2D" uid="uid://dkw5qm8c5k0a4" path="res://Assets/yankstar/mooonn.png" id="13_8rjue"]
 
@@ -122,7 +122,6 @@ flip_v = true
 [node name="WinScreen" type="CanvasLayer" parent="." unique_id=983470583]
 process_mode = 3
 layer = 10
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="WinScreen" unique_id=1903051459]
 anchors_preset = 15
@@ -133,6 +132,20 @@ grow_vertical = 2
 texture = ExtResource("10_phnse")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="WinScreen/TextureRect" unique_id=771473418]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Thank you for playing <3"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=881096109]
 stream = ExtResource("2_d7kmo")
