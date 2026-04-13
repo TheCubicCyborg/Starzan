@@ -221,6 +221,7 @@ offset_right = 23.0
 offset_bottom = -49.0
 text = "Gang
 Star"
+
 [node name="Gang-Star" type="AnimatedSprite2D" parent="." unique_id=388110183]
 position = Vector2(357, -6670)
 scale = Vector2(0.4, 0.4)
@@ -235,3 +236,11 @@ offset_right = 240.49997
 offset_bottom = -221.49951
 theme_override_font_sizes/font_size = 77
 text = "Joe-Star"
+
+[node name="BirdSpawner" parent="." unique_id=396003907 instance=ExtResource("15_6li0d")]
+position = Vector2(2146, -5660)
+rotation = -0.3095602
+bird_type = 1
+bird_spawn_period_sec = 5.0
+inverted = true
+bird_speed = 1000.0
