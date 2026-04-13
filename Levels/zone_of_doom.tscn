@@ -86,19 +86,31 @@ wait_time = 1.2
 [node name="Obstacles" type="Node2D" parent="." unique_id=1036402899]
 
 [node name="BirdSpawner" parent="Obstacles" unique_id=1144366796 instance=ExtResource("10_5hxim")]
-position = Vector2(-125, 832)
+position = Vector2(-127, 832)
 bird_type = 0
 bird_spawn_period_sec = 2.0
 inverted = false
-bird_lifetime = 10.0
 bird_move_dir = Vector2(1, 0.03)
 
 [node name="BirdSpawner2" parent="Obstacles" unique_id=396003907 instance=ExtResource("10_5hxim")]
-position = Vector2(2032, 647)
+position = Vector2(2030, 647)
 bird_type = 0
 bird_spawn_period_sec = 2.0
 inverted = true
-bird_lifetime = 10.0
+bird_move_dir = Vector2(1, 0.03)
+
+[node name="BirdSpawner3" parent="Obstacles" unique_id=2121907225 instance=ExtResource("10_5hxim")]
+position = Vector2(-175, 46)
+bird_type = 1
+bird_spawn_period_sec = 2.0
+inverted = false
+bird_move_dir = Vector2(1, 0.03)
+
+[node name="BirdSpawner4" parent="Obstacles" unique_id=289237325 instance=ExtResource("10_5hxim")]
+position = Vector2(1982, -139)
+bird_type = 1
+bird_spawn_period_sec = 2.0
+inverted = true
 bird_move_dir = Vector2(1, 0.03)
 
 [node name="StarSpawner" parent="Obstacles" unique_id=1218702318 instance=ExtResource("10_5hxim")]
@@ -128,3 +140,10 @@ bird_speed = 1000.0
 [node name="Geometry" type="Node2D" parent="." unique_id=1917234492]
 
 [node name="StarSelector" parent="." unique_id=695560097 instance=ExtResource("11_11ydr")]
+
+[node name="Label" type="Label" parent="." unique_id=2050791489]
+offset_left = 121.0
+offset_top = 215.0
+offset_right = 161.0
+offset_bottom = 238.0
+text = "you win if u get here"
