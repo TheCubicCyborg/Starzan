@@ -1,68 +1,9 @@
 [gd_scene format=3 uid="uid://cty8hijs5akmo"]
 
 [ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_8t4rq"]
-[ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="2_sxva0"]
-[ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="3_s12av"]
-[ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="4_h8f7x"]
-[ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="5_mo5hb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xg1e"]
-size = Vector2(420, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3xq1"]
-size = Vector2(280, 24)
 
 [node name="Zone2" type="Node2D" unique_id=852462518]
 script = ExtResource("1_8t4rq")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=376460658]
 position = Vector2(576, 520)
-
-[node name="Background" type="Node2D" parent="." unique_id=462558242]
-
-[node name="Clouds" type="Node2D" parent="." unique_id=1062249994]
-
-[node name="Cloud" parent="Clouds" unique_id=1395255798 instance=ExtResource("2_sxva0")]
-position = Vector2(360, 460)
-scale = Vector2(0.9, 0.9)
-
-[node name="Cloud2" parent="Clouds" unique_id=1062291173 instance=ExtResource("2_sxva0")]
-position = Vector2(930, 250)
-scale = Vector2(0.8, 0.8)
-
-[node name="Stars" type="Node2D" parent="." unique_id=75045220]
-
-[node name="GrabStar2" parent="Stars" unique_id=2089855297 instance=ExtResource("3_s12av")]
-position = Vector2(830, 250)
-
-[node name="GrabStar22" parent="Stars" unique_id=621056504 instance=ExtResource("3_s12av")]
-position = Vector2(550, 60)
-
-[node name="YankStar" parent="Stars" unique_id=314261080 instance=ExtResource("4_h8f7x")]
-position = Vector2(260, 160)
-wait_time = 1.2
-
-[node name="Obstacles" type="Node2D" parent="." unique_id=1036402899]
-
-[node name="BirdSpawner" parent="Obstacles" unique_id=1144366796 instance=ExtResource("5_mo5hb")]
-position = Vector2(-120, 110)
-bird_spawn_period_sec = 3.5
-bird_move_dir = Vector2(1, 0.03)
-
-[node name="Geometry" type="Node2D" parent="." unique_id=1917234492]
-
-[node name="Floor" type="StaticBody2D" parent="Geometry" unique_id=1042529302]
-position = Vector2(576, 650)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Floor" unique_id=1457010255]
-shape = SubResource("RectangleShape2D_3xg1e")
-one_way_collision_margin = 8.0
-
-[node name="MidPlatform" type="StaticBody2D" parent="Geometry" unique_id=722805636]
-position = Vector2(840, 370)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/MidPlatform" unique_id=1621130600]
-shape = SubResource("RectangleShape2D_u3xq1")
-one_way_collision = true
-one_way_collision_margin = 8.0
