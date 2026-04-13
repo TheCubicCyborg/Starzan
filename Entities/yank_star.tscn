@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bsypa3w5360f" path="res://Assets/yankstar/away-7.png" id="8_uj4pk"]
 [ext_resource type="Texture2D" uid="uid://bptf022agmky4" path="res://Assets/yankstar/away-8.png" id="9_xddfw"]
 [ext_resource type="Texture2D" uid="uid://ylg27r7oa6i4" path="res://Assets/dot1.png" id="17_xpiol"]
+[ext_resource type="AudioStream" uid="uid://dheoxikam2vhv" path="res://Assets/audio/sfxes_001.wav" id="18_j6q0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8taa3"]
 size = Vector2(64, 64)
@@ -159,3 +160,6 @@ explosiveness = 0.8
 fixed_fps = 24
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_iykr0")
+
+[node name="daAudio" type="AudioStreamPlayer2D" parent="." unique_id=829305570]
+stream = ExtResource("18_j6q0h")

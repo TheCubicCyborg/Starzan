@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://daksiw7ogr5y4" path="res://Assets/grabstar/pull-7.png" id="8_8tkcq"]
 [ext_resource type="Texture2D" uid="uid://blcgs5c4fids3" path="res://Assets/grabstar/pull-8.png" id="9_74wvu"]
 [ext_resource type="Texture2D" uid="uid://ylg27r7oa6i4" path="res://Assets/dot1.png" id="10_8skgs"]
+[ext_resource type="AudioStream" uid="uid://cknvtssh6f2nm" path="res://Assets/audio/sfxes_005.wav" id="11_dr0p5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n3ddw"]
 animations = [{
@@ -111,3 +112,6 @@ explosiveness = 0.8
 fixed_fps = 24
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_8skgs")
+
+[node name="daAudio" type="AudioStreamPlayer2D" parent="." unique_id=2112108439]
+stream = ExtResource("11_dr0p5")

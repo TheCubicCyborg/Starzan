@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var cloud_sprite : Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $StaticBody2D/CollisionShape2D
-
 @export var one_way_margin: float = 8.0
 
 func _ready() -> void:
