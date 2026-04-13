@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://ubm7l3rke3wn" path="res://Assets/bottom(1).png" id="3_5gqi5"]
 [ext_resource type="AudioStream" uid="uid://githemry2i1t" path="res://Assets/audio/part2.wav" id="3_8rjue"]
 [ext_resource type="AudioStream" uid="uid://bn3w7mt08c848" path="res://Assets/audio/part3.wav" id="4_6li0d"]
-[ext_resource type="PackedScene" uid="uid://dytks8x1enjd8" path="res://Levels/zone1.tscn" id="4_07gk0"]
 [ext_resource type="Texture2D" uid="uid://csv5l12gy0hm" path="res://Assets/bg-2(2).png" id="4_v1uhv"]
-[ext_resource type="PackedScene" uid="uid://li1w53agusyk" path="res://Levels/zone2.tscn" id="5_gsmrw"]
+[ext_resource type="PackedScene" uid="uid://cty8hijs5akmo" path="res://Levels/zone2.tscn" id="5_gsmrw"]
 [ext_resource type="PackedScene" uid="uid://bgfbfsqv4th08" path="res://Levels/zone3.tscn" id="6_oy6og"]
+[ext_resource type="PackedScene" path="res://Levels/zone1-alex.tscn" id="8_8rjue"]
 [ext_resource type="Texture2D" uid="uid://6g718wfv30dv" path="res://Assets/final.png" id="10_phnse"]
 [ext_resource type="Texture2D" uid="uid://dkw5qm8c5k0a4" path="res://Assets/yankstar/mooonn.png" id="13_8rjue"]
 
@@ -34,7 +34,7 @@ size = Vector2(2042, 20)
 [node name="Tower" type="Node2D" unique_id=2118308458 node_paths=PackedStringArray("zone_areas", "music_player")]
 script = ExtResource("1_n8n34")
 zone_boundaries_y = PackedFloat32Array()
-zone_areas = [null, null, null]
+zone_areas = [NodePath("ZoneAreas/Area2D"), NodePath("ZoneAreas/Area2D2"), NodePath("ZoneAreas/Area2D3")]
 music_player = NodePath("AudioStreamPlayer")
 zone_music = Array[AudioStream]([ExtResource("2_d7kmo"), ExtResource("3_8rjue"), ExtResource("4_6li0d")])
 
@@ -61,6 +61,7 @@ position = Vector2(0, -371)
 texture = ExtResource("4_v1uhv")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background/Sprite2D2" unique_id=1239219154]
+visible = false
 position = Vector2(0, -1923)
 texture = ExtResource("4_v1uhv")
 
@@ -68,13 +69,14 @@ texture = ExtResource("4_v1uhv")
 position = Vector2(960, -9537)
 texture = ExtResource("2_ssgiv")
 
-[node name="Zone1" parent="." unique_id=1713146309 instance=ExtResource("4_07gk0")]
-script = null
+[node name="Zone1" parent="." unique_id=22221764 instance=ExtResource("8_8rjue")]
 
 [node name="Zone2" parent="." unique_id=1284026243 instance=ExtResource("5_gsmrw")]
+visible = false
 position = Vector2(0, -4000)
 
 [node name="Zone3" parent="." unique_id=732793463 instance=ExtResource("6_oy6og")]
+visible = false
 position = Vector2(0, -8000)
 
 [node name="PlayerDude" parent="." unique_id=659196782 instance=ExtResource("2_jfpf2")]
@@ -104,7 +106,7 @@ shape = SubResource("RectangleShape2D_right_wall")
 environment = SubResource("Environment_ff86o")
 
 [node name="WinTrigger" type="Area2D" parent="." unique_id=1375458878]
-position = Vector2(960, -10366)
+position = Vector2(982, -8793)
 collision_layer = 0
 collision_mask = 2
 
@@ -120,7 +122,6 @@ flip_v = true
 [node name="WinScreen" type="CanvasLayer" parent="." unique_id=983470583]
 process_mode = 3
 layer = 10
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="WinScreen" unique_id=1903051459]
 anchors_preset = 15
@@ -131,6 +132,20 @@ grow_vertical = 2
 texture = ExtResource("10_phnse")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="WinScreen/TextureRect" unique_id=771473418]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Thank you for playing <3"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=881096109]
 stream = ExtResource("2_d7kmo")
@@ -154,7 +169,7 @@ position = Vector2(974, 482)
 shape = SubResource("RectangleShape2D_d7kmo")
 
 [node name="Area2D3" type="Area2D" parent="ZoneAreas" unique_id=1929950554]
-position = Vector2(0, -8492)
+position = Vector2(0, -6732)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneAreas/Area2D3" unique_id=21903188]
 position = Vector2(974, 482)

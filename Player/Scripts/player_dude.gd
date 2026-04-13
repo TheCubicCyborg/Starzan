@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @export var fishing_cast_origin_left: Marker2D
 @export var fishing_cast_origin_right: Marker2D
 @export_range(1, 32, 1) var one_way_platform_layer: int = 3
+@onready var trail_emitter: GPUParticles2D = $StarTrail
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000.0
@@ -65,6 +66,8 @@ func normal_process(delta):
 			velocity.x *= 0.5
 	
 	move_and_slide()
+	
+	handle_speed_particles(velocity.length())
 
 func tether_process(delta):
 		# Add the gravity.
@@ -86,6 +89,12 @@ func tether_process(delta):
 	var diff = tethered.position.distance_to(position) - tether_length
 	if diff > 0:
 		rigid.apply_central_force(to_local(tethered.position)*diff)
+	
+	handle_speed_particles(rigid.linear_velocity.length())
+		
+const SPEED_THRESH: float = 500.
+func handle_speed_particles(speed: float):
+	trail_emitter.emitting = speed > SPEED_THRESH
 
 func tether_to(star: GrabStar2):
 	tethered = star
