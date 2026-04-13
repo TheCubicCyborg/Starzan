@@ -21,11 +21,12 @@ func _ready():
 
 func activate():
 	if not moving and not away:
+		audio.play()
 		moving = true
 		away = true
 		var dir_vec = (GameManager.player.position - position)
 		destination = position + dir_vec - (dir_vec.normalized() * 100)
-		audio.play()
+		
 		
 	
 func _physics_process(delta):
