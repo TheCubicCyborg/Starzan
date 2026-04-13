@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bm2ix638tu1oe"]
+
+[ext_resource type="Script" uid="uid://cnl1nrj4fkfrb" path="res://UI/title.gd" id="1_cb2bp"]
+[ext_resource type="Texture2D" uid="uid://70rlf34upcc" path="res://Assets/Title/bg-1.png" id="1_pa5mj"]
+[ext_resource type="Texture2D" uid="uid://bwukmsa3djlpm" path="res://Assets/Title/bg-2.png" id="2_jgd3k"]
+[ext_resource type="Texture2D" uid="uid://b56xv0ixmiafd" path="res://Assets/Title/title.png" id="3_jgd3k"]
+
+[node name="Title" type="Control" unique_id=488333523]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cb2bp")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1037804682]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_pa5mj")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=340186125]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_jgd3k")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=615506386]
+layout_mode = 0
+offset_top = -100.0
+offset_right = 2560.0
+offset_bottom = 1340.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_jgd3k")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=257375968]
+visible = false
+layout_mode = 0
+offset_left = 763.0
+offset_top = 873.0
+offset_right = 1165.0
+offset_bottom = 1001.0
+
+[node name="Button" type="Button" parent="." unique_id=1785382601]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = 360.0
+offset_right = 204.0
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_texture_button_pressed"]
