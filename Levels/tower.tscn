@@ -34,7 +34,7 @@ size = Vector2(2042, 20)
 [node name="Tower" type="Node2D" unique_id=2118308458 node_paths=PackedStringArray("zone_areas", "music_player")]
 script = ExtResource("1_n8n34")
 zone_boundaries_y = PackedFloat32Array()
-zone_areas = [null, null, null]
+zone_areas = [NodePath("ZoneAreas/Area2D"), NodePath("ZoneAreas/Area2D2"), NodePath("ZoneAreas/Area2D3")]
 music_player = NodePath("AudioStreamPlayer")
 zone_music = Array[AudioStream]([ExtResource("2_d7kmo"), ExtResource("3_8rjue"), ExtResource("4_6li0d")])
 
@@ -156,7 +156,7 @@ position = Vector2(974, 482)
 shape = SubResource("RectangleShape2D_d7kmo")
 
 [node name="Area2D3" type="Area2D" parent="ZoneAreas" unique_id=1929950554]
-position = Vector2(0, -8492)
+position = Vector2(0, -6732)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneAreas/Area2D3" unique_id=21903188]
 position = Vector2(974, 482)
