@@ -7,7 +7,7 @@ extends Node2D
 
 @onready var cloud_sprite: Sprite2D = $Sprite2D
 @onready var bounce_area: Area2D = $BounceArea
-
+@onready var audio: AudioStreamPlayer2D = $Audio
 @export var launch_delay_frames: int = 10
 
 var _base_scale: Vector2
@@ -28,6 +28,8 @@ func _on_bounce_area_body_entered(body: Node2D) -> void:
 
 	_launch_player(player)
 	_play_squash()
+	audio.play()
+	
 
 func _launch_player(player: Player):
 	for _i in range(launch_delay_frames):
