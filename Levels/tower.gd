@@ -40,6 +40,8 @@ func _ready() -> void:
 		restart_button.pressed.connect(_on_restart_button_pressed)
 	if music_player == null:
 		music_player = get_node_or_null("MusicPlayer") as AudioStreamPlayer
+	if music_player == null:
+		music_player = _find_first_audio_player(self)
 
 	for zone in zone_roots:
 		var background := zone.get_node_or_null("Background") as Node2D
@@ -71,6 +73,8 @@ func _physics_process(delta: float) -> void:
 	_update_camera(delta)
 	if zone_areas.is_empty():
 		_update_zone_for_position(player.global_position.y, false)
+	else:
+		_update_zone_from_areas()
 	_update_parallax(camera.global_position.y)
 
 func _update_camera(delta: float) -> void:
@@ -101,6 +105,10 @@ func _connect_zone_area_signals() -> void:
 		var area := zone_areas[index]
 		if area == null:
 			continue
+		area.monitoring = true
+		area.monitorable = true
+		if is_instance_valid(player):
+			area.collision_mask |= player.collision_layer
 		var on_enter := Callable(self, "_on_zone_area_body_entered").bind(index)
 		if not area.body_entered.is_connected(on_enter):
 			area.body_entered.connect(on_enter)
@@ -118,6 +126,15 @@ func _find_zone_for_player_from_areas() -> int:
 func _on_zone_area_body_entered(body: Node2D, zone_index: int) -> void:
 	if body is Player:
 		_set_active_zone(zone_index, false)
+
+func _update_zone_from_areas() -> void:
+	for index in zone_areas.size():
+		var area := zone_areas[index]
+		if area == null:
+			continue
+		if area.overlaps_body(player):
+			_set_active_zone(index, false)
+			return
 
 func _play_zone_music(zone_index: int, immediate: bool) -> void:
 	if music_player == null:
@@ -147,6 +164,15 @@ func _play_zone_music(zone_index: int, immediate: bool) -> void:
 		music_player.play()
 	)
 	_music_tween.tween_property(music_player, "volume_db", 0.0, music_fade_duration_sec * 0.5)
+
+func _find_first_audio_player(node: Node) -> AudioStreamPlayer:
+	for child in node.get_children():
+		if child is AudioStreamPlayer:
+			return child
+		var nested := _find_first_audio_player(child)
+		if nested != null:
+			return nested
+	return null
 
 func _compute_zone_index(player_y: float) -> int:
 	var zone_index := 0
