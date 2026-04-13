@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dtamnm2x362xl"]
+[gd_scene format=3 uid="uid://bxet6rnjwfwgc"]
 
 [ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_y3has"]
 [ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="6_v847n"]
@@ -230,13 +230,34 @@ position = Vector2(1097, -7786)
 
 [node name="BirdSpawner" parent="Obstacles" unique_id=2056048054 instance=ExtResource("10_dxrql")]
 position = Vector2(1929, -1746)
+bird_type = 0
 bird_spawn_period_sec = 4.0
+inverted = false
 bird_move_dir = Vector2(-1, -0.05)
 
 [node name="BirdSpawner2" parent="Obstacles" unique_id=396003907 instance=ExtResource("10_dxrql")]
 position = Vector2(-24, -1876)
+bird_type = 0
 bird_spawn_period_sec = 4.0
+inverted = false
 bird_move_dir = Vector2(1, -0.05)
+
+[node name="BirdSpawner3" parent="Obstacles" unique_id=1337801338 instance=ExtResource("10_dxrql")]
+position = Vector2(103, 518)
+bird_type = 1
+bird_spawn_period_sec = 10000.0
+inverted = false
+bird_speed = 0.0
+bird_lifetime = 10000.0
+bird_move_dir = Vector2(0, 0)
+
+[node name="Label" type="Label" parent="Obstacles/BirdSpawner3" unique_id=655598839]
+offset_left = -29.0
+offset_top = -75.0
+offset_right = 11.0
+offset_bottom = -52.0
+text = "Gang Star"
+metadata/_edit_use_anchors_ = true
 
 [node name="Geometry" type="Node2D" parent="." unique_id=1395699079]
 
