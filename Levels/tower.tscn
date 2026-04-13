@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://6g718wfv30dv" path="res://Assets/final.png" id="10_phnse"]
 [ext_resource type="Texture2D" uid="uid://dkw5qm8c5k0a4" path="res://Assets/yankstar/mooonn.png" id="13_8rjue"]
 [ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="15_6li0d"]
+[ext_resource type="Texture2D" uid="uid://cn17iuj1genfi" path="res://Assets/evil-1.png" id="15_ivnk6"]
+[ext_resource type="Texture2D" uid="uid://1y7c7yl2dd7d" path="res://Assets/evil-2.png" id="16_eqkut"]
+[ext_resource type="Texture2D" uid="uid://ci8ddjxr82lxq" path="res://Assets/evil-4.png" id="17_0sbqs"]
+[ext_resource type="Texture2D" uid="uid://1s63srvygrph" path="res://Assets/evil-5.png" id="18_losm8"]
+[ext_resource type="Texture2D" uid="uid://b5xqtttkykgsc" path="res://Assets/evil-6.png" id="19_wox05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
 size = Vector2(80, 14000)
@@ -31,6 +36,29 @@ size = Vector2(2096, 220)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7kmo"]
 size = Vector2(2042, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkhag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ivnk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_eqkut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0sbqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_losm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wox05")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="Tower" type="Node2D" unique_id=2118308458 node_paths=PackedStringArray("zone_areas", "music_player")]
 script = ExtResource("1_n8n34")
@@ -193,3 +221,17 @@ offset_right = 23.0
 offset_bottom = -49.0
 text = "Gang
 Star"
+[node name="Gang-Star" type="AnimatedSprite2D" parent="." unique_id=388110183]
+position = Vector2(357, -6670)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_pkhag")
+autoplay = "default"
+frame_progress = 0.16631442
+
+[node name="Label" type="Label" parent="Gang-Star" unique_id=1457636838]
+offset_left = -127.50003
+offset_top = -327.4995
+offset_right = 240.49997
+offset_bottom = -221.49951
+theme_override_font_sizes/font_size = 77
+text = "Joe-Star"
