@@ -9,6 +9,7 @@ var wait_timer: float = 0
 @export_range(0,1.0) var away_weight: float = 0.5
 @export_range(0,1.0) var return_speed: float = 5
 @onready var static_body = $StaticBody2D
+@onready var audio = $daAudio
 
 func _ready():
 	source = position
@@ -24,7 +25,9 @@ func activate():
 		away = true
 		var dir_vec = (GameManager.player.position - position)
 		destination = position + dir_vec - (dir_vec.normalized() * 100)
-
+		audio.play()
+		
+	
 func _physics_process(delta):
 	var start_position = position
 	if moving:

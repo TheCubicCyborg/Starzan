@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpyf35noddbar" path="res://Entities/cloud/cloud.gd" id="1_tl4cn"]
 [ext_resource type="Texture2D" uid="uid://c4d8b5xjylc7o" path="res://Entities/cloud/art/cloud1.png" id="2_hohfr"]
+[ext_resource type="AudioStream" uid="uid://dnsqjqmdc11k" path="res://Assets/audio/sfxes_002.wav" id="3_vpa2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hohfr"]
 size = Vector2(358, 24)
@@ -12,6 +13,9 @@ script = ExtResource("1_tl4cn")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130995256]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_hohfr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=83683914]
+stream = ExtResource("3_vpa2n")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=193710792]
 collision_layer = 4

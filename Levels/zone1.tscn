@@ -85,7 +85,9 @@ position = Vector2(643, 135)
 
 [node name="BirdSpawner" parent="Obstacles" unique_id=2056048054 instance=ExtResource("5_uib0s")]
 position = Vector2(2184, 45)
+bird_type = 0
 bird_spawn_period_sec = 4.0
+inverted = false
 bird_move_dir = Vector2(-1, 0.05)
 
 [node name="Geometry" type="Node2D" parent="." unique_id=283967627]
