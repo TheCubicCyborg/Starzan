@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://drtwteinvfo8m" path="res://Player/Art/Pull/pull-2.png" id="9_ihgoc"]
 [ext_resource type="Texture2D" uid="uid://by2773wjl5oej" path="res://Player/Art/Pull/pull-3.png" id="10_t6sje"]
 [ext_resource type="Texture2D" uid="uid://duaj1agx51xlm" path="res://Player/Art/Pull/pull-4.png" id="11_nhe1x"]
+[ext_resource type="Texture2D" uid="uid://duhgmwpn6a4do" path="res://Entities/ShootingStar/Art/shooting-1.png" id="12_1g621"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4ftx"]
 radius = 32.0
@@ -91,19 +92,29 @@ _data = {
 &"pull": SubResource("Animation_14os4")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mejnj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(30.28, 45.69, 1)
+angle_min = -251.4
+angle_max = 217.20001
+angular_velocity_min = -71.38001
+angular_velocity_max = 52.759983
+tangential_accel_min = -29.750002
+tangential_accel_max = -2.2351742e-06
+scale_min = 0.0
+scale_max = 0.099999994
+
 [node name="PlayerDude" type="CharacterBody2D" unique_id=2027622154 node_paths=PackedStringArray("player_sprite", "animation_player")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_b2f5l")
 player_sprite = NodePath("Sprite2D")
 animation_player = NodePath("AnimationPlayer")
+one_way_platform_layer = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1085275590]
 shape = SubResource("CapsuleShape2D_w4ftx")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720542365]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_lyc74")
 
 [node name="FishingCastOriginRight" type="Marker2D" parent="." unique_id=1324123774]
 position = Vector2(36, -28)
@@ -119,5 +130,13 @@ autoplay = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BirdDetector" unique_id=776455319]
 shape = SubResource("CapsuleShape2D_w4ftx")
+
+[node name="StarTrail" type="GPUParticles2D" parent="." unique_id=832577518]
+texture = ExtResource("12_1g621")
+process_material = SubResource("ParticleProcessMaterial_mejnj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720542365]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_lyc74")
 
 [connection signal="area_entered" from="BirdDetector" to="." method="_on_bird_detector_area_entered"]
