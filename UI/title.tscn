@@ -4,6 +4,34 @@
 [ext_resource type="Texture2D" uid="uid://70rlf34upcc" path="res://Assets/Title/bg-1.png" id="1_pa5mj"]
 [ext_resource type="Texture2D" uid="uid://bwukmsa3djlpm" path="res://Assets/Title/bg-2.png" id="2_jgd3k"]
 [ext_resource type="Texture2D" uid="uid://b56xv0ixmiafd" path="res://Assets/Title/title.png" id="3_jgd3k"]
+[ext_resource type="Texture2D" uid="uid://b4or6cpxgcdbw" path="res://Assets/Title/play-1.png" id="5_bw7ep"]
+[ext_resource type="Texture2D" uid="uid://l4jif6331vrj" path="res://Assets/Title/play-2.png" id="6_u458a"]
+[ext_resource type="Texture2D" uid="uid://cxgnicglu1qo" path="res://Assets/Title/play-3.png" id="7_ymxup"]
+[ext_resource type="Texture2D" uid="uid://c2lg20kq008vg" path="res://Assets/Title/play-4.png" id="8_8g7tl"]
+[ext_resource type="Texture2D" uid="uid://8pgm8p8n6dk0" path="res://Assets/Title/play-5.png" id="9_nm0kd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_at7y5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bw7ep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_u458a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ymxup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8g7tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nm0kd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Title" type="Control" unique_id=488333523]
 layout_mode = 3
@@ -37,28 +65,17 @@ scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_jgd3k")
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=257375968]
-visible = false
 layout_mode = 0
-offset_left = 763.0
-offset_top = 873.0
-offset_right = 1165.0
-offset_bottom = 1001.0
+offset_left = 855.0
+offset_top = 890.0
+offset_right = 979.0
+offset_bottom = 1014.03
 
-[node name="Button" type="Button" parent="." unique_id=1785382601]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = 360.0
-offset_right = 204.0
-offset_bottom = 454.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "PLAY"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=249683155]
+position = Vector2(944.00006, 927)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_at7y5")
+autoplay = "default"
+frame_progress = 0.7494157
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_texture_button_pressed"]
