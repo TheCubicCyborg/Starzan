@@ -155,6 +155,8 @@ func _on_bird_detector_area_entered(area):
 	if area.get_parent() is Bird:
 		velocity += (Vector2.RIGHT * sign(area.get_parent()._move_dir.x) + Vector2.UP * 0.25).normalized() * 3000
 		move_and_slide()
+	elif area is KillArea:
+		GameManager.retry_room()
 
 func _set_one_way_collision_enabled(enabled: bool) -> void:
 	var one_way_bit := 1 << (one_way_platform_layer - 1)

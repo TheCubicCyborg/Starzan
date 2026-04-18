@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ge35w7pj2t1u"]
+
+[node name="FadeInOverlay" type="ColorRect" unique_id=358979084]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
