@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://cks4j3l0a1yej"]
 
 [ext_resource type="Script" uid="uid://cjo2t1bq7l1xv" path="res://Levels/zone_runtime.gd" id="1_ieapt"]
+[ext_resource type="Script" uid="uid://ctyunokr4qua2" path="res://Levels/player_spawn.gd" id="2_2eqip"]
 [ext_resource type="Texture2D" uid="uid://i157f460pdcq" path="res://Assets/bg-1.png" id="2_4kmch"]
+[ext_resource type="Texture2D" uid="uid://bs5ntsp5gk502" path="res://Player/Art/Idle/idle-1.png" id="3_4rgcq"]
 [ext_resource type="Texture2D" uid="uid://c4i4s6s3lvw2h" path="res://Assets/bg-2.png" id="3_32x14"]
 [ext_resource type="Texture2D" uid="uid://dbnjo8qkkbkq3" path="res://Assets/bg-3.png" id="4_xwab1"]
 [ext_resource type="Texture2D" uid="uid://cyucivrqsk6k" path="res://Assets/bg-4.png" id="5_gx5o6"]
 [ext_resource type="Texture2D" uid="uid://cjkij3g7h0efc" path="res://Assets/bg-5.png" id="6_rvcil"]
 [ext_resource type="PackedScene" uid="uid://c7llywek0a3ty" path="res://Entities/cloud/cloud.tscn" id="7_2eqip"]
 [ext_resource type="PackedScene" uid="uid://dqly0i0uqy536" path="res://Entities/grab_star2.tscn" id="8_4rgcq"]
-[ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="9_hyn04"]
 [ext_resource type="PackedScene" uid="uid://bm3ey1urk3lj0" path="res://Entities/Bird/bird_spawner.tscn" id="10_wlgfr"]
+[ext_resource type="PackedScene" uid="uid://dor02qksx2c5h" path="res://Entities/EvilStar/big_evil.tscn" id="11_rvcil"]
 [ext_resource type="PackedScene" uid="uid://cg6kh4ruip5rl" path="res://Entities/star_selector.tscn" id="11_ukx4n"]
-[ext_resource type="Texture2D" uid="uid://cn17iuj1genfi" path="res://Assets/evil-1.png" id="12_4kmch"]
+[ext_resource type="PackedScene" uid="uid://cutnqq0rpkit1" path="res://Entities/EvilStar/small_evil.tscn" id="13_2eqip"]
 [ext_resource type="PackedScene" uid="uid://cs4o4uln5ewwh" path="res://Entities/EvilStar/kill_area.tscn" id="13_32x14"]
+[ext_resource type="PackedScene" uid="uid://c460f08yco645" path="res://Entities/yank_star.tscn" id="14_hyn04"]
 [ext_resource type="Script" uid="uid://cy2jafroj1kp8" path="res://Levels/fade_overlay.gd" id="14_rvcil"]
 [ext_resource type="Texture2D" uid="uid://boq3jybgtvtmv" path="res://UI/CutInEffect/evil_grayscale.png" id="15_rvcil"]
 [ext_resource type="Texture2D" uid="uid://toqeuf0sjf4k" path="res://UI/CutInEffect/away_grayscale.png" id="16_2eqip"]
@@ -25,6 +28,14 @@ script = ExtResource("1_ieapt")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=376460658]
 position = Vector2(171, 867)
+script = ExtResource("2_2eqip")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerSpawn" unique_id=771424573]
+modulate = Color(0.517516, 1, 0.46903765, 0.7882353)
+z_index = 100
+position = Vector2(-2.9999998, 27.999998)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_4rgcq")
 
 [node name="Background" type="Node2D" parent="." unique_id=462558242]
 
@@ -33,35 +44,40 @@ z_index = -50
 position = Vector2(962.49994, 540)
 scale = Vector2(0.7519532, 0.75)
 texture = ExtResource("2_4kmch")
+metadata/_edit_lock_ = true
 
 [node name="Layer2" type="Sprite2D" parent="Background" unique_id=977707340]
 z_index = -40
 position = Vector2(960, 540)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_32x14")
+metadata/_edit_lock_ = true
 
 [node name="Layer3" type="Sprite2D" parent="Background" unique_id=934708896]
 z_index = -30
 position = Vector2(960, 540)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("4_xwab1")
+metadata/_edit_lock_ = true
 
 [node name="Layer4" type="Sprite2D" parent="Background" unique_id=1580912087]
 z_index = -20
 position = Vector2(960, 540)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_gx5o6")
+metadata/_edit_lock_ = true
 
 [node name="Layer5" type="Sprite2D" parent="Background" unique_id=1676472373]
 z_index = -10
 position = Vector2(960, 540)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("6_rvcil")
+metadata/_edit_lock_ = true
 
 [node name="Clouds" type="Node2D" parent="." unique_id=1062249994]
 
 [node name="Cloud" parent="Clouds" unique_id=1395255798 instance=ExtResource("7_2eqip")]
-position = Vector2(1533, 999)
+position = Vector2(1715, 916)
 scale = Vector2(0.9, 0.9)
 
 [node name="Cloud3" parent="Clouds" unique_id=1885921908 instance=ExtResource("7_2eqip")]
@@ -69,67 +85,86 @@ position = Vector2(190, 939)
 scale = Vector2(-1, 1)
 
 [node name="Cloud2" parent="Clouds" unique_id=1062291173 instance=ExtResource("7_2eqip")]
-position = Vector2(162, 402)
+position = Vector2(405, 299)
+scale = Vector2(0.8, 0.8)
+
+[node name="Cloud4" parent="Clouds" unique_id=1251824806 instance=ExtResource("7_2eqip")]
+position = Vector2(1240, 140)
 scale = Vector2(0.8, 0.8)
 
 [node name="Stars" type="Node2D" parent="." unique_id=75045220]
 
 [node name="GrabStar2" parent="Stars" unique_id=2089855297 instance=ExtResource("8_4rgcq")]
-position = Vector2(552, 757)
+position = Vector2(645, 675)
 
 [node name="GrabStar22" parent="Stars" unique_id=621056504 instance=ExtResource("8_4rgcq")]
-position = Vector2(903, 759)
+position = Vector2(1763, 218)
 
-[node name="GrabStar23" parent="Stars" unique_id=1483779697 instance=ExtResource("8_4rgcq")]
-position = Vector2(303, 143)
+[node name="GrabStar24" parent="Stars" unique_id=1483779697 instance=ExtResource("8_4rgcq")]
+position = Vector2(784, 225)
 
-[node name="YankStar2" parent="Stars" unique_id=1041927568 instance=ExtResource("9_hyn04")]
-position = Vector2(1520, 508)
-wait_time = 1.2
+[node name="GrabStar25" parent="Stars" unique_id=78425215 instance=ExtResource("8_4rgcq")]
+position = Vector2(1483, 203)
 
-[node name="YankStar3" parent="Stars" unique_id=274514853 instance=ExtResource("9_hyn04")]
-position = Vector2(977, 499)
-wait_time = 1.2
+[node name="GrabStar23" parent="Stars" unique_id=829241645 instance=ExtResource("8_4rgcq")]
+position = Vector2(982, 334)
 
 [node name="Obstacles" type="Node2D" parent="." unique_id=1036402899]
 
-[node name="BirdSpawner3" parent="Obstacles" unique_id=2121907225 instance=ExtResource("10_wlgfr")]
-position = Vector2(-153, 255)
+[node name="StarSpawner" parent="Obstacles" unique_id=2121907225 instance=ExtResource("10_wlgfr")]
+position = Vector2(1401, -132)
+rotation = 0.7573726
 bird_type = 1
-bird_spawn_period_sec = 2.0
-inverted = false
+initial_spawn_delay = 2.0
+bird_spawn_period_sec = 5.0
+bird_speed = 1000.0
 bird_move_dir = Vector2(1, 0.03)
+is_killer_bird = true
+
+[node name="StarSpawner2" parent="Obstacles" unique_id=396003907 instance=ExtResource("10_wlgfr")]
+position = Vector2(-105, 314.00006)
+rotation = 0.7573726
+bird_type = 1
+bird_spawn_period_sec = 5.0
+bird_speed = 1000.0
+bird_move_dir = Vector2(1, 0.03)
+is_killer_bird = true
+
+[node name="EvilStars" type="Node2D" parent="Obstacles" unique_id=91683486]
+
+[node name="SmallEvil" parent="Obstacles/EvilStars" unique_id=1504641416 instance=ExtResource("13_2eqip")]
+position = Vector2(460.00003, 572)
+
+[node name="BigEvil" parent="Obstacles/EvilStars" unique_id=503136330 instance=ExtResource("11_rvcil")]
+position = Vector2(538, 524)
+rotation = 0.24508567
+
+[node name="BigEvil2" parent="Obstacles/EvilStars" unique_id=931302677 instance=ExtResource("11_rvcil")]
+position = Vector2(685, 505)
+rotation = -0.4770123
+
+[node name="SmallEvil2" parent="Obstacles/EvilStars" unique_id=1927806171 instance=ExtResource("13_2eqip")]
+position = Vector2(600, 431.99997)
+rotation = 0.15207523
+
+[node name="YankStar" parent="Obstacles/EvilStars" unique_id=1041927568 instance=ExtResource("14_hyn04")]
+position = Vector2(272, 595)
+
+[node name="KillArea" parent="Obstacles" unique_id=2086159469 instance=ExtResource("13_32x14")]
+position = Vector2(460, 448)
 
 [node name="Geometry" type="Node2D" parent="." unique_id=1917234492]
 
 [node name="StarSelector" parent="." unique_id=695560097 instance=ExtResource("11_ukx4n")]
 
 [node name="Label" type="Label" parent="." unique_id=2050791489]
-offset_left = 121.0
-offset_top = 215.0
-offset_right = 161.0
-offset_bottom = 238.0
+offset_left = 1641.0
+offset_top = 702.0
+offset_right = 1799.0
+offset_bottom = 725.0
 text = "you win if u get here"
 
-[node name="Evil2" type="Sprite2D" parent="." unique_id=2073647842]
-position = Vector2(342.8986, 1035.8986)
-rotation = 0.3508508
-scale = Vector2(0.43, 0.43)
-texture = ExtResource("12_4kmch")
-
-[node name="Evil1" type="Sprite2D" parent="." unique_id=888178755]
-position = Vector2(408.89853, 1011.8983)
-rotation = -0.10916582
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_4kmch")
-
-[node name="Evil3" type="Sprite2D" parent="." unique_id=264142043]
-position = Vector2(408.89853, 1011.8983)
-rotation = -0.10916582
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_4kmch")
-
-[node name="KillArea" parent="." unique_id=87051439 instance=ExtResource("13_32x14")]
+[node name="KillArea" parent="." unique_id=199740838 instance=ExtResource("13_32x14")]
 position = Vector2(907, 1394)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea" unique_id=1750311172]
@@ -137,8 +172,10 @@ position = Vector2(60, -95)
 shape = SubResource("RectangleShape2D_xwab1")
 
 [node name="FadeOverlay" type="Node2D" parent="." unique_id=1430883482 node_paths=PackedStringArray("star_lights")]
+visible = false
 script = ExtResource("14_rvcil")
 star_lights = [NodePath("PointLight2D"), NodePath("PointLight2D5"), NodePath("PointLight2D2"), NodePath("PointLight2D3"), NodePath("PointLight2D4")]
+metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="FadeOverlay" unique_id=1030895683]
 color = Color(0, 0, 0, 1)
@@ -152,27 +189,32 @@ texture = ExtResource("15_rvcil")
 [node name="PointLight2D5" type="PointLight2D" parent="FadeOverlay" unique_id=1108605573]
 position = Vector2(1499, 351)
 rotation = -2.022965
-scale = Vector2(0.99999994, 0.99999994)
 blend_mode = 2
 texture = ExtResource("15_rvcil")
 
 [node name="PointLight2D2" type="PointLight2D" parent="FadeOverlay" unique_id=161876788]
 position = Vector2(911.00006, 533.00006)
 rotation = 0.24485469
-scale = Vector2(2, 2)
 blend_mode = 2
 texture = ExtResource("15_rvcil")
 
 [node name="PointLight2D3" type="PointLight2D" parent="FadeOverlay" unique_id=1020707071]
 position = Vector2(1496, 823.99994)
 rotation = -0.25947464
-scale = Vector2(2, 2)
 blend_mode = 2
 texture = ExtResource("16_2eqip")
 
 [node name="PointLight2D4" type="PointLight2D" parent="FadeOverlay" unique_id=931308944]
 position = Vector2(354, 425)
 rotation = -0.5164995
-scale = Vector2(2, 2)
 blend_mode = 2
 texture = ExtResource("16_2eqip")
+
+[node name="ColorRect" type="ColorRect" parent="FadeOverlay" unique_id=511623916]
+custom_minimum_size = Vector2(10000, 5000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

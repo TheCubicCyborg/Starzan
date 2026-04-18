@@ -158,6 +158,16 @@ func _on_bird_detector_area_entered(area):
 	elif area is KillArea:
 		GameManager.retry_room()
 
+func die():
+	untether()
+	set_process(false)
+	set_physics_process(false)
+	play_death_anim()
+
+func play_death_anim():
+	$Sprite2D.visible = false
+	$DeathStarExplosion.emitting = true
+
 func _set_one_way_collision_enabled(enabled: bool) -> void:
 	var one_way_bit := 1 << (one_way_platform_layer - 1)
 	if enabled:

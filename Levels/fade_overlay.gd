@@ -3,10 +3,12 @@ extends Node2D
 @export var star_lights: Array[PointLight2D]
 const smallest_scale := Vector2(.01, .01)
 const largest_scale := Vector2(20., 20.)
+@onready var cr := $ColorRect
 
 func _ready():
 	print('fading overlay out...')
-	fade_overlay_out(1.)
+	visible = true
+	fade_overlay_out(.7)
 
 func fade_overlay_in(time: float):
 	print("fading in!!")
@@ -20,6 +22,7 @@ func fade_overlay_in(time: float):
 		
 	# is this the worst code ever?
 	await get_tree().create_timer(time).timeout
+	cr.visible = true
 
 func fade_overlay_out(time: float):
 	for star_light in star_lights:
@@ -29,6 +32,7 @@ func fade_overlay_out(time: float):
 		tween.set_trans(Tween.TRANS_QUINT)
 		tween.tween_property(star_light, "scale", largest_scale, time)
 		tween.set_parallel(true)
+	cr.visible = false
 	
 	# is this the worst code ever?
 	await get_tree().create_timer(time).timeout

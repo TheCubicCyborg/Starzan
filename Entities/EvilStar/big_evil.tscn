@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dor02qksx2c5h"]
+
+[ext_resource type="Texture2D" uid="uid://cn17iuj1genfi" path="res://Assets/evil-1.png" id="1_qfc8y"]
+[ext_resource type="PackedScene" uid="uid://cs4o4uln5ewwh" path="res://Entities/EvilStar/kill_area.tscn" id="2_uy7k0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx5o6"]
+size = Vector2(200, 200)
+
+[node name="BigEvil" type="Sprite2D" unique_id=503136330]
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("1_qfc8y")
+
+[node name="KillArea2" parent="." unique_id=87051439 instance=ExtResource("2_uy7k0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea2" unique_id=1671632820]
+rotation = 0.7853982
+shape = SubResource("RectangleShape2D_gx5o6")

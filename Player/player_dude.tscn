@@ -105,6 +105,40 @@ tangential_accel_max = -2.2351742e-06
 scale_min = 0.0
 scale_max = 0.099999994
 
+[sub_resource type="Curve" id="Curve_1g621"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0.02307693, 4.008728), 0.0, 0.0, 0, 0, Vector2(0.12820512, 2.5984497), 0.0, 0.0, 0, 0, Vector2(0.20000002, -61.69934), -654.48645, -654.48645, 0, 0, Vector2(0.37435898, -152.33115), 0.0, 0.0, 0, 0, Vector2(0.98974365, -151.19824), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_twe7d"]
+curve = SubResource("Curve_1g621")
+
+[sub_resource type="Curve" id="Curve_twe7d"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.115384616, 0.5638345), 2.4984446, 2.4984446, 0, 0, Vector2(0.4974359, 1), 0.0, 0.0, 0, 0, Vector2(0.9153846, 0.73660135), -2.1087356, -2.1087356, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_mejnj"]
+curve = SubResource("Curve_twe7d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1g621"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+angular_velocity_min = 39.999985
+angular_velocity_max = 39.999985
+orbit_velocity_min = -0.09499991
+orbit_velocity_max = -0.09499991
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+linear_accel_min = 2.4999976
+linear_accel_max = 2.4999976
+linear_accel_curve = SubResource("CurveTexture_twe7d")
+scale_min = 0.19999999
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_mejnj")
+
 [node name="PlayerDude" type="CharacterBody2D" unique_id=2027622154 node_paths=PackedStringArray("player_sprite", "animation_player")]
 collision_layer = 2
 collision_mask = 5
@@ -131,8 +165,19 @@ autoplay = &"idle"
 shape = SubResource("CapsuleShape2D_w4ftx")
 
 [node name="StarTrail" type="GPUParticles2D" parent="." unique_id=832577518]
+visible = false
 texture = ExtResource("12_1g621")
 process_material = SubResource("ParticleProcessMaterial_mejnj")
+
+[node name="DeathStarExplosion" type="GPUParticles2D" parent="." unique_id=472232254]
+emitting = false
+texture = ExtResource("12_1g621")
+explosiveness = 1.0
+use_fixed_seed = true
+seed = 4224006249
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_1g621")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720542365]
 scale = Vector2(0.3, 0.3)

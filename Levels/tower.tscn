@@ -219,7 +219,6 @@ shape = SubResource("RectangleShape2D_d7kmo")
 position = Vector2(196, -8020)
 bird_type = 1
 bird_spawn_period_sec = 10000.0
-inverted = false
 bird_speed = 0.0
 bird_lifetime = 100000.0
 bird_move_dir = Vector2(0, 0)

@@ -7,8 +7,9 @@ var _move_dir: Vector2
 var _speed: float
 var _lifetime: float
 var _bonk_strength: float
+var _is_killer_bird: bool
 
-func init(inverted: bool, move_speed: float, lifetime: float, bonk_strength: float, bird_rotation: float):
+func init(inverted: bool, move_speed: float, lifetime: float, bonk_strength: float, bird_rotation: float, is_killer_bird: bool):
 	_move_dir = Vector2.RIGHT if not inverted else Vector2.LEFT
 	if inverted:
 		bird_sprite.flip_h = true
@@ -20,6 +21,7 @@ func init(inverted: bool, move_speed: float, lifetime: float, bonk_strength: flo
 		bird_sprite.flip_h = false
 	_bonk_strength = bonk_strength
 	rotation = bird_rotation
+	_is_killer_bird = is_killer_bird
 
 func _physics_process(delta: float) -> void:
 	global_position += _speed * delta * transform.basis_xform(_move_dir)
@@ -31,10 +33,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
+		if _is_killer_bird:
+			GameManager.retry_room()
 		GameManager.player.untether()
 		var launch_vector := 1000. * (body.global_position - global_position).normalized()
 		body.velocity = launch_vector
 	if body is RigidBody2D:
+		if _is_killer_bird:
+			GameManager.retry_room()
 		GameManager.player.untether()
 		var launch_vector := 1000. * (body.global_position - global_position).normalized()
 		body.apply_central_impulse(launch_vector)

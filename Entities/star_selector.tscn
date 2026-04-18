@@ -16,7 +16,6 @@ load_path = "res://.godot/imported/star_hover_cursor.png-ae9d59ba8265ebaab0545ca
 script = ExtResource("1_5h36o")
 star_selector_sprite = NodePath("../StarSelectorSprite")
 cast_line = NodePath("../CastLine")
-activation_range = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StarSelectorArea" unique_id=874008882]
 shape = SubResource("CircleShape2D_1630o")
