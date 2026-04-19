@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://duaj1agx51xlm" path="res://Player/Art/Pull/pull-4.png" id="11_owejd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
-size = Vector2(45, 83)
+size = Vector2(31, 63)
 
 [sub_resource type="Animation" id="Animation_eilv1"]
 length = 0.001
@@ -100,7 +100,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_ls152")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1854291909]
-position = Vector2(-1.5, 0.5)
+position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_wtcfe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=473975656]

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cxdibhhekmg0t"]
+
+[ext_resource type="Script" uid="uid://curairkygvw5g" path="res://Entities/launch_star.gd" id="1_5211m"]
+[ext_resource type="Texture2D" uid="uid://dxdlwwxp8pe1w" path="res://Assets/grabstar/pull-1.png" id="2_of34n"]
+[ext_resource type="Texture2D" uid="uid://bjnwdtech22rj" path="res://Assets/grabstar/pull-2.png" id="3_jx15u"]
+[ext_resource type="Texture2D" uid="uid://bc2t1kfwb5pt1" path="res://Assets/grabstar/pull-3.png" id="4_62v73"]
+[ext_resource type="Texture2D" uid="uid://cgy8e8cp05ief" path="res://Assets/grabstar/pull-4.png" id="5_im7jm"]
+[ext_resource type="Texture2D" uid="uid://dp6hofag0il4q" path="res://Assets/grabstar/pull-5.png" id="6_wbcku"]
+[ext_resource type="Texture2D" uid="uid://xbmjxfatawlh" path="res://Assets/grabstar/pull-6.png" id="7_kycie"]
+[ext_resource type="Texture2D" uid="uid://daksiw7ogr5y4" path="res://Assets/grabstar/pull-7.png" id="8_x2req"]
+[ext_resource type="Texture2D" uid="uid://blcgs5c4fids3" path="res://Assets/grabstar/pull-8.png" id="9_v0jrs"]
+[ext_resource type="Texture2D" uid="uid://ylg27r7oa6i4" path="res://Assets/dot1.png" id="10_vyh3c"]
+[ext_resource type="AudioStream" uid="uid://cknvtssh6f2nm" path="res://Assets/audio/sfxes_005.wav" id="11_bjylg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3ddw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_of34n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jx15u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_62v73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_im7jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wbcku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kycie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x2req")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v0jrs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gul6d"]
+size = Vector2(64, 64)
+
+[sub_resource type="Curve" id="Curve_dr0p5"]
+_data = [Vector2(0, 0.3646533), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_j6q0h"]
+curve = SubResource("Curve_dr0p5")
+
+[sub_resource type="Curve" id="Curve_bwhtb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.46774194, 0.42729312), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tgfgr"]
+curve = SubResource("Curve_bwhtb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8skgs"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 40.24
+spread = 180.0
+initial_velocity_min = 104.939995
+initial_velocity_max = 104.939995
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_tgfgr")
+color = Color(0.41857877, 0.80595344, 0.9236738, 1)
+emission_curve = SubResource("CurveTexture_j6q0h")
+
+[node name="LaunchStar" type="Area2D" unique_id=1483779697]
+script = ExtResource("1_5211m")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=87902625]
+modulate = Color(0.48235294, 1, 0.5137255, 1)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_n3ddw")
+autoplay = "default"
+frame_progress = 0.8808988
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039221457]
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="Label" type="Label" parent="." unique_id=1903412412]
+visible = false
+offset_left = -38.0
+offset_top = -63.0
+offset_right = 36.0
+offset_bottom = -14.0
+text = "Grab Star"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=591622817]
+process_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=252053649]
+shape = SubResource("RectangleShape2D_gul6d")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1046515337]
+emitting = false
+texture = ExtResource("10_vyh3c")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 24
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_8skgs")
+
+[node name="daAudio" type="AudioStreamPlayer2D" parent="." unique_id=2112108439]
+stream = ExtResource("11_bjylg")

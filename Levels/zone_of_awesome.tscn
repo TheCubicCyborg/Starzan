@@ -85,29 +85,34 @@ position = Vector2(190, 939)
 scale = Vector2(-1, 1)
 
 [node name="Cloud2" parent="Clouds" unique_id=1062291173 instance=ExtResource("7_2eqip")]
-position = Vector2(405, 299)
+position = Vector2(201, 370)
 scale = Vector2(0.8, 0.8)
 
-[node name="Cloud4" parent="Clouds" unique_id=1251824806 instance=ExtResource("7_2eqip")]
-position = Vector2(1240, 140)
-scale = Vector2(0.8, 0.8)
+[node name="Cloud4" parent="Clouds" unique_id=126629782 instance=ExtResource("7_2eqip")]
+position = Vector2(-28.999998, 370)
+scale = Vector2(-0.8, 0.8)
 
 [node name="Stars" type="Node2D" parent="." unique_id=75045220]
 
+[node name="YankStar" parent="Stars" unique_id=1041927568 instance=ExtResource("14_hyn04")]
+position = Vector2(660, 329.85602)
+wait_time = 1.5
+
 [node name="GrabStar2" parent="Stars" unique_id=2089855297 instance=ExtResource("8_4rgcq")]
-position = Vector2(645, 675)
-
-[node name="GrabStar22" parent="Stars" unique_id=621056504 instance=ExtResource("8_4rgcq")]
-position = Vector2(1763, 218)
-
-[node name="GrabStar24" parent="Stars" unique_id=1483779697 instance=ExtResource("8_4rgcq")]
-position = Vector2(784, 225)
-
-[node name="GrabStar25" parent="Stars" unique_id=78425215 instance=ExtResource("8_4rgcq")]
-position = Vector2(1483, 203)
+position = Vector2(701, 637.856)
+stretch_constant = null
 
 [node name="GrabStar23" parent="Stars" unique_id=829241645 instance=ExtResource("8_4rgcq")]
-position = Vector2(982, 334)
+position = Vector2(1463.8209, 415.7066)
+stretch_constant = null
+
+[node name="GrabStar24" parent="Stars" unique_id=1483779697 instance=ExtResource("8_4rgcq")]
+position = Vector2(1409, 142)
+stretch_constant = null
+
+[node name="GrabStar25" parent="Stars" unique_id=2135380149 instance=ExtResource("8_4rgcq")]
+position = Vector2(1230, 158.85602)
+stretch_constant = null
 
 [node name="Obstacles" type="Node2D" parent="." unique_id=1036402899]
 
@@ -122,46 +127,145 @@ bird_move_dir = Vector2(1, 0.03)
 is_killer_bird = true
 
 [node name="StarSpawner2" parent="Obstacles" unique_id=396003907 instance=ExtResource("10_wlgfr")]
-position = Vector2(-105, 314.00006)
+position = Vector2(-159, 338)
 rotation = 0.7573726
 bird_type = 1
+initial_spawn_delay = 0.5
 bird_spawn_period_sec = 5.0
+inverted = true
 bird_speed = 1000.0
+bird_move_dir = Vector2(1, 0.03)
+is_killer_bird = true
+
+[node name="StarSpawner3" parent="Obstacles" unique_id=231044527 instance=ExtResource("10_wlgfr")]
+position = Vector2(221, -195)
+rotation = 0.8029281
+bird_type = 1
+initial_spawn_delay = 0.6
+bird_spawn_period_sec = 1.5
+inverted = true
+bird_speed = 700.0
 bird_move_dir = Vector2(1, 0.03)
 is_killer_bird = true
 
 [node name="EvilStars" type="Node2D" parent="Obstacles" unique_id=91683486]
 
 [node name="SmallEvil" parent="Obstacles/EvilStars" unique_id=1504641416 instance=ExtResource("13_2eqip")]
-position = Vector2(460.00003, 572)
+position = Vector2(538, 569.856)
+
+[node name="SmallEvil5" parent="Obstacles/EvilStars" unique_id=1098975529 instance=ExtResource("13_2eqip")]
+position = Vector2(360, 481)
+
+[node name="SmallEvil15" parent="Obstacles/EvilStars" unique_id=1683085279 instance=ExtResource("13_2eqip")]
+position = Vector2(221.00002, 509)
+
+[node name="SmallEvil16" parent="Obstacles/EvilStars" unique_id=1015172054 instance=ExtResource("13_2eqip")]
+position = Vector2(288.00006, 463)
+rotation = 0.5199538
+
+[node name="SmallEvil8" parent="Obstacles/EvilStars" unique_id=1571494167 instance=ExtResource("13_2eqip")]
+position = Vector2(43.00003, 548)
 
 [node name="BigEvil" parent="Obstacles/EvilStars" unique_id=503136330 instance=ExtResource("11_rvcil")]
-position = Vector2(538, 524)
+position = Vector2(616, 521.856)
 rotation = 0.24508567
 
-[node name="BigEvil2" parent="Obstacles/EvilStars" unique_id=931302677 instance=ExtResource("11_rvcil")]
-position = Vector2(685, 505)
+[node name="BigEvil2" parent="Obstacles/EvilStars" unique_id=1857657097 instance=ExtResource("11_rvcil")]
+position = Vector2(469, 441.99994)
+rotation = -0.501829
+
+[node name="BigEvil10" parent="Obstacles/EvilStars" unique_id=880406782 instance=ExtResource("11_rvcil")]
+position = Vector2(118.99999, 479.99997)
+rotation = 1.3093866
+
+[node name="BigEvil4" parent="Obstacles/EvilStars" unique_id=1246434263 instance=ExtResource("11_rvcil")]
+position = Vector2(1054.9976, 965.856)
 rotation = -0.4770123
 
+[node name="BigEvil7" parent="Obstacles/EvilStars" unique_id=2042406009 instance=ExtResource("11_rvcil")]
+position = Vector2(936.99994, 47.856007)
+rotation = -0.4770123
+
+[node name="BigEvil5" parent="Obstacles/EvilStars" unique_id=1300437876 instance=ExtResource("11_rvcil")]
+position = Vector2(1206, 1049)
+rotation = 0.5013404
+
+[node name="BigEvil6" parent="Obstacles/EvilStars" unique_id=1933296011 instance=ExtResource("11_rvcil")]
+position = Vector2(1098, 88.99997)
+rotation = 0.5013404
+
+[node name="BigEvil9" parent="Obstacles/EvilStars" unique_id=94431484 instance=ExtResource("11_rvcil")]
+position = Vector2(1427.821, 276.70663)
+rotation = -0.39703798
+
+[node name="BigEvil8" parent="Obstacles/EvilStars" unique_id=1718602435 instance=ExtResource("11_rvcil")]
+position = Vector2(1592.8209, 411.70667)
+rotation = 0.5013404
+
+[node name="BigEvil3" parent="Obstacles/EvilStars" unique_id=1634825888 instance=ExtResource("11_rvcil")]
+position = Vector2(702.00006, 764.856)
+rotation = -0.8123004
+
 [node name="SmallEvil2" parent="Obstacles/EvilStars" unique_id=1927806171 instance=ExtResource("13_2eqip")]
-position = Vector2(600, 431.99997)
+position = Vector2(678, 429.856)
 rotation = 0.15207523
 
-[node name="YankStar" parent="Obstacles/EvilStars" unique_id=1041927568 instance=ExtResource("14_hyn04")]
-position = Vector2(272, 595)
+[node name="SmallEvil17" parent="Obstacles/EvilStars" unique_id=1353170363 instance=ExtResource("13_2eqip")]
+position = Vector2(576, 392)
+rotation = 0.15207523
+
+[node name="SmallEvil14" parent="Obstacles/EvilStars" unique_id=1775900181 instance=ExtResource("13_2eqip")]
+position = Vector2(742, 516.856)
+rotation = 0.15207523
+
+[node name="SmallEvil3" parent="Obstacles/EvilStars" unique_id=1144806691 instance=ExtResource("13_2eqip")]
+position = Vector2(1095.9974, 883.85596)
+rotation = 0.15207523
+
+[node name="SmallEvil6" parent="Obstacles/EvilStars" unique_id=38483743 instance=ExtResource("13_2eqip")]
+position = Vector2(1169, 949.9999)
+rotation = 0.49852276
+
+[node name="SmallEvil7" parent="Obstacles/EvilStars" unique_id=1241296295 instance=ExtResource("13_2eqip")]
+position = Vector2(1132, 187.99994)
+rotation = 0.49852276
+
+[node name="SmallEvil9" parent="Obstacles/EvilStars" unique_id=996902859 instance=ExtResource("13_2eqip")]
+position = Vector2(1324.8209, 354.7066)
+rotation = 0.49852276
+
+[node name="SmallEvil13" parent="Obstacles/EvilStars" unique_id=1163575142 instance=ExtResource("13_2eqip")]
+position = Vector2(1252, 270.99997)
+rotation = 1.3652744
+
+[node name="SmallEvil10" parent="Obstacles/EvilStars" unique_id=244243745 instance=ExtResource("13_2eqip")]
+position = Vector2(1359.8209, 427.70654)
+rotation = -0.7600523
+
+[node name="SmallEvil11" parent="Obstacles/EvilStars" unique_id=678890985 instance=ExtResource("13_2eqip")]
+position = Vector2(1448.8209, 533.7066)
+rotation = 0.4909681
+
+[node name="SmallEvil12" parent="Obstacles/EvilStars" unique_id=1468384898 instance=ExtResource("13_2eqip")]
+position = Vector2(1544.8209, 296.7066)
+rotation = -2.5380802
+
+[node name="SmallEvil4" parent="Obstacles/EvilStars" unique_id=1745285983 instance=ExtResource("13_2eqip")]
+position = Vector2(958.99744, 1032.8558)
+rotation = 0.15207523
 
 [node name="KillArea" parent="Obstacles" unique_id=2086159469 instance=ExtResource("13_32x14")]
-position = Vector2(460, 448)
+position = Vector2(538, 445.85602)
 
 [node name="Geometry" type="Node2D" parent="." unique_id=1917234492]
 
 [node name="StarSelector" parent="." unique_id=695560097 instance=ExtResource("11_ukx4n")]
 
 [node name="Label" type="Label" parent="." unique_id=2050791489]
-offset_left = 1641.0
-offset_top = 702.0
-offset_right = 1799.0
-offset_bottom = 725.0
+offset_left = 101.0
+offset_top = 102.0
+offset_right = 259.0
+offset_bottom = 125.0
 text = "you win if u get here"
 
 [node name="KillArea" parent="." unique_id=199740838 instance=ExtResource("13_32x14")]

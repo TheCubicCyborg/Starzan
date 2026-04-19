@@ -31,6 +31,8 @@ func _ready():
 func _physics_process(delta):
 	if tethered:
 		tether_process(delta)
+	elif launch_target:
+		launch_process(delta)
 	else:
 		normal_process(delta)
 
@@ -51,8 +53,7 @@ func normal_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			_jump_visual_timer = JUMP_VISUAL_TIME
+			apply_jump_velocity(delta)
 	
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("move_left", "move_right")
@@ -69,17 +70,30 @@ func normal_process(delta):
 	
 	handle_speed_particles(velocity.length())
 
+var launch_target: LaunchStar = null
+var launch_target_velocity: Vector2 = Vector2.ZERO
+func launch_to(star: LaunchStar):
+	launch_target = star
+	velocity = Vector2.ZERO
+	var direction_to_target := position.direction_to(star.position)
+	launch_target_velocity = star.max_launch_speed * direction_to_target
+	
+func launch_process(delta):
+	if launch_target:
+		velocity = velocity.move_toward(launch_target_velocity, launch_target.launch_accel * delta)
+		if launch_target.position.is_equal_approx(position):
+			launch_target = null
+
 func tether_process(delta):
-		# Add the gravity.
+	# Add the gravity.
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
 	
 	position = rigid.position
 	
 	if Input.is_action_just_pressed("jump"):
-		velocity.y = JUMP_VELOCITY
-		_jump_visual_timer = JUMP_VISUAL_TIME
 		untether()
+		apply_jump_velocity(delta)
 		return
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
@@ -163,6 +177,10 @@ func die():
 	set_process(false)
 	set_physics_process(false)
 	play_death_anim()
+
+func apply_jump_velocity(delta: float):
+	velocity.y = min(velocity.y, JUMP_VELOCITY)
+	_jump_visual_timer = JUMP_VISUAL_TIME
 
 func play_death_anim():
 	$Sprite2D.visible = false

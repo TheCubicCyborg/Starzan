@@ -25,6 +25,7 @@ func fade_overlay_in(time: float):
 	cr.visible = true
 
 func fade_overlay_out(time: float):
+	cr.visible = false
 	for star_light in star_lights:
 		star_light.scale = smallest_scale
 		var tween = get_tree().create_tween()
@@ -32,7 +33,6 @@ func fade_overlay_out(time: float):
 		tween.set_trans(Tween.TRANS_QUINT)
 		tween.tween_property(star_light, "scale", largest_scale, time)
 		tween.set_parallel(true)
-	cr.visible = false
 	
 	# is this the worst code ever?
 	await get_tree().create_timer(time).timeout
